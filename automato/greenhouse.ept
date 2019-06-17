@@ -1,0 +1,28 @@
+(*
+    until => executa o estado em que está e transiciona para outro estado
+    unless => transiciona para outro estado e executa o novo estado
+*)
+
+node greenhouse(t_in:int) returns (cooling_on,heater_on:bool)
+contract
+    enforce not (cooling_on & heater_on)
+    with (c:bool)
+let
+    automaton
+     state Idle do
+        cooling_on = false;
+        heater_on = false;
+     unless (t_in > 12) & c then Cooling
+        | (t_in < 10) & c then Heating
+     state Cooling do
+        cooling_on = true;
+        heater_on = false;
+     unless (t_in >= 10) & (t_in <= 12) & c then Idle
+        | t_in < 10 & c then Heating
+     state Heating do
+        cooling_on = false;
+        heater_on = true;
+     unless (t_in >= 10) & (t_in <= 12) & c then Idle
+        | t_in > 12 & c then Cooling
+    end
+tel
