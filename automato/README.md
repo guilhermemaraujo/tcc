@@ -7,7 +7,7 @@
 * Saídas:
     * heating_on: determina se o aquecedor deve ou não estar ligado
     * cooling_on: determina se o ar condicionado deve ou não estar ligado
-* Estados: O aparelho inicia desligado no estado de Idle e transita entre os estados de acordo com o horário e a temperatura do ambiente. Cada estado tem um range de horário e uma temperatura máxima, no caso do aquecedor, ou uma mínima, no caso do resfriamento. Não há transições dos estados entre si, apenas do Idle com todos os outros.
+* Estados: O aparelho inicia desligado no estado de Idle e transita entre os estados de acordo com o horário e a temperatura do ambiente. Cada estado tem um range de horário e uma temperatura máxima e uma mínima. Não há transições dos estados entre si, apenas do Idle com todos os outros.
     * Idle: aparelho desligado.
     * Dawn: aparelho ligado. Volta ao estado de Idle caso saia do range de seu horário [0h às 8h[ ou caso atinja o range da temperatura, com mínima de 20 graus e máxima de 25
     * Morning: Mesmo que o anterior. Range de seu horário [8h às 12h[. Min: 15, Max: 20
