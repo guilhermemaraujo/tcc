@@ -1,9 +1,3 @@
-(*
-    until => executa o estado em que está e transiciona para outro estado
-    unless => transiciona para outro estado e executa o novo estado
-*)
-
-
 node heating(t_in,time:int; d,c:bool) returns (heating_on:bool)
 let
     automaton
