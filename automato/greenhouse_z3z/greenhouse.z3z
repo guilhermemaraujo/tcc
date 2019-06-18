@@ -1,0 +1,866 @@
+% --- Generated the 18/6/2019 at 4:46 --- %
+% --- heptagon compiler, version 1.03.00 (compiled thu. may. 3 2:35:29 CET 2018) --- %
+% --- Command line: /usr/local/bin/heptc -target c -target z3z -s greenhouse greenhouse.ept --- %
+
+set_reorder(2);read("Property.lib");read("Synthesis.lib");read("Verif_Determ.lib");read("Simul.lib");read("Synthesis_Partial_order.lib");read("Orbite.lib");
+% -- dependencies --- %
+
+% ---------- process greenhouse ---------- %
+
+declare(greenhouse_d, greenhouse_v_121, greenhouse_v_122, greenhouse_v_125,
+        greenhouse_v_126, greenhouse_v_128, greenhouse_v_137,
+        greenhouse_v_138, greenhouse_v_131, greenhouse_v_132,
+        greenhouse_v_134, greenhouse_v_143, greenhouse_v_146,
+        greenhouse_v_147, greenhouse_v_152, greenhouse_v_153,
+        greenhouse_v_155, greenhouse_v_160, greenhouse_v_161,
+        greenhouse_v_163, greenhouse_v_168, greenhouse_v_169,
+        greenhouse_v_141, greenhouse_v_182, greenhouse_v_183,
+        greenhouse_v_186, greenhouse_v_187, greenhouse_v_189,
+        greenhouse_v_198, greenhouse_v_199, greenhouse_v_192,
+        greenhouse_v_193, greenhouse_v_195, greenhouse_v_203,
+        greenhouse_v_206, greenhouse_v_207, greenhouse_v_212,
+        greenhouse_v_213, greenhouse_v_215, greenhouse_v_220,
+        greenhouse_v_221, greenhouse_v_223, greenhouse_v_228,
+        greenhouse_v_229, greenhouse_v_202, greenhouse_c2, greenhouse_c1,
+        greenhouse_v_445, greenhouse_v_444, greenhouse_v_443,
+        greenhouse_pnr_1, greenhouse_v_388, greenhouse_v_387,
+        greenhouse_v_386, greenhouse_pnr, greenhouse_error_state);
+conditions : [greenhouse_d, greenhouse_v_121, greenhouse_v_122,
+              greenhouse_v_125, greenhouse_v_126, greenhouse_v_128,
+              greenhouse_v_137, greenhouse_v_138, greenhouse_v_131,
+              greenhouse_v_132, greenhouse_v_134, greenhouse_v_143,
+              greenhouse_v_146, greenhouse_v_147, greenhouse_v_152,
+              greenhouse_v_153, greenhouse_v_155, greenhouse_v_160,
+              greenhouse_v_161, greenhouse_v_163, greenhouse_v_168,
+              greenhouse_v_169, greenhouse_v_141, greenhouse_v_182,
+              greenhouse_v_183, greenhouse_v_186, greenhouse_v_187,
+              greenhouse_v_189, greenhouse_v_198, greenhouse_v_199,
+              greenhouse_v_192, greenhouse_v_193, greenhouse_v_195,
+              greenhouse_v_203, greenhouse_v_206, greenhouse_v_207,
+              greenhouse_v_212, greenhouse_v_213, greenhouse_v_215,
+              greenhouse_v_220, greenhouse_v_221, greenhouse_v_223,
+              greenhouse_v_228, greenhouse_v_229, greenhouse_v_202,
+              greenhouse_c2, greenhouse_c1];
+states : [greenhouse_v_445, greenhouse_v_444, greenhouse_v_443,
+          greenhouse_pnr_1, greenhouse_v_388, greenhouse_v_387,
+          greenhouse_v_386, greenhouse_pnr, greenhouse_error_state];
+controllables : [greenhouse_c2, greenhouse_c1];
+evolutions : [];
+initialisations : [];
+greenhouse_ck_3_4 : greenhouse_v_445;
+greenhouse_ck_2 : greenhouse_v_444;
+greenhouse_ck_1 : greenhouse_v_443;
+greenhouse_c : greenhouse_c2;
+greenhouse_d_1 : greenhouse_d;
+greenhouse_ck_4_3 : greenhouse_v_388;
+greenhouse_ck_4_2 : greenhouse_v_387;
+greenhouse_ck_4_1 : greenhouse_v_386;
+greenhouse_c_1 : greenhouse_c1;
+greenhouse_d_2 : greenhouse_d;
+greenhouse_ck_2_0 : greenhouse_ck_2;
+greenhouse_ck_2_1 : greenhouse_ck_2;
+greenhouse_ck_3_4_0_0 : greenhouse_ck_3_4;
+greenhouse_ck_3_4_0_1 : greenhouse_ck_3_4;
+greenhouse_ck_3_4_1_0 : greenhouse_ck_3_4;
+greenhouse_ck_3_4_1_1 : greenhouse_ck_3_4;
+greenhouse_v_123 : (greenhouse_v_121 or greenhouse_v_122);
+greenhouse_v_124 : (greenhouse_v_123 and greenhouse_c);
+greenhouse_s_1_St_3_Night_3 : ((1 when greenhouse_v_124) default -1);
+greenhouse_v_457 : ((1 when greenhouse_ck_3_4_0_0)
+  default greenhouse_s_1_St_3_Night_3);
+greenhouse_s_1_St_3_Night_2 : ((1 when greenhouse_v_124) default -1);
+greenhouse_v_456 : ((1 when greenhouse_ck_3_4_0_0)
+  default greenhouse_s_1_St_3_Night_2);
+greenhouse_s_1_St_3_Night_1 : ((-1 when greenhouse_v_124) default -1);
+greenhouse_v_455 : ((1 when greenhouse_ck_3_4_0_0)
+  default greenhouse_s_1_St_3_Night_1);
+greenhouse_r_1_St_3_Night : ((1 when greenhouse_v_124)
+  default greenhouse_pnr_1);
+greenhouse_v_468 : ((1 when greenhouse_ck_3_4_0_0)
+  default greenhouse_r_1_St_3_Night);
+greenhouse_s_1_St_3_Night_2_0 : greenhouse_s_1_St_3_Night_2;
+greenhouse_s_1_St_3_Night_2_1 : greenhouse_s_1_St_3_Night_2;
+greenhouse_s_1_St_3_Night_3_0_0 : greenhouse_s_1_St_3_Night_3;
+greenhouse_s_1_St_3_Night_3_0_1 : greenhouse_s_1_St_3_Night_3;
+greenhouse_s_1_St_3_Night_3_1_0 : greenhouse_s_1_St_3_Night_3;
+greenhouse_s_1_St_3_Night_3_1_1 : greenhouse_s_1_St_3_Night_3;
+greenhouse_v_127 : (greenhouse_v_125 or greenhouse_v_126);
+greenhouse_v_129 : (greenhouse_v_127 or greenhouse_v_128);
+greenhouse_v_130 : (greenhouse_v_129 and greenhouse_c);
+greenhouse_s_1_St_3_Afternoon_3 : ((1 when greenhouse_v_130) default 1);
+greenhouse_s_1_St_3_Afternoon_2 : ((1 when greenhouse_v_130) default 1);
+greenhouse_s_1_St_3_Afternoon_1 : ((-1 when greenhouse_v_130) default 1);
+greenhouse_r_1_St_3_Afternoon : ((1 when greenhouse_v_130)
+  default greenhouse_pnr_1);
+greenhouse_v_139 : (greenhouse_v_137 or greenhouse_v_138);
+greenhouse_v_140 : (greenhouse_v_139 and greenhouse_c);
+greenhouse_s_1_St_3_Dawn_3 : ((1 when greenhouse_v_140) default -1);
+greenhouse_v_448 : ((greenhouse_s_1_St_3_Afternoon_3
+  when greenhouse_ck_3_4_1_1) default greenhouse_s_1_St_3_Dawn_3);
+greenhouse_s_1_St_3_Dawn_2 : ((1 when greenhouse_v_140) default 1);
+greenhouse_v_447 : ((greenhouse_s_1_St_3_Afternoon_2
+  when greenhouse_ck_3_4_1_1) default greenhouse_s_1_St_3_Dawn_2);
+greenhouse_s_1_St_3_Dawn_1 : ((-1 when greenhouse_v_140) default 1);
+greenhouse_v_446 : ((greenhouse_s_1_St_3_Afternoon_1
+  when greenhouse_ck_3_4_1_1) default greenhouse_s_1_St_3_Dawn_1);
+greenhouse_r_1_St_3_Dawn : ((1 when greenhouse_v_140)
+  default greenhouse_pnr_1);
+greenhouse_v_464 : ((greenhouse_r_1_St_3_Afternoon
+  when greenhouse_ck_3_4_1_1) default greenhouse_r_1_St_3_Dawn);
+greenhouse_s_1_St_3_Afternoon_2_0 : greenhouse_s_1_St_3_Afternoon_2;
+greenhouse_s_1_St_3_Afternoon_2_1 : greenhouse_s_1_St_3_Afternoon_2;
+greenhouse_s_1_St_3_Afternoon_3_0_0 : greenhouse_s_1_St_3_Afternoon_3;
+greenhouse_s_1_St_3_Afternoon_3_0_1 : greenhouse_s_1_St_3_Afternoon_3;
+greenhouse_s_1_St_3_Afternoon_3_1_0 : greenhouse_s_1_St_3_Afternoon_3;
+greenhouse_s_1_St_3_Afternoon_3_1_1 : greenhouse_s_1_St_3_Afternoon_3;
+greenhouse_s_1_St_3_Dawn_2_0 : greenhouse_s_1_St_3_Dawn_2;
+greenhouse_s_1_St_3_Dawn_2_1 : greenhouse_s_1_St_3_Dawn_2;
+greenhouse_s_1_St_3_Dawn_3_0_0 : greenhouse_s_1_St_3_Dawn_3;
+greenhouse_s_1_St_3_Dawn_3_0_1 : greenhouse_s_1_St_3_Dawn_3;
+greenhouse_s_1_St_3_Dawn_3_1_0 : greenhouse_s_1_St_3_Dawn_3;
+greenhouse_s_1_St_3_Dawn_3_1_1 : greenhouse_s_1_St_3_Dawn_3;
+greenhouse_v_133 : (greenhouse_v_131 or greenhouse_v_132);
+greenhouse_v_135 : (greenhouse_v_133 or greenhouse_v_134);
+greenhouse_v_136 : (greenhouse_v_135 and greenhouse_c);
+greenhouse_s_1_St_3_Morning_3 : ((1 when greenhouse_v_136) default -1);
+greenhouse_s_1_St_3_Morning_2 : ((1 when greenhouse_v_136) default 1);
+greenhouse_s_1_St_3_Morning_1 : ((-1 when greenhouse_v_136) default -1);
+greenhouse_r_1_St_3_Morning : ((1 when greenhouse_v_136)
+  default greenhouse_pnr_1);
+greenhouse_v_144 : (greenhouse_v_143 and greenhouse_d_1);
+greenhouse_v_145 : (greenhouse_v_144 and greenhouse_c);
+greenhouse_v_148 : (greenhouse_v_146 and greenhouse_v_147);
+greenhouse_v_149 : (not greenhouse_d_1);
+greenhouse_v_150 : (greenhouse_v_148 and greenhouse_v_149);
+greenhouse_v_151 : (greenhouse_v_150 and greenhouse_c);
+greenhouse_v_154 : (greenhouse_v_152 and greenhouse_v_153);
+greenhouse_v_156 : (greenhouse_v_154 and greenhouse_v_155);
+greenhouse_v_157 : (not greenhouse_d_1);
+greenhouse_v_158 : (greenhouse_v_156 and greenhouse_v_157);
+greenhouse_v_159 : (greenhouse_v_158 and greenhouse_c);
+greenhouse_v_162 : (greenhouse_v_160 and greenhouse_v_161);
+greenhouse_v_164 : (greenhouse_v_162 and greenhouse_v_163);
+greenhouse_v_165 : (not greenhouse_d_1);
+greenhouse_v_166 : (greenhouse_v_164 and greenhouse_v_165);
+greenhouse_v_167 : (greenhouse_v_166 and greenhouse_c);
+greenhouse_v_170 : (greenhouse_v_168 and greenhouse_v_169);
+greenhouse_v_171 : (not greenhouse_d_1);
+greenhouse_v_172 : (greenhouse_v_170 and greenhouse_v_171);
+greenhouse_v_173 : (greenhouse_v_172 and greenhouse_c);
+greenhouse_v_174_3 : ((-1 when greenhouse_v_173) default 1);
+greenhouse_v_174_2 : ((-1 when greenhouse_v_173) default 1);
+greenhouse_v_174_1 : ((-1 when greenhouse_v_173) default -1);
+greenhouse_v_175 : ((1 when greenhouse_v_173) default greenhouse_pnr_1);
+greenhouse_v_176_3 : ((1 when greenhouse_v_167) default greenhouse_v_174_3);
+greenhouse_v_176_2 : ((1 when greenhouse_v_167) default greenhouse_v_174_2);
+greenhouse_v_176_1 : ((1 when greenhouse_v_167) default greenhouse_v_174_1);
+greenhouse_v_177 : ((1 when greenhouse_v_167) default greenhouse_v_175);
+greenhouse_v_178_3 : ((-1 when greenhouse_v_159) default greenhouse_v_176_3);
+greenhouse_v_178_2 : ((1 when greenhouse_v_159) default greenhouse_v_176_2);
+greenhouse_v_178_1 : ((-1 when greenhouse_v_159) default greenhouse_v_176_1);
+greenhouse_v_179 : ((1 when greenhouse_v_159) default greenhouse_v_177);
+greenhouse_v_180_3 : ((-1 when greenhouse_v_151) default greenhouse_v_178_3);
+greenhouse_v_180_2 : ((1 when greenhouse_v_151) default greenhouse_v_178_2);
+greenhouse_v_180_1 : ((1 when greenhouse_v_151) default greenhouse_v_178_1);
+greenhouse_v_181 : ((1 when greenhouse_v_151) default greenhouse_v_179);
+greenhouse_s_1_St_3_Idle_3 : ((-1 when greenhouse_v_145)
+  default greenhouse_v_180_3);
+greenhouse_v_454 : ((greenhouse_s_1_St_3_Idle_3 when greenhouse_ck_3_4_0_1)
+  default greenhouse_s_1_St_3_Morning_3);
+greenhouse_s_1_St_3_Idle_2 : ((-1 when greenhouse_v_145)
+  default greenhouse_v_180_2);
+greenhouse_v_453 : ((greenhouse_s_1_St_3_Idle_2 when greenhouse_ck_3_4_0_1)
+  default greenhouse_s_1_St_3_Morning_2);
+greenhouse_s_1_St_3_Idle_1 : ((1 when greenhouse_v_145)
+  default greenhouse_v_180_1);
+greenhouse_v_452 : ((greenhouse_s_1_St_3_Idle_1 when greenhouse_ck_3_4_0_1)
+  default greenhouse_s_1_St_3_Morning_1);
+greenhouse_r_1_St_3_Idle : ((1 when greenhouse_v_145)
+  default greenhouse_v_181);
+greenhouse_v_467 : ((greenhouse_r_1_St_3_Idle when greenhouse_ck_3_4_0_1)
+  default greenhouse_r_1_St_3_Morning);
+greenhouse_s_1_St_3_Morning_2_0 : greenhouse_s_1_St_3_Morning_2;
+greenhouse_s_1_St_3_Morning_2_1 : greenhouse_s_1_St_3_Morning_2;
+greenhouse_s_1_St_3_Morning_3_0_0 : greenhouse_s_1_St_3_Morning_3;
+greenhouse_s_1_St_3_Morning_3_0_1 : greenhouse_s_1_St_3_Morning_3;
+greenhouse_s_1_St_3_Morning_3_1_0 : greenhouse_s_1_St_3_Morning_3;
+greenhouse_s_1_St_3_Morning_3_1_1 : greenhouse_s_1_St_3_Morning_3;
+greenhouse_s_1_St_3_Idle_2_0 : greenhouse_s_1_St_3_Idle_2;
+greenhouse_s_1_St_3_Idle_2_1 : greenhouse_s_1_St_3_Idle_2;
+greenhouse_s_1_St_3_Idle_3_0_0 : greenhouse_s_1_St_3_Idle_3;
+greenhouse_s_1_St_3_Idle_3_0_1 : greenhouse_s_1_St_3_Idle_3;
+greenhouse_s_1_St_3_Idle_3_1_0 : greenhouse_s_1_St_3_Idle_3;
+greenhouse_s_1_St_3_Idle_3_1_1 : greenhouse_s_1_St_3_Idle_3;
+greenhouse_v_469 : ((greenhouse_v_467 when greenhouse_ck_2_0)
+  default greenhouse_v_468);
+greenhouse_v_463 : ((greenhouse_v_454 when greenhouse_ck_2_0)
+  default greenhouse_v_457);
+greenhouse_v_462 : ((greenhouse_v_453 when greenhouse_ck_2_0)
+  default greenhouse_v_456);
+greenhouse_v_461 : ((greenhouse_v_452 when greenhouse_ck_2_0)
+  default greenhouse_v_455);
+greenhouse_v_142 : (greenhouse_v_141 and greenhouse_c);
+greenhouse_s_1_St_3_Default_3 : ((1 when greenhouse_v_142) default -1);
+greenhouse_v_451 : ((1 when greenhouse_ck_3_4_1_0)
+  default greenhouse_s_1_St_3_Default_3);
+greenhouse_s_1_St_3_Default_2 : ((1 when greenhouse_v_142) default -1);
+greenhouse_v_450 : ((1 when greenhouse_ck_3_4_1_0)
+  default greenhouse_s_1_St_3_Default_2);
+greenhouse_s_1_St_3_Default_1 : ((-1 when greenhouse_v_142) default 1);
+greenhouse_v_449 : ((1 when greenhouse_ck_3_4_1_0)
+  default greenhouse_s_1_St_3_Default_1);
+greenhouse_r_1_St_3_Default : ((1 when greenhouse_v_142)
+  default greenhouse_pnr_1);
+greenhouse_v_465 : ((1 when greenhouse_ck_3_4_1_0)
+  default greenhouse_r_1_St_3_Default);
+greenhouse_s_1_St_3_Default_2_0 : greenhouse_s_1_St_3_Default_2;
+greenhouse_s_1_St_3_Default_2_1 : greenhouse_s_1_St_3_Default_2;
+greenhouse_s_1_St_3_Default_3_0_0 : greenhouse_s_1_St_3_Default_3;
+greenhouse_s_1_St_3_Default_3_0_1 : greenhouse_s_1_St_3_Default_3;
+greenhouse_s_1_St_3_Default_3_1_0 : greenhouse_s_1_St_3_Default_3;
+greenhouse_s_1_St_3_Default_3_1_1 : greenhouse_s_1_St_3_Default_3;
+greenhouse_v_466 : ((greenhouse_v_464 when greenhouse_ck_2_1)
+  default greenhouse_v_465);
+greenhouse_v_460 : ((greenhouse_v_448 when greenhouse_ck_2_1)
+  default greenhouse_v_451);
+greenhouse_v_459 : ((greenhouse_v_447 when greenhouse_ck_2_1)
+  default greenhouse_v_450);
+greenhouse_v_458 : ((greenhouse_v_446 when greenhouse_ck_2_1)
+  default greenhouse_v_449);
+greenhouse_r_1 : ((greenhouse_v_466 when greenhouse_ck_1)
+  default greenhouse_v_469);
+greenhouse_s_1_3 : ((greenhouse_v_460 when greenhouse_ck_1)
+  default greenhouse_v_463);
+greenhouse_s_1_2 : ((greenhouse_v_459 when greenhouse_ck_1)
+  default greenhouse_v_462);
+greenhouse_s_1_1 : ((greenhouse_v_458 when greenhouse_ck_1)
+  default greenhouse_v_461);
+greenhouse_s_1_2_0 : greenhouse_s_1_2;
+greenhouse_s_1_2_1 : greenhouse_s_1_2;
+greenhouse_s_1_3_0_0 : greenhouse_s_1_3;
+greenhouse_s_1_3_0_1 : greenhouse_s_1_3;
+greenhouse_s_1_3_1_0 : greenhouse_s_1_3;
+greenhouse_s_1_3_1_1 : greenhouse_s_1_3;
+greenhouse_v_180_2_0 : greenhouse_v_180_2;
+greenhouse_v_180_2_1 : greenhouse_v_180_2;
+greenhouse_v_180_3_0_0 : greenhouse_v_180_3;
+greenhouse_v_180_3_0_1 : greenhouse_v_180_3;
+greenhouse_v_180_3_1_0 : greenhouse_v_180_3;
+greenhouse_v_180_3_1_1 : greenhouse_v_180_3;
+greenhouse_v_178_2_0 : greenhouse_v_178_2;
+greenhouse_v_178_2_1 : greenhouse_v_178_2;
+greenhouse_v_178_3_0_0 : greenhouse_v_178_3;
+greenhouse_v_178_3_0_1 : greenhouse_v_178_3;
+greenhouse_v_178_3_1_0 : greenhouse_v_178_3;
+greenhouse_v_178_3_1_1 : greenhouse_v_178_3;
+greenhouse_v_176_2_0 : greenhouse_v_176_2;
+greenhouse_v_176_2_1 : greenhouse_v_176_2;
+greenhouse_v_176_3_0_0 : greenhouse_v_176_3;
+greenhouse_v_176_3_0_1 : greenhouse_v_176_3;
+greenhouse_v_176_3_1_0 : greenhouse_v_176_3;
+greenhouse_v_176_3_1_1 : greenhouse_v_176_3;
+greenhouse_v_174_2_0 : greenhouse_v_174_2;
+greenhouse_v_174_2_1 : greenhouse_v_174_2;
+greenhouse_v_174_3_0_0 : greenhouse_v_174_3;
+greenhouse_v_174_3_0_1 : greenhouse_v_174_3;
+greenhouse_v_174_3_1_0 : greenhouse_v_174_3;
+greenhouse_v_174_3_1_1 : greenhouse_v_174_3;
+greenhouse_ck_3_3 : greenhouse_s_1_3;
+greenhouse_ck_3_2 : greenhouse_s_1_2;
+greenhouse_ck_3_1 : greenhouse_s_1_1;
+greenhouse_ck_3_2_0 : greenhouse_ck_3_2;
+greenhouse_ck_3_2_1 : greenhouse_ck_3_2;
+greenhouse_ck_3_3_0_0 : greenhouse_ck_3_3;
+greenhouse_ck_3_3_0_1 : greenhouse_ck_3_3;
+greenhouse_ck_3_3_1_0 : greenhouse_ck_3_3;
+greenhouse_ck_3_3_1_1 : greenhouse_ck_3_3;
+greenhouse_ns_1_St_3_Night_3 : -1;
+greenhouse_v_430 : ((1 when greenhouse_ck_3_3_0_0)
+  default greenhouse_ns_1_St_3_Night_3);
+greenhouse_ns_1_St_3_Night_2 : -1;
+greenhouse_v_429 : ((1 when greenhouse_ck_3_3_0_0)
+  default greenhouse_ns_1_St_3_Night_2);
+greenhouse_ns_1_St_3_Night_1 : -1;
+greenhouse_v_428 : ((1 when greenhouse_ck_3_3_0_0)
+  default greenhouse_ns_1_St_3_Night_1);
+greenhouse_nr_1_St_3_Night : -1;
+greenhouse_v_441 : ((1 when greenhouse_ck_3_3_0_0)
+  default greenhouse_nr_1_St_3_Night);
+greenhouse_cooling_on_1_St_3_Night : 1;
+greenhouse_v_417 : ((1 when greenhouse_ck_3_3_0_0)
+  default greenhouse_cooling_on_1_St_3_Night);
+greenhouse_ns_1_St_3_Night_2_0 : greenhouse_ns_1_St_3_Night_2;
+greenhouse_ns_1_St_3_Night_2_1 : greenhouse_ns_1_St_3_Night_2;
+greenhouse_ns_1_St_3_Night_3_0_0 : greenhouse_ns_1_St_3_Night_3;
+greenhouse_ns_1_St_3_Night_3_0_1 : greenhouse_ns_1_St_3_Night_3;
+greenhouse_ns_1_St_3_Night_3_1_0 : greenhouse_ns_1_St_3_Night_3;
+greenhouse_ns_1_St_3_Night_3_1_1 : greenhouse_ns_1_St_3_Night_3;
+greenhouse_ns_1_St_3_Afternoon_3 : 1;
+greenhouse_ns_1_St_3_Afternoon_2 : 1;
+greenhouse_ns_1_St_3_Afternoon_1 : 1;
+greenhouse_nr_1_St_3_Afternoon : -1;
+greenhouse_cooling_on_1_St_3_Afternoon : 1;
+greenhouse_ns_1_St_3_Dawn_3 : -1;
+greenhouse_v_421 : ((greenhouse_ns_1_St_3_Afternoon_3
+  when greenhouse_ck_3_3_1_1) default greenhouse_ns_1_St_3_Dawn_3);
+greenhouse_ns_1_St_3_Dawn_2 : 1;
+greenhouse_v_420 : ((greenhouse_ns_1_St_3_Afternoon_2
+  when greenhouse_ck_3_3_1_1) default greenhouse_ns_1_St_3_Dawn_2);
+greenhouse_ns_1_St_3_Dawn_1 : 1;
+greenhouse_v_419 : ((greenhouse_ns_1_St_3_Afternoon_1
+  when greenhouse_ck_3_3_1_1) default greenhouse_ns_1_St_3_Dawn_1);
+greenhouse_nr_1_St_3_Dawn : -1;
+greenhouse_v_437 : ((greenhouse_nr_1_St_3_Afternoon
+  when greenhouse_ck_3_3_1_1) default greenhouse_nr_1_St_3_Dawn);
+greenhouse_cooling_on_1_St_3_Dawn : 1;
+greenhouse_v_413 : ((greenhouse_cooling_on_1_St_3_Afternoon
+  when greenhouse_ck_3_3_1_1) default greenhouse_cooling_on_1_St_3_Dawn);
+greenhouse_ns_1_St_3_Afternoon_2_0 : greenhouse_ns_1_St_3_Afternoon_2;
+greenhouse_ns_1_St_3_Afternoon_2_1 : greenhouse_ns_1_St_3_Afternoon_2;
+greenhouse_ns_1_St_3_Afternoon_3_0_0 : greenhouse_ns_1_St_3_Afternoon_3;
+greenhouse_ns_1_St_3_Afternoon_3_0_1 : greenhouse_ns_1_St_3_Afternoon_3;
+greenhouse_ns_1_St_3_Afternoon_3_1_0 : greenhouse_ns_1_St_3_Afternoon_3;
+greenhouse_ns_1_St_3_Afternoon_3_1_1 : greenhouse_ns_1_St_3_Afternoon_3;
+greenhouse_ns_1_St_3_Dawn_2_0 : greenhouse_ns_1_St_3_Dawn_2;
+greenhouse_ns_1_St_3_Dawn_2_1 : greenhouse_ns_1_St_3_Dawn_2;
+greenhouse_ns_1_St_3_Dawn_3_0_0 : greenhouse_ns_1_St_3_Dawn_3;
+greenhouse_ns_1_St_3_Dawn_3_0_1 : greenhouse_ns_1_St_3_Dawn_3;
+greenhouse_ns_1_St_3_Dawn_3_1_0 : greenhouse_ns_1_St_3_Dawn_3;
+greenhouse_ns_1_St_3_Dawn_3_1_1 : greenhouse_ns_1_St_3_Dawn_3;
+greenhouse_ns_1_St_3_Morning_3 : -1;
+greenhouse_ns_1_St_3_Morning_2 : 1;
+greenhouse_ns_1_St_3_Morning_1 : -1;
+greenhouse_nr_1_St_3_Morning : -1;
+greenhouse_cooling_on_1_St_3_Morning : 1;
+greenhouse_ns_1_St_3_Idle_3 : 1;
+greenhouse_v_427 : ((greenhouse_ns_1_St_3_Idle_3 when greenhouse_ck_3_3_0_1)
+  default greenhouse_ns_1_St_3_Morning_3);
+greenhouse_ns_1_St_3_Idle_2 : 1;
+greenhouse_v_426 : ((greenhouse_ns_1_St_3_Idle_2 when greenhouse_ck_3_3_0_1)
+  default greenhouse_ns_1_St_3_Morning_2);
+greenhouse_ns_1_St_3_Idle_1 : -1;
+greenhouse_v_425 : ((greenhouse_ns_1_St_3_Idle_1 when greenhouse_ck_3_3_0_1)
+  default greenhouse_ns_1_St_3_Morning_1);
+greenhouse_nr_1_St_3_Idle : -1;
+greenhouse_v_440 : ((greenhouse_nr_1_St_3_Idle when greenhouse_ck_3_3_0_1)
+  default greenhouse_nr_1_St_3_Morning);
+greenhouse_cooling_on_1_St_3_Idle : -1;
+greenhouse_v_416 : ((greenhouse_cooling_on_1_St_3_Idle
+  when greenhouse_ck_3_3_0_1) default greenhouse_cooling_on_1_St_3_Morning);
+greenhouse_ns_1_St_3_Morning_2_0 : greenhouse_ns_1_St_3_Morning_2;
+greenhouse_ns_1_St_3_Morning_2_1 : greenhouse_ns_1_St_3_Morning_2;
+greenhouse_ns_1_St_3_Morning_3_0_0 : greenhouse_ns_1_St_3_Morning_3;
+greenhouse_ns_1_St_3_Morning_3_0_1 : greenhouse_ns_1_St_3_Morning_3;
+greenhouse_ns_1_St_3_Morning_3_1_0 : greenhouse_ns_1_St_3_Morning_3;
+greenhouse_ns_1_St_3_Morning_3_1_1 : greenhouse_ns_1_St_3_Morning_3;
+greenhouse_ns_1_St_3_Idle_2_0 : greenhouse_ns_1_St_3_Idle_2;
+greenhouse_ns_1_St_3_Idle_2_1 : greenhouse_ns_1_St_3_Idle_2;
+greenhouse_ns_1_St_3_Idle_3_0_0 : greenhouse_ns_1_St_3_Idle_3;
+greenhouse_ns_1_St_3_Idle_3_0_1 : greenhouse_ns_1_St_3_Idle_3;
+greenhouse_ns_1_St_3_Idle_3_1_0 : greenhouse_ns_1_St_3_Idle_3;
+greenhouse_ns_1_St_3_Idle_3_1_1 : greenhouse_ns_1_St_3_Idle_3;
+greenhouse_v_442 : ((greenhouse_v_440 when greenhouse_ck_3_2_0)
+  default greenhouse_v_441);
+greenhouse_v_436 : ((greenhouse_v_427 when greenhouse_ck_3_2_0)
+  default greenhouse_v_430);
+greenhouse_v_435 : ((greenhouse_v_426 when greenhouse_ck_3_2_0)
+  default greenhouse_v_429);
+greenhouse_v_434 : ((greenhouse_v_425 when greenhouse_ck_3_2_0)
+  default greenhouse_v_428);
+greenhouse_v_418 : ((greenhouse_v_416 when greenhouse_ck_3_2_0)
+  default greenhouse_v_417);
+greenhouse_ns_1_St_3_Default_3 : -1;
+greenhouse_v_424 : ((1 when greenhouse_ck_3_3_1_0)
+  default greenhouse_ns_1_St_3_Default_3);
+greenhouse_ns_1_St_3_Default_2 : -1;
+greenhouse_v_423 : ((1 when greenhouse_ck_3_3_1_0)
+  default greenhouse_ns_1_St_3_Default_2);
+greenhouse_ns_1_St_3_Default_1 : 1;
+greenhouse_v_422 : ((1 when greenhouse_ck_3_3_1_0)
+  default greenhouse_ns_1_St_3_Default_1);
+greenhouse_nr_1_St_3_Default : -1;
+greenhouse_v_438 : ((1 when greenhouse_ck_3_3_1_0)
+  default greenhouse_nr_1_St_3_Default);
+greenhouse_cooling_on_1_St_3_Default : 1;
+greenhouse_v_414 : ((1 when greenhouse_ck_3_3_1_0)
+  default greenhouse_cooling_on_1_St_3_Default);
+greenhouse_ns_1_St_3_Default_2_0 : greenhouse_ns_1_St_3_Default_2;
+greenhouse_ns_1_St_3_Default_2_1 : greenhouse_ns_1_St_3_Default_2;
+greenhouse_ns_1_St_3_Default_3_0_0 : greenhouse_ns_1_St_3_Default_3;
+greenhouse_ns_1_St_3_Default_3_0_1 : greenhouse_ns_1_St_3_Default_3;
+greenhouse_ns_1_St_3_Default_3_1_0 : greenhouse_ns_1_St_3_Default_3;
+greenhouse_ns_1_St_3_Default_3_1_1 : greenhouse_ns_1_St_3_Default_3;
+greenhouse_v_439 : ((greenhouse_v_437 when greenhouse_ck_3_2_1)
+  default greenhouse_v_438);
+greenhouse_v_433 : ((greenhouse_v_421 when greenhouse_ck_3_2_1)
+  default greenhouse_v_424);
+greenhouse_v_432 : ((greenhouse_v_420 when greenhouse_ck_3_2_1)
+  default greenhouse_v_423);
+greenhouse_v_431 : ((greenhouse_v_419 when greenhouse_ck_3_2_1)
+  default greenhouse_v_422);
+greenhouse_v_415 : ((greenhouse_v_413 when greenhouse_ck_3_2_1)
+  default greenhouse_v_414);
+greenhouse_nr_1 : ((greenhouse_v_439 when greenhouse_ck_3_1)
+  default greenhouse_v_442);
+greenhouse_ns_1_3 : ((greenhouse_v_433 when greenhouse_ck_3_1)
+  default greenhouse_v_436);
+greenhouse_ns_1_2 : ((greenhouse_v_432 when greenhouse_ck_3_1)
+  default greenhouse_v_435);
+greenhouse_ns_1_1 : ((greenhouse_v_431 when greenhouse_ck_3_1)
+  default greenhouse_v_434);
+greenhouse_cooling_on_1 : ((greenhouse_v_415 when greenhouse_ck_3_1)
+  default greenhouse_v_418);
+greenhouse_ns_1_2_0 : greenhouse_ns_1_2;
+greenhouse_ns_1_2_1 : greenhouse_ns_1_2;
+greenhouse_ns_1_3_0_0 : greenhouse_ns_1_3;
+greenhouse_ns_1_3_0_1 : greenhouse_ns_1_3;
+greenhouse_ns_1_3_1_0 : greenhouse_ns_1_3;
+greenhouse_ns_1_3_1_1 : greenhouse_ns_1_3;
+greenhouse_cooling_on : greenhouse_cooling_on_1;
+greenhouse_ck_4_2_0 : greenhouse_ck_4_2;
+greenhouse_ck_4_2_1 : greenhouse_ck_4_2;
+greenhouse_ck_4_3_0_0 : greenhouse_ck_4_3;
+greenhouse_ck_4_3_0_1 : greenhouse_ck_4_3;
+greenhouse_ck_4_3_1_0 : greenhouse_ck_4_3;
+greenhouse_ck_4_3_1_1 : greenhouse_ck_4_3;
+greenhouse_v_184 : (greenhouse_v_182 or greenhouse_v_183);
+greenhouse_v_185 : (greenhouse_v_184 and greenhouse_c_1);
+greenhouse_s_St_2_Night_3 : ((1 when greenhouse_v_185) default -1);
+greenhouse_v_400 : ((1 when greenhouse_ck_4_3_0_0)
+  default greenhouse_s_St_2_Night_3);
+greenhouse_s_St_2_Night_2 : ((1 when greenhouse_v_185) default -1);
+greenhouse_v_399 : ((1 when greenhouse_ck_4_3_0_0)
+  default greenhouse_s_St_2_Night_2);
+greenhouse_s_St_2_Night_1 : ((-1 when greenhouse_v_185) default -1);
+greenhouse_v_398 : ((1 when greenhouse_ck_4_3_0_0)
+  default greenhouse_s_St_2_Night_1);
+greenhouse_r_St_2_Night : ((1 when greenhouse_v_185) default greenhouse_pnr);
+greenhouse_v_411 : ((1 when greenhouse_ck_4_3_0_0)
+  default greenhouse_r_St_2_Night);
+greenhouse_s_St_2_Night_2_0 : greenhouse_s_St_2_Night_2;
+greenhouse_s_St_2_Night_2_1 : greenhouse_s_St_2_Night_2;
+greenhouse_s_St_2_Night_3_0_0 : greenhouse_s_St_2_Night_3;
+greenhouse_s_St_2_Night_3_0_1 : greenhouse_s_St_2_Night_3;
+greenhouse_s_St_2_Night_3_1_0 : greenhouse_s_St_2_Night_3;
+greenhouse_s_St_2_Night_3_1_1 : greenhouse_s_St_2_Night_3;
+greenhouse_v_188 : (greenhouse_v_186 or greenhouse_v_187);
+greenhouse_v_190 : (greenhouse_v_188 or greenhouse_v_189);
+greenhouse_v_191 : (greenhouse_v_190 and greenhouse_c_1);
+greenhouse_s_St_2_Afternoon_3 : ((1 when greenhouse_v_191) default 1);
+greenhouse_s_St_2_Afternoon_2 : ((1 when greenhouse_v_191) default 1);
+greenhouse_s_St_2_Afternoon_1 : ((-1 when greenhouse_v_191) default 1);
+greenhouse_r_St_2_Afternoon : ((1 when greenhouse_v_191)
+  default greenhouse_pnr);
+greenhouse_v_200 : (greenhouse_v_198 or greenhouse_v_199);
+greenhouse_v_201 : (greenhouse_v_200 and greenhouse_c_1);
+greenhouse_s_St_2_Dawn_3 : ((1 when greenhouse_v_201) default -1);
+greenhouse_v_391 : ((greenhouse_s_St_2_Afternoon_3
+  when greenhouse_ck_4_3_1_1) default greenhouse_s_St_2_Dawn_3);
+greenhouse_s_St_2_Dawn_2 : ((1 when greenhouse_v_201) default 1);
+greenhouse_v_390 : ((greenhouse_s_St_2_Afternoon_2
+  when greenhouse_ck_4_3_1_1) default greenhouse_s_St_2_Dawn_2);
+greenhouse_s_St_2_Dawn_1 : ((-1 when greenhouse_v_201) default 1);
+greenhouse_v_389 : ((greenhouse_s_St_2_Afternoon_1
+  when greenhouse_ck_4_3_1_1) default greenhouse_s_St_2_Dawn_1);
+greenhouse_r_St_2_Dawn : ((1 when greenhouse_v_201) default greenhouse_pnr);
+greenhouse_v_407 : ((greenhouse_r_St_2_Afternoon when greenhouse_ck_4_3_1_1)
+  default greenhouse_r_St_2_Dawn);
+greenhouse_s_St_2_Afternoon_2_0 : greenhouse_s_St_2_Afternoon_2;
+greenhouse_s_St_2_Afternoon_2_1 : greenhouse_s_St_2_Afternoon_2;
+greenhouse_s_St_2_Afternoon_3_0_0 : greenhouse_s_St_2_Afternoon_3;
+greenhouse_s_St_2_Afternoon_3_0_1 : greenhouse_s_St_2_Afternoon_3;
+greenhouse_s_St_2_Afternoon_3_1_0 : greenhouse_s_St_2_Afternoon_3;
+greenhouse_s_St_2_Afternoon_3_1_1 : greenhouse_s_St_2_Afternoon_3;
+greenhouse_s_St_2_Dawn_2_0 : greenhouse_s_St_2_Dawn_2;
+greenhouse_s_St_2_Dawn_2_1 : greenhouse_s_St_2_Dawn_2;
+greenhouse_s_St_2_Dawn_3_0_0 : greenhouse_s_St_2_Dawn_3;
+greenhouse_s_St_2_Dawn_3_0_1 : greenhouse_s_St_2_Dawn_3;
+greenhouse_s_St_2_Dawn_3_1_0 : greenhouse_s_St_2_Dawn_3;
+greenhouse_s_St_2_Dawn_3_1_1 : greenhouse_s_St_2_Dawn_3;
+greenhouse_v_194 : (greenhouse_v_192 or greenhouse_v_193);
+greenhouse_v_196 : (greenhouse_v_194 or greenhouse_v_195);
+greenhouse_v_197 : (greenhouse_v_196 and greenhouse_c_1);
+greenhouse_s_St_2_Morning_3 : ((1 when greenhouse_v_197) default -1);
+greenhouse_s_St_2_Morning_2 : ((1 when greenhouse_v_197) default 1);
+greenhouse_s_St_2_Morning_1 : ((-1 when greenhouse_v_197) default -1);
+greenhouse_r_St_2_Morning : ((1 when greenhouse_v_197)
+  default greenhouse_pnr);
+greenhouse_v_204 : (greenhouse_v_203 and greenhouse_d_2);
+greenhouse_v_205 : (greenhouse_v_204 and greenhouse_c_1);
+greenhouse_v_208 : (greenhouse_v_206 and greenhouse_v_207);
+greenhouse_v_209 : (not greenhouse_d_2);
+greenhouse_v_210 : (greenhouse_v_208 and greenhouse_v_209);
+greenhouse_v_211 : (greenhouse_v_210 and greenhouse_c_1);
+greenhouse_v_214 : (greenhouse_v_212 and greenhouse_v_213);
+greenhouse_v_216 : (greenhouse_v_214 and greenhouse_v_215);
+greenhouse_v_217 : (not greenhouse_d_2);
+greenhouse_v_218 : (greenhouse_v_216 and greenhouse_v_217);
+greenhouse_v_219 : (greenhouse_v_218 and greenhouse_c_1);
+greenhouse_v_222 : (greenhouse_v_220 and greenhouse_v_221);
+greenhouse_v_224 : (greenhouse_v_222 and greenhouse_v_223);
+greenhouse_v_225 : (not greenhouse_d_2);
+greenhouse_v_226 : (greenhouse_v_224 and greenhouse_v_225);
+greenhouse_v_227 : (greenhouse_v_226 and greenhouse_c_1);
+greenhouse_v_230 : (greenhouse_v_228 and greenhouse_v_229);
+greenhouse_v_231 : (not greenhouse_d_2);
+greenhouse_v_232 : (greenhouse_v_230 and greenhouse_v_231);
+greenhouse_v_233 : (greenhouse_v_232 and greenhouse_c_1);
+greenhouse_v_234_3 : ((-1 when greenhouse_v_233) default 1);
+greenhouse_v_234_2 : ((-1 when greenhouse_v_233) default 1);
+greenhouse_v_234_1 : ((-1 when greenhouse_v_233) default -1);
+greenhouse_v_235 : ((1 when greenhouse_v_233) default greenhouse_pnr);
+greenhouse_v_236_3 : ((1 when greenhouse_v_227) default greenhouse_v_234_3);
+greenhouse_v_236_2 : ((1 when greenhouse_v_227) default greenhouse_v_234_2);
+greenhouse_v_236_1 : ((1 when greenhouse_v_227) default greenhouse_v_234_1);
+greenhouse_v_237 : ((1 when greenhouse_v_227) default greenhouse_v_235);
+greenhouse_v_238_3 : ((-1 when greenhouse_v_219) default greenhouse_v_236_3);
+greenhouse_v_238_2 : ((1 when greenhouse_v_219) default greenhouse_v_236_2);
+greenhouse_v_238_1 : ((-1 when greenhouse_v_219) default greenhouse_v_236_1);
+greenhouse_v_239 : ((1 when greenhouse_v_219) default greenhouse_v_237);
+greenhouse_v_240_3 : ((-1 when greenhouse_v_211) default greenhouse_v_238_3);
+greenhouse_v_240_2 : ((1 when greenhouse_v_211) default greenhouse_v_238_2);
+greenhouse_v_240_1 : ((1 when greenhouse_v_211) default greenhouse_v_238_1);
+greenhouse_v_241 : ((1 when greenhouse_v_211) default greenhouse_v_239);
+greenhouse_s_St_2_Idle_3 : ((-1 when greenhouse_v_205)
+  default greenhouse_v_240_3);
+greenhouse_v_397 : ((greenhouse_s_St_2_Idle_3 when greenhouse_ck_4_3_0_1)
+  default greenhouse_s_St_2_Morning_3);
+greenhouse_s_St_2_Idle_2 : ((-1 when greenhouse_v_205)
+  default greenhouse_v_240_2);
+greenhouse_v_396 : ((greenhouse_s_St_2_Idle_2 when greenhouse_ck_4_3_0_1)
+  default greenhouse_s_St_2_Morning_2);
+greenhouse_s_St_2_Idle_1 : ((1 when greenhouse_v_205)
+  default greenhouse_v_240_1);
+greenhouse_v_395 : ((greenhouse_s_St_2_Idle_1 when greenhouse_ck_4_3_0_1)
+  default greenhouse_s_St_2_Morning_1);
+greenhouse_r_St_2_Idle : ((1 when greenhouse_v_205)
+  default greenhouse_v_241);
+greenhouse_v_410 : ((greenhouse_r_St_2_Idle when greenhouse_ck_4_3_0_1)
+  default greenhouse_r_St_2_Morning);
+greenhouse_s_St_2_Morning_2_0 : greenhouse_s_St_2_Morning_2;
+greenhouse_s_St_2_Morning_2_1 : greenhouse_s_St_2_Morning_2;
+greenhouse_s_St_2_Morning_3_0_0 : greenhouse_s_St_2_Morning_3;
+greenhouse_s_St_2_Morning_3_0_1 : greenhouse_s_St_2_Morning_3;
+greenhouse_s_St_2_Morning_3_1_0 : greenhouse_s_St_2_Morning_3;
+greenhouse_s_St_2_Morning_3_1_1 : greenhouse_s_St_2_Morning_3;
+greenhouse_s_St_2_Idle_2_0 : greenhouse_s_St_2_Idle_2;
+greenhouse_s_St_2_Idle_2_1 : greenhouse_s_St_2_Idle_2;
+greenhouse_s_St_2_Idle_3_0_0 : greenhouse_s_St_2_Idle_3;
+greenhouse_s_St_2_Idle_3_0_1 : greenhouse_s_St_2_Idle_3;
+greenhouse_s_St_2_Idle_3_1_0 : greenhouse_s_St_2_Idle_3;
+greenhouse_s_St_2_Idle_3_1_1 : greenhouse_s_St_2_Idle_3;
+greenhouse_v_412 : ((greenhouse_v_410 when greenhouse_ck_4_2_0)
+  default greenhouse_v_411);
+greenhouse_v_406 : ((greenhouse_v_397 when greenhouse_ck_4_2_0)
+  default greenhouse_v_400);
+greenhouse_v_405 : ((greenhouse_v_396 when greenhouse_ck_4_2_0)
+  default greenhouse_v_399);
+greenhouse_v_404 : ((greenhouse_v_395 when greenhouse_ck_4_2_0)
+  default greenhouse_v_398);
+greenhouse_s_St_2_Default_3 : ((1 when greenhouse_v_202) default -1);
+greenhouse_v_394 : ((1 when greenhouse_ck_4_3_1_0)
+  default greenhouse_s_St_2_Default_3);
+greenhouse_s_St_2_Default_2 : ((1 when greenhouse_v_202) default -1);
+greenhouse_v_393 : ((1 when greenhouse_ck_4_3_1_0)
+  default greenhouse_s_St_2_Default_2);
+greenhouse_s_St_2_Default_1 : ((-1 when greenhouse_v_202) default 1);
+greenhouse_v_392 : ((1 when greenhouse_ck_4_3_1_0)
+  default greenhouse_s_St_2_Default_1);
+greenhouse_r_St_2_Default : ((1 when greenhouse_v_202)
+  default greenhouse_pnr);
+greenhouse_v_408 : ((1 when greenhouse_ck_4_3_1_0)
+  default greenhouse_r_St_2_Default);
+greenhouse_s_St_2_Default_2_0 : greenhouse_s_St_2_Default_2;
+greenhouse_s_St_2_Default_2_1 : greenhouse_s_St_2_Default_2;
+greenhouse_s_St_2_Default_3_0_0 : greenhouse_s_St_2_Default_3;
+greenhouse_s_St_2_Default_3_0_1 : greenhouse_s_St_2_Default_3;
+greenhouse_s_St_2_Default_3_1_0 : greenhouse_s_St_2_Default_3;
+greenhouse_s_St_2_Default_3_1_1 : greenhouse_s_St_2_Default_3;
+greenhouse_v_409 : ((greenhouse_v_407 when greenhouse_ck_4_2_1)
+  default greenhouse_v_408);
+greenhouse_v_403 : ((greenhouse_v_391 when greenhouse_ck_4_2_1)
+  default greenhouse_v_394);
+greenhouse_v_402 : ((greenhouse_v_390 when greenhouse_ck_4_2_1)
+  default greenhouse_v_393);
+greenhouse_v_401 : ((greenhouse_v_389 when greenhouse_ck_4_2_1)
+  default greenhouse_v_392);
+greenhouse_r : ((greenhouse_v_409 when greenhouse_ck_4_1)
+  default greenhouse_v_412);
+greenhouse_s_3 : ((greenhouse_v_403 when greenhouse_ck_4_1)
+  default greenhouse_v_406);
+greenhouse_s_2 : ((greenhouse_v_402 when greenhouse_ck_4_1)
+  default greenhouse_v_405);
+greenhouse_s_1_4 : ((greenhouse_v_401 when greenhouse_ck_4_1)
+  default greenhouse_v_404);
+greenhouse_s_2_0 : greenhouse_s_2;
+greenhouse_s_2_1 : greenhouse_s_2;
+greenhouse_s_3_0_0 : greenhouse_s_3;
+greenhouse_s_3_0_1 : greenhouse_s_3;
+greenhouse_s_3_1_0 : greenhouse_s_3;
+greenhouse_s_3_1_1 : greenhouse_s_3;
+greenhouse_v_240_2_0 : greenhouse_v_240_2;
+greenhouse_v_240_2_1 : greenhouse_v_240_2;
+greenhouse_v_240_3_0_0 : greenhouse_v_240_3;
+greenhouse_v_240_3_0_1 : greenhouse_v_240_3;
+greenhouse_v_240_3_1_0 : greenhouse_v_240_3;
+greenhouse_v_240_3_1_1 : greenhouse_v_240_3;
+greenhouse_v_238_2_0 : greenhouse_v_238_2;
+greenhouse_v_238_2_1 : greenhouse_v_238_2;
+greenhouse_v_238_3_0_0 : greenhouse_v_238_3;
+greenhouse_v_238_3_0_1 : greenhouse_v_238_3;
+greenhouse_v_238_3_1_0 : greenhouse_v_238_3;
+greenhouse_v_238_3_1_1 : greenhouse_v_238_3;
+greenhouse_v_236_2_0 : greenhouse_v_236_2;
+greenhouse_v_236_2_1 : greenhouse_v_236_2;
+greenhouse_v_236_3_0_0 : greenhouse_v_236_3;
+greenhouse_v_236_3_0_1 : greenhouse_v_236_3;
+greenhouse_v_236_3_1_0 : greenhouse_v_236_3;
+greenhouse_v_236_3_1_1 : greenhouse_v_236_3;
+greenhouse_v_234_2_0 : greenhouse_v_234_2;
+greenhouse_v_234_2_1 : greenhouse_v_234_2;
+greenhouse_v_234_3_0_0 : greenhouse_v_234_3;
+greenhouse_v_234_3_0_1 : greenhouse_v_234_3;
+greenhouse_v_234_3_1_0 : greenhouse_v_234_3;
+greenhouse_v_234_3_1_1 : greenhouse_v_234_3;
+greenhouse_ck_5_3 : greenhouse_s_3;
+greenhouse_ck_5_2 : greenhouse_s_2;
+greenhouse_ck_5_1 : greenhouse_s_1_4;
+greenhouse_ck_5_2_0 : greenhouse_ck_5_2;
+greenhouse_ck_5_2_1 : greenhouse_ck_5_2;
+greenhouse_ck_5_3_0_0 : greenhouse_ck_5_3;
+greenhouse_ck_5_3_0_1 : greenhouse_ck_5_3;
+greenhouse_ck_5_3_1_0 : greenhouse_ck_5_3;
+greenhouse_ck_5_3_1_1 : greenhouse_ck_5_3;
+greenhouse_ns_St_2_Night_3 : -1;
+greenhouse_v_373 : ((1 when greenhouse_ck_5_3_0_0)
+  default greenhouse_ns_St_2_Night_3);
+greenhouse_ns_St_2_Night_2 : -1;
+greenhouse_v_372 : ((1 when greenhouse_ck_5_3_0_0)
+  default greenhouse_ns_St_2_Night_2);
+greenhouse_ns_St_2_Night_1 : -1;
+greenhouse_v_371 : ((1 when greenhouse_ck_5_3_0_0)
+  default greenhouse_ns_St_2_Night_1);
+greenhouse_nr_St_2_Night : -1;
+greenhouse_v_384 : ((1 when greenhouse_ck_5_3_0_0)
+  default greenhouse_nr_St_2_Night);
+greenhouse_heating_on_1_St_2_Night : 1;
+greenhouse_v_360 : ((1 when greenhouse_ck_5_3_0_0)
+  default greenhouse_heating_on_1_St_2_Night);
+greenhouse_ns_St_2_Night_2_0 : greenhouse_ns_St_2_Night_2;
+greenhouse_ns_St_2_Night_2_1 : greenhouse_ns_St_2_Night_2;
+greenhouse_ns_St_2_Night_3_0_0 : greenhouse_ns_St_2_Night_3;
+greenhouse_ns_St_2_Night_3_0_1 : greenhouse_ns_St_2_Night_3;
+greenhouse_ns_St_2_Night_3_1_0 : greenhouse_ns_St_2_Night_3;
+greenhouse_ns_St_2_Night_3_1_1 : greenhouse_ns_St_2_Night_3;
+greenhouse_ns_St_2_Afternoon_3 : 1;
+greenhouse_ns_St_2_Afternoon_2 : 1;
+greenhouse_ns_St_2_Afternoon_1 : 1;
+greenhouse_nr_St_2_Afternoon : -1;
+greenhouse_heating_on_1_St_2_Afternoon : 1;
+greenhouse_ns_St_2_Dawn_3 : -1;
+greenhouse_v_364 : ((greenhouse_ns_St_2_Afternoon_3
+  when greenhouse_ck_5_3_1_1) default greenhouse_ns_St_2_Dawn_3);
+greenhouse_ns_St_2_Dawn_2 : 1;
+greenhouse_v_363 : ((greenhouse_ns_St_2_Afternoon_2
+  when greenhouse_ck_5_3_1_1) default greenhouse_ns_St_2_Dawn_2);
+greenhouse_ns_St_2_Dawn_1 : 1;
+greenhouse_v_362 : ((greenhouse_ns_St_2_Afternoon_1
+  when greenhouse_ck_5_3_1_1) default greenhouse_ns_St_2_Dawn_1);
+greenhouse_nr_St_2_Dawn : -1;
+greenhouse_v_380 : ((greenhouse_nr_St_2_Afternoon when greenhouse_ck_5_3_1_1)
+  default greenhouse_nr_St_2_Dawn);
+greenhouse_heating_on_1_St_2_Dawn : 1;
+greenhouse_v_356 : ((greenhouse_heating_on_1_St_2_Afternoon
+  when greenhouse_ck_5_3_1_1) default greenhouse_heating_on_1_St_2_Dawn);
+greenhouse_ns_St_2_Afternoon_2_0 : greenhouse_ns_St_2_Afternoon_2;
+greenhouse_ns_St_2_Afternoon_2_1 : greenhouse_ns_St_2_Afternoon_2;
+greenhouse_ns_St_2_Afternoon_3_0_0 : greenhouse_ns_St_2_Afternoon_3;
+greenhouse_ns_St_2_Afternoon_3_0_1 : greenhouse_ns_St_2_Afternoon_3;
+greenhouse_ns_St_2_Afternoon_3_1_0 : greenhouse_ns_St_2_Afternoon_3;
+greenhouse_ns_St_2_Afternoon_3_1_1 : greenhouse_ns_St_2_Afternoon_3;
+greenhouse_ns_St_2_Dawn_2_0 : greenhouse_ns_St_2_Dawn_2;
+greenhouse_ns_St_2_Dawn_2_1 : greenhouse_ns_St_2_Dawn_2;
+greenhouse_ns_St_2_Dawn_3_0_0 : greenhouse_ns_St_2_Dawn_3;
+greenhouse_ns_St_2_Dawn_3_0_1 : greenhouse_ns_St_2_Dawn_3;
+greenhouse_ns_St_2_Dawn_3_1_0 : greenhouse_ns_St_2_Dawn_3;
+greenhouse_ns_St_2_Dawn_3_1_1 : greenhouse_ns_St_2_Dawn_3;
+greenhouse_ns_St_2_Morning_3 : -1;
+greenhouse_ns_St_2_Morning_2 : 1;
+greenhouse_ns_St_2_Morning_1 : -1;
+greenhouse_nr_St_2_Morning : -1;
+greenhouse_heating_on_1_St_2_Morning : 1;
+greenhouse_ns_St_2_Idle_3 : 1;
+greenhouse_v_370 : ((greenhouse_ns_St_2_Idle_3 when greenhouse_ck_5_3_0_1)
+  default greenhouse_ns_St_2_Morning_3);
+greenhouse_ns_St_2_Idle_2 : 1;
+greenhouse_v_369 : ((greenhouse_ns_St_2_Idle_2 when greenhouse_ck_5_3_0_1)
+  default greenhouse_ns_St_2_Morning_2);
+greenhouse_ns_St_2_Idle_1 : -1;
+greenhouse_v_368 : ((greenhouse_ns_St_2_Idle_1 when greenhouse_ck_5_3_0_1)
+  default greenhouse_ns_St_2_Morning_1);
+greenhouse_nr_St_2_Idle : -1;
+greenhouse_v_383 : ((greenhouse_nr_St_2_Idle when greenhouse_ck_5_3_0_1)
+  default greenhouse_nr_St_2_Morning);
+greenhouse_heating_on_1_St_2_Idle : -1;
+greenhouse_v_359 : ((greenhouse_heating_on_1_St_2_Idle
+  when greenhouse_ck_5_3_0_1) default greenhouse_heating_on_1_St_2_Morning);
+greenhouse_ns_St_2_Morning_2_0 : greenhouse_ns_St_2_Morning_2;
+greenhouse_ns_St_2_Morning_2_1 : greenhouse_ns_St_2_Morning_2;
+greenhouse_ns_St_2_Morning_3_0_0 : greenhouse_ns_St_2_Morning_3;
+greenhouse_ns_St_2_Morning_3_0_1 : greenhouse_ns_St_2_Morning_3;
+greenhouse_ns_St_2_Morning_3_1_0 : greenhouse_ns_St_2_Morning_3;
+greenhouse_ns_St_2_Morning_3_1_1 : greenhouse_ns_St_2_Morning_3;
+greenhouse_ns_St_2_Idle_2_0 : greenhouse_ns_St_2_Idle_2;
+greenhouse_ns_St_2_Idle_2_1 : greenhouse_ns_St_2_Idle_2;
+greenhouse_ns_St_2_Idle_3_0_0 : greenhouse_ns_St_2_Idle_3;
+greenhouse_ns_St_2_Idle_3_0_1 : greenhouse_ns_St_2_Idle_3;
+greenhouse_ns_St_2_Idle_3_1_0 : greenhouse_ns_St_2_Idle_3;
+greenhouse_ns_St_2_Idle_3_1_1 : greenhouse_ns_St_2_Idle_3;
+greenhouse_v_385 : ((greenhouse_v_383 when greenhouse_ck_5_2_0)
+  default greenhouse_v_384);
+greenhouse_v_379 : ((greenhouse_v_370 when greenhouse_ck_5_2_0)
+  default greenhouse_v_373);
+greenhouse_v_378 : ((greenhouse_v_369 when greenhouse_ck_5_2_0)
+  default greenhouse_v_372);
+greenhouse_v_377 : ((greenhouse_v_368 when greenhouse_ck_5_2_0)
+  default greenhouse_v_371);
+greenhouse_v_361 : ((greenhouse_v_359 when greenhouse_ck_5_2_0)
+  default greenhouse_v_360);
+greenhouse_ns_St_2_Default_3 : -1;
+greenhouse_v_367 : ((1 when greenhouse_ck_5_3_1_0)
+  default greenhouse_ns_St_2_Default_3);
+greenhouse_ns_St_2_Default_2 : -1;
+greenhouse_v_366 : ((1 when greenhouse_ck_5_3_1_0)
+  default greenhouse_ns_St_2_Default_2);
+greenhouse_ns_St_2_Default_1 : 1;
+greenhouse_v_365 : ((1 when greenhouse_ck_5_3_1_0)
+  default greenhouse_ns_St_2_Default_1);
+greenhouse_nr_St_2_Default : -1;
+greenhouse_v_381 : ((1 when greenhouse_ck_5_3_1_0)
+  default greenhouse_nr_St_2_Default);
+greenhouse_heating_on_1_St_2_Default : 1;
+greenhouse_v_357 : ((1 when greenhouse_ck_5_3_1_0)
+  default greenhouse_heating_on_1_St_2_Default);
+greenhouse_ns_St_2_Default_2_0 : greenhouse_ns_St_2_Default_2;
+greenhouse_ns_St_2_Default_2_1 : greenhouse_ns_St_2_Default_2;
+greenhouse_ns_St_2_Default_3_0_0 : greenhouse_ns_St_2_Default_3;
+greenhouse_ns_St_2_Default_3_0_1 : greenhouse_ns_St_2_Default_3;
+greenhouse_ns_St_2_Default_3_1_0 : greenhouse_ns_St_2_Default_3;
+greenhouse_ns_St_2_Default_3_1_1 : greenhouse_ns_St_2_Default_3;
+greenhouse_v_382 : ((greenhouse_v_380 when greenhouse_ck_5_2_1)
+  default greenhouse_v_381);
+greenhouse_v_376 : ((greenhouse_v_364 when greenhouse_ck_5_2_1)
+  default greenhouse_v_367);
+greenhouse_v_375 : ((greenhouse_v_363 when greenhouse_ck_5_2_1)
+  default greenhouse_v_366);
+greenhouse_v_374 : ((greenhouse_v_362 when greenhouse_ck_5_2_1)
+  default greenhouse_v_365);
+greenhouse_v_358 : ((greenhouse_v_356 when greenhouse_ck_5_2_1)
+  default greenhouse_v_357);
+greenhouse_nr : ((greenhouse_v_382 when greenhouse_ck_5_1)
+  default greenhouse_v_385);
+greenhouse_ns_3 : ((greenhouse_v_376 when greenhouse_ck_5_1)
+  default greenhouse_v_379);
+greenhouse_ns_2 : ((greenhouse_v_375 when greenhouse_ck_5_1)
+  default greenhouse_v_378);
+greenhouse_ns_1_4 : ((greenhouse_v_374 when greenhouse_ck_5_1)
+  default greenhouse_v_377);
+greenhouse_heating_on_1 : ((greenhouse_v_358 when greenhouse_ck_5_1)
+  default greenhouse_v_361);
+greenhouse_ns_2_0 : greenhouse_ns_2;
+greenhouse_ns_2_1 : greenhouse_ns_2;
+greenhouse_ns_3_0_0 : greenhouse_ns_3;
+greenhouse_ns_3_0_1 : greenhouse_ns_3;
+greenhouse_ns_3_1_0 : greenhouse_ns_3;
+greenhouse_ns_3_1_1 : greenhouse_ns_3;
+greenhouse_heating_on : greenhouse_heating_on_1;
+initialisations : concat(initialisations, [(greenhouse_v_445 = 1)]);
+evolutions : concat(evolutions,
+                    [(greenhouse_ns_1_3 default greenhouse_v_445)]);
+initialisations : concat(initialisations, [(greenhouse_v_444 = 1)]);
+evolutions : concat(evolutions,
+                    [(greenhouse_ns_1_2 default greenhouse_v_444)]);
+initialisations : concat(initialisations, [(greenhouse_v_443 = -1)]);
+evolutions : concat(evolutions,
+                    [(greenhouse_ns_1_1 default greenhouse_v_443)]);
+initialisations : concat(initialisations, [(greenhouse_pnr_1 = -1)]);
+evolutions : concat(evolutions, [(greenhouse_nr_1 default greenhouse_pnr_1)]);
+initialisations : concat(initialisations, [(greenhouse_v_388 = 1)]);
+evolutions : concat(evolutions, [(greenhouse_ns_3 default greenhouse_v_388)]);
+initialisations : concat(initialisations, [(greenhouse_v_387 = 1)]);
+evolutions : concat(evolutions, [(greenhouse_ns_2 default greenhouse_v_387)]);
+initialisations : concat(initialisations, [(greenhouse_v_386 = -1)]);
+evolutions : concat(evolutions,
+                    [(greenhouse_ns_1_4 default greenhouse_v_386)]);
+initialisations : concat(initialisations, [(greenhouse_pnr = -1)]);
+evolutions : concat(evolutions, [(greenhouse_nr default greenhouse_pnr)]);
+greenhouse_v : (greenhouse_cooling_on and greenhouse_heating_on);
+greenhouse_v_120 : (not greenhouse_v);
+greenhouse_assume : 1;
+greenhouse_guarantee : greenhouse_v_120;
+initialisations : concat(initialisations, [(greenhouse_error_state = 1)]);
+evolutions : concat(evolutions, [greenhouse_guarantee]);
+constraints : [((greenhouse_d^2) = 1), ((greenhouse_v_121^2) = 1),
+               ((greenhouse_v_122^2) = 1), ((greenhouse_v_125^2) = 1),
+               ((greenhouse_v_126^2) = 1), ((greenhouse_v_128^2) = 1),
+               ((greenhouse_v_137^2) = 1), ((greenhouse_v_138^2) = 1),
+               ((greenhouse_v_131^2) = 1), ((greenhouse_v_132^2) = 1),
+               ((greenhouse_v_134^2) = 1), ((greenhouse_v_143^2) = 1),
+               ((greenhouse_v_146^2) = 1), ((greenhouse_v_147^2) = 1),
+               ((greenhouse_v_152^2) = 1), ((greenhouse_v_153^2) = 1),
+               ((greenhouse_v_155^2) = 1), ((greenhouse_v_160^2) = 1),
+               ((greenhouse_v_161^2) = 1), ((greenhouse_v_163^2) = 1),
+               ((greenhouse_v_168^2) = 1), ((greenhouse_v_169^2) = 1),
+               ((greenhouse_v_141^2) = 1), ((greenhouse_v_182^2) = 1),
+               ((greenhouse_v_183^2) = 1), ((greenhouse_v_186^2) = 1),
+               ((greenhouse_v_187^2) = 1), ((greenhouse_v_189^2) = 1),
+               ((greenhouse_v_198^2) = 1), ((greenhouse_v_199^2) = 1),
+               ((greenhouse_v_192^2) = 1), ((greenhouse_v_193^2) = 1),
+               ((greenhouse_v_195^2) = 1), ((greenhouse_v_203^2) = 1),
+               ((greenhouse_v_206^2) = 1), ((greenhouse_v_207^2) = 1),
+               ((greenhouse_v_212^2) = 1), ((greenhouse_v_213^2) = 1),
+               ((greenhouse_v_215^2) = 1), ((greenhouse_v_220^2) = 1),
+               ((greenhouse_v_221^2) = 1), ((greenhouse_v_223^2) = 1),
+               ((greenhouse_v_228^2) = 1), ((greenhouse_v_229^2) = 1),
+               ((greenhouse_v_202^2) = 1), ((greenhouse_c2^2) = 1),
+               ((greenhouse_c1^2) = 1), (greenhouse_assume = 1)];
+
+% --- outputs : [greenhouse_cooling_on, greenhouse_heating_on] --- %
+greenhouse : processus(conditions, states, evolutions, initialisations,
+                       [gen(constraints)], controllables);
+greenhouse_init : initial(greenhouse);
+greenhouse : S_Security(greenhouse,B_True(greenhouse,greenhouse_error_state));
+dcs_result : equal(greenhouse_init,initial(greenhouse));
+if dcs_result then
+    print("greenhouse: synthesis succeeded.")
+else
+    print("greenhouse: synthesis failed.");
+
+if dcs_result then
+    print("Triangulation and controller generation...")
+else
+    quit(1);
+declare(p_greenhouse_c2, p_greenhouse_c1);
+phantom_vars : [p_greenhouse_c2, p_greenhouse_c1];
+greenhouse_triang : Triang(constraint(greenhouse),controllables,phantom_vars);
+controller_inputs : [greenhouse_d, greenhouse_v_121, greenhouse_v_122,
+                     greenhouse_v_125, greenhouse_v_126, greenhouse_v_128,
+                     greenhouse_v_137, greenhouse_v_138, greenhouse_v_131,
+                     greenhouse_v_132, greenhouse_v_134, greenhouse_v_143,
+                     greenhouse_v_146, greenhouse_v_147, greenhouse_v_152,
+                     greenhouse_v_153, greenhouse_v_155, greenhouse_v_160,
+                     greenhouse_v_161, greenhouse_v_163, greenhouse_v_168,
+                     greenhouse_v_169, greenhouse_v_141, greenhouse_v_182,
+                     greenhouse_v_183, greenhouse_v_186, greenhouse_v_187,
+                     greenhouse_v_189, greenhouse_v_198, greenhouse_v_199,
+                     greenhouse_v_192, greenhouse_v_193, greenhouse_v_195,
+                     greenhouse_v_203, greenhouse_v_206, greenhouse_v_207,
+                     greenhouse_v_212, greenhouse_v_213, greenhouse_v_215,
+                     greenhouse_v_220, greenhouse_v_221, greenhouse_v_223,
+                     greenhouse_v_228, greenhouse_v_229, greenhouse_v_202,
+                     greenhouse_v_445, greenhouse_v_444, greenhouse_v_443,
+                     greenhouse_pnr_1, greenhouse_v_388, greenhouse_v_387,
+                     greenhouse_v_386, greenhouse_pnr, p_greenhouse_c2,
+                     p_greenhouse_c1];
+heptagon_controller("greenhouse_controller.ept","greenhouse",controller_inputs,controllables,greenhouse_triang);
+

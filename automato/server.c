@@ -20,26 +20,59 @@ Greenhouse__greenhouse_mem mem;
 
 // Function designed for chat between client and server. 
 void func(int sockfd) { 
-  char buff[MAX];
-  int t_in;
+  char buff[MAX], sub[MAX];
+  int t_in, time, d, position = 0,
+    f1 = 5, f2 = 8, f3 = 10, i1 = 0;
   Greenhouse__greenhouse_out _res;
   
   Greenhouse__greenhouse_reset(&mem);
   
-  for (;;) { 
+  for (;;) {
     bzero(buff, MAX);
-    // read the message from client and copy it in buffer 
-    read(sockfd, buff, sizeof(buff)); 
+    read(sockfd, buff, sizeof(buff));
+
+    bzero(sub,MAX);
+    while (i1 < f1) {
+      sub[position] = buff[i1];
+      i1++;
+      position++;
+    }    
+    t_in = round(atof(sub));
     
-    int t_in = round(atof(buff));    
+    i1++;
+    position = 0;    
+    bzero(sub,MAX);
+    while (i1 < f2) {
+      sub[position] = buff[i1];
+      i1++;
+      position++;
+    }
+    time = atof(sub);
+    
+    i1++;
+    position = 0;
+    bzero(sub,MAX);
+    while (i1 < f3) {
+      sub[position] = buff[i1];
+      i1++;
+      position++;
+    }
+    d = atof(sub);
+    
     bzero(buff, MAX);
-    Greenhouse__greenhouse_step(t_in, &_res, &mem);
-    sprintf(buff, "%d;%d", _res.cooling_on,_res.heater_on);    
+    bzero(sub,MAX);
+
+    Greenhouse__greenhouse_step(t_in, time, d, &_res, &mem);
+
+    // sprintf(buff, "cooling_on: %d | heating_on: %d", _res.cooling_on,_res.heating_on);
+    sprintf(buff, "%d;%d", _res.cooling_on,_res.heating_on);
 
     // and send that buffer to client 
-    write(sockfd, buff, sizeof(buff));
+    write(sockfd, buff, sizeof(buff));    
     printf("%s\n", buff);
-    /* fflush(stdout); */
+    /*
+    fflush(stdout);
+    */
 
     // if no response then server exit
     // if (sizeof(buff) == 0) break;

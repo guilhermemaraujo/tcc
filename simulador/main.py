@@ -10,21 +10,25 @@ from utils import get_data_from_csv
 import pandas as pd
 from simulator import temperature_model
 
-def controlResponse(_t_in):
-    client.send(_t_in)
-    response = client.recv(4096)
+def getConnection():
+    host = '0.0.0.0';
+    port = 8080;
+    conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    conn.connect((host, port))
+    return conn
+
+def controlResponse(conn,_t_in,timeInt,d):
+    dados = '%05.2f;%02d;%1d' % (_t_in,timeInt,d)
+    conn.send(_t_in)
+    response = conn.recv(4096)
     response = response.strip(' \t\r\n\0')
     response = response.split(';')
-    return {'cooling':int(response[0]), 'heating':response[1]}
+    return {'cooling':int(response[0]), 'heating':int(response[1])}
 
 
 # initial condicitions
-host = '0.0.0.0';
-port = 8080;
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect((host, port))
-
 data = get_data_from_csv('data/spring_tucson_interpolated')
+conn = getConnection()
 
 _t_in = data['t_out'][0]
 size = len(data)
@@ -44,6 +48,7 @@ for i in range(size):
     config = {
         "t_out": configuration["t_out"].values[0],
         "qgrout": configuration["sr_out"].values[0],
+        "date_out": str(configuration['t_out'].to_dict().keys()[0]),
         "height": 4.0,
         "cooling": 0,
         "glass_area": 674,
@@ -57,12 +62,16 @@ for i in range(size):
     greenhouse_config.append(config)
 
 for i in range(1, size, 1):
-    control = controlResponse(_t_in)
+    date_out = greenhouse_config[i]['date_out']
+    time_int = int(date_out.split()[1].split(':')[0])
+    d = 0 # Runs automaton in Default mode
+    control = controlResponse(conn,_t_in,time_int,d)
     cooling = control['cooling']
     heating = control['heating']
-
+    
     greenhouse_config[i]['cooling'] = cooling
     greenhouse_config[i]['number_heater'] = heating
+    #greenhouse_config[i].pop('date_out', None)
 
     tspan = [t[i-1], t[i]]
 
@@ -71,6 +80,7 @@ for i in range(1, size, 1):
     x[i] = result[1][0]
     y[i] = greenhouse_config[i]['t_out']
     _t_in = result[1][0]
+
 
 date_t = pd.date_range('2019-01-01 00:00:00', periods=len(t), freq='1S')
 
