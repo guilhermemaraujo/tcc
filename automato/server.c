@@ -21,8 +21,8 @@ Greenhouse__greenhouse_mem mem;
 // Function designed for chat between client and server. 
 void func(int sockfd) { 
   char buff[MAX], sub[MAX];
-  int t_in, time, d, position = 0,
-    f1 = 5, f2 = 8, f3 = 10, i1 = 0;
+  int t_in, time, turn_on_heating, turn_on_cooling, position = 0,
+    f1 = 5, f2 = 8, f3 = 10, f4 = 12, i1 = 0;
   Greenhouse__greenhouse_out _res;
   
   Greenhouse__greenhouse_reset(&mem);
@@ -57,12 +57,22 @@ void func(int sockfd) {
       i1++;
       position++;
     }
-    d = atof(sub);
+    turn_on_heating = atof(sub);
+
+    i1++;
+    position = 0;
+    bzero(sub,MAX);
+    while (i1 < f4) {
+      sub[position] = buff[i1];
+      i1++;
+      position++;
+    }
+    turn_on_cooling = atof(sub);
     
     bzero(buff, MAX);
     bzero(sub,MAX);
 
-    Greenhouse__greenhouse_step(t_in, time, d, &_res, &mem);
+    Greenhouse__greenhouse_step(t_in, time, turn_on_heating, turn_on_cooling, &_res, &mem);
 
     // sprintf(buff, "cooling_on: %d | heating_on: %d", _res.cooling_on,_res.heating_on);
     sprintf(buff, "%d;%d", _res.cooling_on,_res.heating_on);

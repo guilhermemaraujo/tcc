@@ -1,74 +1,74 @@
-node heating(t_in,time:int; d,c:bool) returns (heating_on:bool)
+node shift(time:int) returns (d,m,a,n:bool)
 let
-    automaton
-    	state Idle do
-    		heating_on = false;
-    	unless t_in < 15 & d & c then Default
-    		 | time < 8 & t_in < 20 & not d & c then Dawn
-			 | time >= 8 & time < 12 & t_in < 15 & not d & c then Morning
-			 | time >= 12 & time < 17 & t_in < 10 & not d & c then Afternoon
-			 | time >= 17 & t_in < 25 & not d & c then Night
-    	
-    	state Default do 
-    		heating_on = true;
-    	unless (t_in >= 15) then Idle
+	automaton
+		state Dawn do
+			d = true; m = false; a = false; n = false;
+		unless time >= 8 & time < 12 then Morning
+			 | time >= 12 & time < 17 then Afternoon
+			 | time >= 17 then Night
 
-    	state Dawn do
-    		heating_on = true;
-    	unless (t_in >= 20 or time >= 8) & c then Idle
+		state Morning do
+			d = false; m = true; a = false; n = false;
+		unless time < 8 then Dawn
+			 | time >= 12 & time < 17 then Afternoon
+			 | time >= 17 then Night
+		
+		state Afternoon do
+			d = false; m = false; a = true; n = false;
+		unless time < 8 then Dawn
+			 | time >= 8 & time < 12 then Morning
+			 | time >= 17 then Night
 
-    	state Morning do
-    		heating_on = true;
-    	unless (t_in >= 15 or time < 8 or time >= 12) & c then Idle
-
-    	state Afternoon do
-    		heating_on = true;
-    	unless (t_in >= 10 or time < 12 or time >= 17) & c then Idle
-
-    	state Night do
-    		heating_on = true;
-    	unless (t_in >= 25 or time < 17) & c then Idle
-    end
+		
+		state Night do
+			d = false; m = false; a = false; n = true;
+		unless time < 8 then Dawn
+			 | time >= 8 & time < 12 then Morning
+			 | time >= 12 & time < 17 then Afternoon
+	end
 tel
 
-node cooling(t_in,time:int; d,c:bool) returns (cooling_on:bool)
+node heating(turn_on,c:bool) returns (status:bool)
 let
-    automaton
-    	state Idle do
-    		cooling_on = false;
-    	unless t_in > 25 & d & c then Default
-    		 | time < 8 & t_in > 25 & not d & c then Dawn
-			 | time >= 8 & time < 12 & t_in > 20 & not d & c then Morning
-			 | time >= 12 & time < 17 & t_in > 15 & not d & c then Afternoon
-			 | time >= 17 & t_in > 30 & not d & c then Night
+	automaton
+		state Off do
+			status = false;
+		unless turn_on & c then On
 
-		state Default do
-    		cooling_on = true;
-    	unless (t_in <= 25) & c then Idle
-
-    	state Dawn do
-    		cooling_on = true;
-    	unless (t_in <= 25 or time >= 8) & c then Idle
-
-    	state Morning do
-    		cooling_on = true;
-    	unless (t_in <= 20 or time < 8 or time >= 12) & c then Idle
-
-    	state Afternoon do
-    		cooling_on = true;
-    	unless (t_in <= 15 or time < 12 or time >= 17) & c then Idle
-
-    	state Night do
-    		cooling_on = true;
-    	unless (t_in <= 30 or time < 17) & c then Idle
-    end
+		state On do
+			status = true;
+		unless not turn_on & c then Off
+	end
 tel
 
-node greenhouse(t_in,time:int; d:bool) returns (cooling_on,heating_on:bool)
+node cooling(turn_on,c:bool) returns (status:bool)
+let
+	automaton
+		state Off do
+			status = false;
+		unless turn_on & c then On
+
+		state On do
+			status = true;
+		unless not turn_on & c then Off
+	end
+tel
+
+node greenhouse(t_in,time:int; mc_heating, mc_cooling: bool) returns (heating_on,cooling_on:bool)
 contract
-	enforce not (cooling_on & heating_on)
+	var both_on,too_hot,too_cold:bool;
+	let
+		too_hot = (heating_on & t_in > 30);
+		too_cold = (cooling_on & t_in < 10);
+		both_on = (heating_on & cooling_on);
+	tel
+	enforce (not too_hot & not too_cold & not both_on)
 	with(c1,c2:bool)
+var d,m,a,n,t1,t2:bool;
 let
-	cooling_on = inlined cooling(t_in,time,d,c2);
-	heating_on = inlined heating(t_in,time,d,c1);
+	(d,m,a,n) = shift(time);
+	t1 = (mc_heating or ((d & t_in < 20) or (m & t_in < 15) or (a & t_in < 10) or (n & t_in < 25)));
+	t2 = (mc_cooling or ((d & t_in > 25) or (m & t_in > 20) or (a & t_in > 15) or (n & t_in > 30)));
+	heating_on = inlined heating(t1,c1);
+	cooling_on = inlined cooling(t2,c2);
 tel
