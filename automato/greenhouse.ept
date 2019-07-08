@@ -28,47 +28,46 @@ let
 	end
 tel
 
-node heating(turn_on,c:bool) returns (status:bool)
+node heating(c:bool) returns (status:bool)
 let
 	automaton
 		state Off do
 			status = false;
-		unless turn_on & c then On
+		unless c then On
 
 		state On do
 			status = true;
-		unless not turn_on & c then Off
+		unless not c then Off
 	end
 tel
 
-node cooling(turn_on,c:bool) returns (status:bool)
+node cooling(c:bool) returns (status:bool)
 let
 	automaton
 		state Off do
 			status = false;
-		unless turn_on & c then On
+		unless c then On
 
 		state On do
 			status = true;
-		unless not turn_on & c then Off
+		unless not c then Off
 	end
 tel
 
-node greenhouse(t_in,time:int; mc_heating, mc_cooling: bool) returns (heating_on,cooling_on:bool)
+node greenhouse(t_in,time:int) returns (heating_on,cooling_on:bool)
 contract
-	var both_on,too_hot,too_cold:bool;
+	var too_hot,too_cold,both_on,d,m,a,n,t1,t2:bool;
 	let
-		too_hot = (heating_on & t_in > 30);
-		too_cold = (cooling_on & t_in < 10);
+		too_hot = (heating_on & t_in > 35);
+		too_cold = (cooling_on & t_in < 5);
 		both_on = (heating_on & cooling_on);
+		(d,m,a,n) = shift(time);
+		t1 = ((d & t_in < 20) or (m & t_in < 15) or (a & t_in < 10) or (n & t_in < 25));
+		t2 = ((d & t_in > 25) or (m & t_in > 20) or (a & t_in > 15) or (n & t_in > 30));
 	tel
-	enforce (not too_hot & not too_cold & not both_on)
+	enforce (not (too_hot or too_cold or both_on) & (not t1 or heating_on) & (not t2 or cooling_on))
 	with(c1,c2:bool)
-var d,m,a,n,t1,t2:bool;
 let
-	(d,m,a,n) = shift(time);
-	t1 = (mc_heating or ((d & t_in < 20) or (m & t_in < 15) or (a & t_in < 10) or (n & t_in < 25)));
-	t2 = (mc_cooling or ((d & t_in > 25) or (m & t_in > 20) or (a & t_in > 15) or (n & t_in > 30)));
-	heating_on = inlined heating(t1,c1);
-	cooling_on = inlined cooling(t2,c2);
+	heating_on = inlined heating(c1);
+	cooling_on = inlined cooling(c2);
 tel
