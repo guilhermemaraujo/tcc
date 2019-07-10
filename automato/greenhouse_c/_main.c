@@ -1,4 +1,4 @@
-/* --- Generated the 8/7/2019 at 0:30 --- */
+/* --- Generated the 10/7/2019 at 11:11 --- */
 /* --- heptagon compiler, version 1.03.00 (compiled thu. may. 3 2:35:29 CET 2018) --- */
 /* --- Command line: /usr/local/bin/heptc -target c -target z3z -s greenhouse greenhouse.ept --- */
 
@@ -33,6 +33,14 @@ int main(int argc, char** argv) {
     printf("%d ", _res.heating_on);
     printf("=> ");
     printf("%d ", _res.cooling_on);
+    printf("=> ");
+    printf("%d ", _res.d);
+    printf("=> ");
+    printf("%d ", _res.m);
+    printf("=> ");
+    printf("%d ", _res.a);
+    printf("=> ");
+    printf("%d ", _res.n);
     puts("");
     fflush(stdout);
   };

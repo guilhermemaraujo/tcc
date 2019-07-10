@@ -1,69 +1,140 @@
+type st_5 = St_5_On|St_5_Off
 type st_4 = St_4_On|St_4_Off
-type st_3 = St_3_On|St_3_Off
+type st_3 = St_3_Start|St_3_Night|St_3_Morning|St_3_Dawn|St_3_Afternoon
 type st_2 = St_2_On|St_2_Off
 type st_1 = St_1_On|St_1_Off
-type st = St_Night|St_Morning|St_Dawn|St_Afternoon
+type st = St_Start|St_Night|St_Morning|St_Dawn|St_Afternoon
 node shift(time : int) returns (d : bool; m : bool; a : bool; n : bool)
-var v_87 : bool; v_86 : bool; v_85 : bool; v_84 : bool; v_83 : bool;
-    v_82 : bool; v_81 : bool; v_80 : bool; v_79 : bool; v_78 : bool;
-    v_77 : bool; v_76 : bool; v_75 : bool; v_74 : bool;
-    ns_St_Night_2_0 : bool; ns_St_Night_2_1 : bool;
-    ns_St_Afternoon_2_0 : bool; ns_St_Afternoon_2_1 : bool;
-    ns_St_Morning_2_0 : bool; ns_St_Morning_2_1 : bool;
-    ns_St_Dawn_2_0 : bool; ns_St_Dawn_2_1 : bool; ck_1_2_0 : bool;
-    ck_1_2_1 : bool; nr_St_Night : bool; ns_St_Night_2 : bool;
-    ns_St_Night_1 : bool; n_St_Night : bool; a_St_Night : bool;
-    m_St_Night : bool; d_St_Night : bool; nr_St_Afternoon : bool;
+var v_160 : bool; v_159 : bool; v_158 : bool; v_157 : bool; v_156 : bool;
+    v_155 : bool; v_154 : bool; v_153 : bool; v_152 : bool; v_151 : bool;
+    v_150 : bool; v_149 : bool; v_148 : bool; v_147 : bool; v_146 : bool;
+    v_145 : bool; v_144 : bool; v_143 : bool; v_142 : bool; v_141 : bool;
+    v_140 : bool; v_139 : bool; v_138 : bool; v_137 : bool; v_136 : bool;
+    v_135 : bool; v_134 : bool; v_133 : bool; v_132 : bool; v_131 : bool;
+    v_130 : bool; v_129 : bool; v_128 : bool; v_127 : bool; v_126 : bool;
+    v_125 : bool; v_124 : bool; v_123 : bool; v_122 : bool; v_121 : bool;
+    ns_St_Night_2_0 : bool; ns_St_Night_3_0_0 : bool;
+    ns_St_Night_3_0_1 : bool; ns_St_Night_2_1 : bool;
+    ns_St_Night_3_1_0 : bool; ns_St_Night_3_1_1 : bool;
+    ns_St_Afternoon_2_0 : bool; ns_St_Afternoon_3_0_0 : bool;
+    ns_St_Afternoon_3_0_1 : bool; ns_St_Afternoon_2_1 : bool;
+    ns_St_Afternoon_3_1_0 : bool; ns_St_Afternoon_3_1_1 : bool;
+    ns_St_Morning_2_0 : bool; ns_St_Morning_3_0_0 : bool;
+    ns_St_Morning_3_0_1 : bool; ns_St_Morning_2_1 : bool;
+    ns_St_Morning_3_1_0 : bool; ns_St_Morning_3_1_1 : bool;
+    ns_St_Dawn_2_0 : bool; ns_St_Dawn_3_0_0 : bool; ns_St_Dawn_3_0_1 : bool;
+    ns_St_Dawn_2_1 : bool; ns_St_Dawn_3_1_0 : bool; ns_St_Dawn_3_1_1 : bool;
+    ns_St_Start_2_0 : bool; ns_St_Start_3_0_0 : bool;
+    ns_St_Start_3_0_1 : bool; ns_St_Start_2_1 : bool;
+    ns_St_Start_3_1_0 : bool; ns_St_Start_3_1_1 : bool; ck_1_2_0 : bool;
+    ck_1_3_0_0 : bool; ck_1_3_0_1 : bool; ck_1_2_1 : bool; ck_1_3_1_0 : bool;
+    ck_1_3_1_1 : bool; nr_St_Night : bool; ns_St_Night_3 : bool;
+    ns_St_Night_2 : bool; ns_St_Night_1 : bool; n_St_Night : bool;
+    a_St_Night : bool; m_St_Night : bool; d_St_Night : bool;
+    nr_St_Afternoon : bool; ns_St_Afternoon_3 : bool;
     ns_St_Afternoon_2 : bool; ns_St_Afternoon_1 : bool;
     n_St_Afternoon : bool; a_St_Afternoon : bool; m_St_Afternoon : bool;
-    d_St_Afternoon : bool; nr_St_Morning : bool; ns_St_Morning_2 : bool;
-    ns_St_Morning_1 : bool; n_St_Morning : bool; a_St_Morning : bool;
-    m_St_Morning : bool; d_St_Morning : bool; nr_St_Dawn : bool;
-    ns_St_Dawn_2 : bool; ns_St_Dawn_1 : bool; n_St_Dawn : bool;
-    a_St_Dawn : bool; m_St_Dawn : bool; d_St_Dawn : bool; ck_1_2 : bool;
-    ck_1_1 : bool; v_38_2_0 : bool; v_38_2_1 : bool; v_36_2_0 : bool;
-    v_36_2_1 : bool; v_39 : bool; v_38_2 : bool; v_38_1 : bool; v_37 : bool;
+    d_St_Afternoon : bool; nr_St_Morning : bool; ns_St_Morning_3 : bool;
+    ns_St_Morning_2 : bool; ns_St_Morning_1 : bool; n_St_Morning : bool;
+    a_St_Morning : bool; m_St_Morning : bool; d_St_Morning : bool;
+    nr_St_Dawn : bool; ns_St_Dawn_3 : bool; ns_St_Dawn_2 : bool;
+    ns_St_Dawn_1 : bool; n_St_Dawn : bool; a_St_Dawn : bool;
+    m_St_Dawn : bool; d_St_Dawn : bool; nr_St_Start : bool;
+    ns_St_Start_3 : bool; ns_St_Start_2 : bool; ns_St_Start_1 : bool;
+    n_St_Start : bool; a_St_Start : bool; m_St_Start : bool;
+    d_St_Start : bool; ck_1_3 : bool; ck_1_2 : bool; ck_1_1 : bool;
+    v_52_2_0 : bool; v_52_3_0_0 : bool; v_52_3_0_1 : bool; v_52_2_1 : bool;
+    v_52_3_1_0 : bool; v_52_3_1_1 : bool; v_50_2_0 : bool; v_50_3_0_0 : bool;
+    v_50_3_0_1 : bool; v_50_2_1 : bool; v_50_3_1_0 : bool; v_50_3_1_1 : bool;
+    v_48_2_0 : bool; v_48_3_0_0 : bool; v_48_3_0_1 : bool; v_48_2_1 : bool;
+    v_48_3_1_0 : bool; v_48_3_1_1 : bool; v_53 : bool; v_52_3 : bool;
+    v_52_2 : bool; v_52_1 : bool; v_51 : bool; v_50_3 : bool; v_50_2 : bool;
+    v_50_1 : bool; v_49 : bool; v_48_3 : bool; v_48_2 : bool; v_48_1 : bool;
+    v_47 : bool; v_46 : bool; v_45 : bool; v_44 : bool; v_43 : bool;
+    v_42 : bool; v_41 : bool; v_40 : bool; v_38_2_0 : bool;
+    v_38_3_0_0 : bool; v_38_3_0_1 : bool; v_38_2_1 : bool; v_38_3_1_0 : bool;
+    v_38_3_1_1 : bool; v_36_2_0 : bool; v_36_3_0_0 : bool; v_36_3_0_1 : bool;
+    v_36_2_1 : bool; v_36_3_1_0 : bool; v_36_3_1_1 : bool; v_39 : bool;
+    v_38_3 : bool; v_38_2 : bool; v_38_1 : bool; v_37 : bool; v_36_3 : bool;
     v_36_2 : bool; v_36_1 : bool; v_35 : bool; v_34 : bool; v_33 : bool;
     v_32 : bool; v_31 : bool; v_30 : bool; v_29 : bool; v_27_2_0 : bool;
-    v_27_2_1 : bool; v_25_2_0 : bool; v_25_2_1 : bool; v_28 : bool;
-    v_27_2 : bool; v_27_1 : bool; v_26 : bool; v_25_2 : bool; v_25_1 : bool;
-    v_24 : bool; v_23 : bool; v_22 : bool; v_21 : bool; v_20 : bool;
-    v_18_2_0 : bool; v_18_2_1 : bool; v_16_2_0 : bool; v_16_2_1 : bool;
-    v_19 : bool; v_18_2 : bool; v_18_1 : bool; v_17 : bool; v_16_2 : bool;
+    v_27_3_0_0 : bool; v_27_3_0_1 : bool; v_27_2_1 : bool; v_27_3_1_0 : bool;
+    v_27_3_1_1 : bool; v_25_2_0 : bool; v_25_3_0_0 : bool; v_25_3_0_1 : bool;
+    v_25_2_1 : bool; v_25_3_1_0 : bool; v_25_3_1_1 : bool; v_28 : bool;
+    v_27_3 : bool; v_27_2 : bool; v_27_1 : bool; v_26 : bool; v_25_3 : bool;
+    v_25_2 : bool; v_25_1 : bool; v_24 : bool; v_23 : bool; v_22 : bool;
+    v_21 : bool; v_20 : bool; v_18_2_0 : bool; v_18_3_0_0 : bool;
+    v_18_3_0_1 : bool; v_18_2_1 : bool; v_18_3_1_0 : bool; v_18_3_1_1 : bool;
+    v_16_2_0 : bool; v_16_3_0_0 : bool; v_16_3_0_1 : bool; v_16_2_1 : bool;
+    v_16_3_1_0 : bool; v_16_3_1_1 : bool; v_19 : bool; v_18_3 : bool;
+    v_18_2 : bool; v_18_1 : bool; v_17 : bool; v_16_3 : bool; v_16_2 : bool;
     v_16_1 : bool; v_15 : bool; v_14 : bool; v_13 : bool; v_12 : bool;
-    v_11 : bool; v_9_2_0 : bool; v_9_2_1 : bool; v_7_2_0 : bool;
-    v_7_2_1 : bool; v_10 : bool; v_9_2 : bool; v_9_1 : bool; v_8 : bool;
-    v_7_2 : bool; v_7_1 : bool; v_6 : bool; v_5 : bool; v_4 : bool;
-    v_3 : bool; v_2 : bool; v_1 : bool; v : bool; v_95 : bool; v_94 : bool;
-    v_93 : bool; v_92 : bool; v_91 : bool; v_90 : bool; v_89 : bool;
-    v_88 : bool; s_St_Night_2_0 : bool; s_St_Night_2_1 : bool;
-    s_St_Afternoon_2_0 : bool; s_St_Afternoon_2_1 : bool;
-    s_St_Morning_2_0 : bool; s_St_Morning_2_1 : bool; s_St_Dawn_2_0 : bool;
-    s_St_Dawn_2_1 : bool; ck_2_0 : bool; ck_2_1 : bool; r_St_Night : bool;
+    v_11 : bool; v_9_2_0 : bool; v_9_3_0_0 : bool; v_9_3_0_1 : bool;
+    v_9_2_1 : bool; v_9_3_1_0 : bool; v_9_3_1_1 : bool; v_7_2_0 : bool;
+    v_7_3_0_0 : bool; v_7_3_0_1 : bool; v_7_2_1 : bool; v_7_3_1_0 : bool;
+    v_7_3_1_1 : bool; v_10 : bool; v_9_3 : bool; v_9_2 : bool; v_9_1 : bool;
+    v_8 : bool; v_7_3 : bool; v_7_2 : bool; v_7_1 : bool; v_6 : bool;
+    v_5 : bool; v_4 : bool; v_3 : bool; v_2 : bool; v_1 : bool; v : bool;
+    v_183 : bool; v_182 : bool; v_181 : bool; v_180 : bool; v_179 : bool;
+    v_178 : bool; v_177 : bool; v_176 : bool; v_175 : bool; v_174 : bool;
+    v_173 : bool; v_172 : bool; v_171 : bool; v_170 : bool; v_169 : bool;
+    v_168 : bool; v_167 : bool; v_166 : bool; v_165 : bool; v_164 : bool;
+    v_163 : bool; v_162 : bool; v_161 : bool; s_St_Night_2_0 : bool;
+    s_St_Night_3_0_0 : bool; s_St_Night_3_0_1 : bool; s_St_Night_2_1 : bool;
+    s_St_Night_3_1_0 : bool; s_St_Night_3_1_1 : bool;
+    s_St_Afternoon_2_0 : bool; s_St_Afternoon_3_0_0 : bool;
+    s_St_Afternoon_3_0_1 : bool; s_St_Afternoon_2_1 : bool;
+    s_St_Afternoon_3_1_0 : bool; s_St_Afternoon_3_1_1 : bool;
+    s_St_Morning_2_0 : bool; s_St_Morning_3_0_0 : bool;
+    s_St_Morning_3_0_1 : bool; s_St_Morning_2_1 : bool;
+    s_St_Morning_3_1_0 : bool; s_St_Morning_3_1_1 : bool;
+    s_St_Dawn_2_0 : bool; s_St_Dawn_3_0_0 : bool; s_St_Dawn_3_0_1 : bool;
+    s_St_Dawn_2_1 : bool; s_St_Dawn_3_1_0 : bool; s_St_Dawn_3_1_1 : bool;
+    s_St_Start_2_0 : bool; s_St_Start_3_0_0 : bool; s_St_Start_3_0_1 : bool;
+    s_St_Start_2_1 : bool; s_St_Start_3_1_0 : bool; s_St_Start_3_1_1 : bool;
+    ck_2_0 : bool; ck_3_0_0 : bool; ck_3_0_1 : bool; ck_2_1 : bool;
+    ck_3_1_0 : bool; ck_3_1_1 : bool; r_St_Night : bool; s_St_Night_3 : bool;
     s_St_Night_2 : bool; s_St_Night_1 : bool; r_St_Afternoon : bool;
-    s_St_Afternoon_2 : bool; s_St_Afternoon_1 : bool; r_St_Morning : bool;
+    s_St_Afternoon_3 : bool; s_St_Afternoon_2 : bool;
+    s_St_Afternoon_1 : bool; r_St_Morning : bool; s_St_Morning_3 : bool;
     s_St_Morning_2 : bool; s_St_Morning_1 : bool; r_St_Dawn : bool;
-    s_St_Dawn_2 : bool; s_St_Dawn_1 : bool; ck_2 : bool; ck_1_3 : bool;
-    s_2_0 : bool; s_2_1 : bool; ns_2_0 : bool; ns_2_1 : bool; s_2 : bool;
-    s_1 : bool; ns_2 : bool; ns_1 : bool; r : bool; nr : bool; pnr : bool;
+    s_St_Dawn_3 : bool; s_St_Dawn_2 : bool; s_St_Dawn_1 : bool;
+    r_St_Start : bool; s_St_Start_3 : bool; s_St_Start_2 : bool;
+    s_St_Start_1 : bool; ck_3 : bool; ck_2 : bool; ck_1_4 : bool;
+    s_2_0 : bool; s_3_0_0 : bool; s_3_0_1 : bool; s_2_1 : bool;
+    s_3_1_0 : bool; s_3_1_1 : bool; ns_2_0 : bool; ns_3_0_0 : bool;
+    ns_3_0_1 : bool; ns_2_1 : bool; ns_3_1_0 : bool; ns_3_1_1 : bool;
+    s_3 : bool; s_2 : bool; s_1 : bool; ns_3 : bool; ns_2 : bool;
+    ns_1 : bool; r : bool; nr : bool; pnr : bool;
 let
   pnr = false fby nr;
   ck_1_1 = s_1;
   ck_1_2 = s_2;
+  ck_1_3 = s_3;
+  d_St_Start = false;
+  m_St_Start = false;
+  a_St_Start = false;
+  n_St_Start = false;
+  nr_St_Start = false;
+  ns_St_Start_1 = false;
+  ns_St_Start_2 = false;
+  ns_St_Start_3 = false;
   d_St_Dawn = true;
   m_St_Dawn = false;
   a_St_Dawn = false;
   n_St_Dawn = false;
   nr_St_Dawn = false;
   ns_St_Dawn_1 = true;
-  ns_St_Dawn_2 = false;
+  ns_St_Dawn_2 = true;
+  ns_St_Dawn_3 = false;
   d_St_Morning = false;
   m_St_Morning = true;
   a_St_Morning = false;
   n_St_Morning = false;
   nr_St_Morning = false;
-  ns_St_Morning_1 = false;
-  ns_St_Morning_2 = true;
+  ns_St_Morning_1 = true;
+  ns_St_Morning_2 = false;
+  ns_St_Morning_3 = false;
   d_St_Afternoon = false;
   m_St_Afternoon = false;
   a_St_Afternoon = true;
@@ -71,6 +142,7 @@ let
   nr_St_Afternoon = false;
   ns_St_Afternoon_1 = true;
   ns_St_Afternoon_2 = true;
+  ns_St_Afternoon_3 = true;
   d_St_Night = false;
   m_St_Night = false;
   a_St_Night = false;
@@ -78,139 +150,531 @@ let
   nr_St_Night = false;
   ns_St_Night_1 = false;
   ns_St_Night_2 = false;
-  v_74 = merge ck_1_2_1 (true -> d_St_Afternoon)(false -> d_St_Dawn);
-  v_75 = merge ck_1_2_0 (true -> d_St_Morning)(false -> d_St_Night);
-  d = merge ck_1_1 (true -> v_74)(false -> v_75);
-  v_76 = merge ck_1_2_1 (true -> m_St_Afternoon)(false -> m_St_Dawn);
-  v_77 = merge ck_1_2_0 (true -> m_St_Morning)(false -> m_St_Night);
-  m = merge ck_1_1 (true -> v_76)(false -> v_77);
-  v_78 = merge ck_1_2_1 (true -> a_St_Afternoon)(false -> a_St_Dawn);
-  v_79 = merge ck_1_2_0 (true -> a_St_Morning)(false -> a_St_Night);
-  a = merge ck_1_1 (true -> v_78)(false -> v_79);
-  v_80 = merge ck_1_2_1 (true -> n_St_Afternoon)(false -> n_St_Dawn);
-  v_81 = merge ck_1_2_0 (true -> n_St_Morning)(false -> n_St_Night);
-  n = merge ck_1_1 (true -> v_80)(false -> v_81);
-  v_82 = merge ck_1_2_1 (true -> ns_St_Afternoon_1)(false -> ns_St_Dawn_1);
-  v_83 = merge ck_1_2_1 (true -> ns_St_Afternoon_2)(false -> ns_St_Dawn_2);
-  v_84 = merge ck_1_2_0 (true -> ns_St_Morning_1)(false -> ns_St_Night_1);
-  v_85 = merge ck_1_2_0 (true -> ns_St_Morning_2)(false -> ns_St_Night_2);
-  ns_1 = merge ck_1_1 (true -> v_82)(false -> v_84);
-  ns_2 = merge ck_1_1 (true -> v_83)(false -> v_85);
-  v_86 = merge ck_1_2_1 (true -> nr_St_Afternoon)(false -> nr_St_Dawn);
-  v_87 = merge ck_1_2_0 (true -> nr_St_Morning)(false -> nr_St_Night);
-  nr = merge ck_1_1 (true -> v_86)(false -> v_87);
+  ns_St_Night_3 = true;
+  v_121 = merge ck_1_3_1_1 (true -> d_St_Afternoon)(false -> d_St_Dawn);
+  v_122 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> d_St_Morning);
+  v_123 = merge ck_1_2_1 (true -> v_121)(false -> v_122);
+  v_124 = merge ck_1_3_0_0 (true -> d_St_Night)(false -> d_St_Start);
+  v_125 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_124);
+  d = merge ck_1_1 (true -> v_123)(false -> v_125);
+  v_126 = merge ck_1_3_1_1 (true -> m_St_Afternoon)(false -> m_St_Dawn);
+  v_127 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> m_St_Morning);
+  v_128 = merge ck_1_2_1 (true -> v_126)(false -> v_127);
+  v_129 = merge ck_1_3_0_0 (true -> m_St_Night)(false -> m_St_Start);
+  v_130 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_129);
+  m = merge ck_1_1 (true -> v_128)(false -> v_130);
+  v_131 = merge ck_1_3_1_1 (true -> a_St_Afternoon)(false -> a_St_Dawn);
+  v_132 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> a_St_Morning);
+  v_133 = merge ck_1_2_1 (true -> v_131)(false -> v_132);
+  v_134 = merge ck_1_3_0_0 (true -> a_St_Night)(false -> a_St_Start);
+  v_135 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_134);
+  a = merge ck_1_1 (true -> v_133)(false -> v_135);
+  v_136 = merge ck_1_3_1_1 (true -> n_St_Afternoon)(false -> n_St_Dawn);
+  v_137 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> n_St_Morning);
+  v_138 = merge ck_1_2_1 (true -> v_136)(false -> v_137);
+  v_139 = merge ck_1_3_0_0 (true -> n_St_Night)(false -> n_St_Start);
+  v_140 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_139);
+  n = merge ck_1_1 (true -> v_138)(false -> v_140);
+  v_141 = merge ck_1_3_1_1 (true -> ns_St_Afternoon_1)(false -> ns_St_Dawn_1);
+  v_142 = merge ck_1_3_1_1 (true -> ns_St_Afternoon_2)(false -> ns_St_Dawn_2);
+  v_143 = merge ck_1_3_1_1 (true -> ns_St_Afternoon_3)(false -> ns_St_Dawn_3);
+  v_144 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> ns_St_Morning_1);
+  v_145 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> ns_St_Morning_2);
+  v_146 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> ns_St_Morning_3);
+  v_147 = merge ck_1_3_0_0 (true -> ns_St_Night_1)(false -> ns_St_Start_1);
+  v_148 = merge ck_1_3_0_0 (true -> ns_St_Night_2)(false -> ns_St_Start_2);
+  v_149 = merge ck_1_3_0_0 (true -> ns_St_Night_3)(false -> ns_St_Start_3);
+  v_150 = merge ck_1_2_1 (true -> v_141)(false -> v_144);
+  v_151 = merge ck_1_2_1 (true -> v_142)(false -> v_145);
+  v_152 = merge ck_1_2_1 (true -> v_143)(false -> v_146);
+  v_153 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_147);
+  v_154 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_148);
+  v_155 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_149);
+  ns_1 = merge ck_1_1 (true -> v_150)(false -> v_153);
+  ns_2 = merge ck_1_1 (true -> v_151)(false -> v_154);
+  ns_3 = merge ck_1_1 (true -> v_152)(false -> v_155);
+  v_156 = merge ck_1_3_1_1 (true -> nr_St_Afternoon)(false -> nr_St_Dawn);
+  v_157 =
+    merge ck_1_3_1_0
+      (true -> 
+        (((true when true(ck_1_1)) when false(ck_1_2_1))
+          when true(ck_1_3_1_0)))
+      (false -> nr_St_Morning);
+  v_158 = merge ck_1_2_1 (true -> v_156)(false -> v_157);
+  v_159 = merge ck_1_3_0_0 (true -> nr_St_Night)(false -> nr_St_Start);
+  v_160 =
+    merge ck_1_2_0
+      (true -> ((true when false(ck_1_1)) when true(ck_1_2_0)))
+      (false -> v_159);
+  nr = merge ck_1_1 (true -> v_158)(false -> v_160);
+  ck_1_3_1_1 = ((ck_1_3 when true(ck_1_1)) when true(ck_1_2_1));
+  ck_1_3_1_0 = ((ck_1_3 when true(ck_1_1)) when false(ck_1_2_1));
   ck_1_2_1 = (ck_1_2 when true(ck_1_1));
+  ck_1_3_0_1 = ((ck_1_3 when false(ck_1_1)) when true(ck_1_2_0));
+  ck_1_3_0_0 = ((ck_1_3 when false(ck_1_1)) when false(ck_1_2_0));
   ck_1_2_0 = (ck_1_2 when false(ck_1_1));
+  ns_St_Start_3_1_1 =
+    ((ns_St_Start_3 when true(ns_St_Start_1)) when true(ns_St_Start_2_1));
+  ns_St_Start_3_1_0 =
+    ((ns_St_Start_3 when true(ns_St_Start_1)) when false(ns_St_Start_2_1));
+  ns_St_Start_2_1 = (ns_St_Start_2 when true(ns_St_Start_1));
+  ns_St_Start_3_0_1 =
+    ((ns_St_Start_3 when false(ns_St_Start_1)) when true(ns_St_Start_2_0));
+  ns_St_Start_3_0_0 =
+    ((ns_St_Start_3 when false(ns_St_Start_1)) when false(ns_St_Start_2_0));
+  ns_St_Start_2_0 = (ns_St_Start_2 when false(ns_St_Start_1));
+  ns_St_Dawn_3_1_1 =
+    ((ns_St_Dawn_3 when true(ns_St_Dawn_1)) when true(ns_St_Dawn_2_1));
+  ns_St_Dawn_3_1_0 =
+    ((ns_St_Dawn_3 when true(ns_St_Dawn_1)) when false(ns_St_Dawn_2_1));
   ns_St_Dawn_2_1 = (ns_St_Dawn_2 when true(ns_St_Dawn_1));
+  ns_St_Dawn_3_0_1 =
+    ((ns_St_Dawn_3 when false(ns_St_Dawn_1)) when true(ns_St_Dawn_2_0));
+  ns_St_Dawn_3_0_0 =
+    ((ns_St_Dawn_3 when false(ns_St_Dawn_1)) when false(ns_St_Dawn_2_0));
   ns_St_Dawn_2_0 = (ns_St_Dawn_2 when false(ns_St_Dawn_1));
+  ns_St_Morning_3_1_1 =
+    ((ns_St_Morning_3 when true(ns_St_Morning_1))
+      when true(ns_St_Morning_2_1));
+  ns_St_Morning_3_1_0 =
+    ((ns_St_Morning_3 when true(ns_St_Morning_1))
+      when false(ns_St_Morning_2_1));
   ns_St_Morning_2_1 = (ns_St_Morning_2 when true(ns_St_Morning_1));
+  ns_St_Morning_3_0_1 =
+    ((ns_St_Morning_3 when false(ns_St_Morning_1))
+      when true(ns_St_Morning_2_0));
+  ns_St_Morning_3_0_0 =
+    ((ns_St_Morning_3 when false(ns_St_Morning_1))
+      when false(ns_St_Morning_2_0));
   ns_St_Morning_2_0 = (ns_St_Morning_2 when false(ns_St_Morning_1));
+  ns_St_Afternoon_3_1_1 =
+    ((ns_St_Afternoon_3 when true(ns_St_Afternoon_1))
+      when true(ns_St_Afternoon_2_1));
+  ns_St_Afternoon_3_1_0 =
+    ((ns_St_Afternoon_3 when true(ns_St_Afternoon_1))
+      when false(ns_St_Afternoon_2_1));
   ns_St_Afternoon_2_1 = (ns_St_Afternoon_2 when true(ns_St_Afternoon_1));
+  ns_St_Afternoon_3_0_1 =
+    ((ns_St_Afternoon_3 when false(ns_St_Afternoon_1))
+      when true(ns_St_Afternoon_2_0));
+  ns_St_Afternoon_3_0_0 =
+    ((ns_St_Afternoon_3 when false(ns_St_Afternoon_1))
+      when false(ns_St_Afternoon_2_0));
   ns_St_Afternoon_2_0 = (ns_St_Afternoon_2 when false(ns_St_Afternoon_1));
+  ns_St_Night_3_1_1 =
+    ((ns_St_Night_3 when true(ns_St_Night_1)) when true(ns_St_Night_2_1));
+  ns_St_Night_3_1_0 =
+    ((ns_St_Night_3 when true(ns_St_Night_1)) when false(ns_St_Night_2_1));
   ns_St_Night_2_1 = (ns_St_Night_2 when true(ns_St_Night_1));
+  ns_St_Night_3_0_1 =
+    ((ns_St_Night_3 when false(ns_St_Night_1)) when true(ns_St_Night_2_0));
+  ns_St_Night_3_0_0 =
+    ((ns_St_Night_3 when false(ns_St_Night_1)) when false(ns_St_Night_2_0));
   ns_St_Night_2_0 = (ns_St_Night_2 when false(ns_St_Night_1));
-  v_88 = true fby ns_1;
-  v_89 = false fby ns_2;
-  ck_1_3 = v_88;
-  ck_2 = v_89;
+  v_161 = false fby ns_1;
+  v_162 = false fby ns_2;
+  v_163 = false fby ns_3;
+  ck_1_4 = v_161;
+  ck_2 = v_162;
+  ck_3 = v_163;
+  r_St_Start = if v_40 then true else v_53;
+  s_St_Start_1 = if v_40 then true else v_52_1;
+  s_St_Start_2 = if v_40 then true else v_52_2;
+  s_St_Start_3 = if v_40 then false else v_52_3;
+  v_53 = if v_43 then true else v_51;
+  v_52_1 = if v_43 then true else v_50_1;
+  v_52_2 = if v_43 then false else v_50_2;
+  v_52_3 = if v_43 then false else v_50_3;
+  v_51 = if v_46 then true else v_49;
+  v_50_1 = if v_46 then true else v_48_1;
+  v_50_2 = if v_46 then true else v_48_2;
+  v_50_3 = if v_46 then true else v_48_3;
+  v_49 =
+    if v_47
+    then true
+    else (((pnr when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0));
+  v_48_1 = if v_47 then false else false;
+  v_48_2 = if v_47 then false else false;
+  v_48_3 = if v_47 then true else false;
+  v_47 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0)) >=
+     17);
+  v_46 = (v_44 & v_45);
+  v_45 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0)) <
+     17);
+  v_44 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0)) >=
+     12);
+  v_43 = (v_41 & v_42);
+  v_42 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0)) <
+     12);
+  v_41 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0)) >=
+     8);
+  v_40 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when false(ck_3_0_0)) <
+     8);
+  v_48_3_1_1 = ((v_48_3 when true(v_48_1)) when true(v_48_2_1));
+  v_48_3_1_0 = ((v_48_3 when true(v_48_1)) when false(v_48_2_1));
+  v_48_2_1 = (v_48_2 when true(v_48_1));
+  v_48_3_0_1 = ((v_48_3 when false(v_48_1)) when true(v_48_2_0));
+  v_48_3_0_0 = ((v_48_3 when false(v_48_1)) when false(v_48_2_0));
+  v_48_2_0 = (v_48_2 when false(v_48_1));
+  v_50_3_1_1 = ((v_50_3 when true(v_50_1)) when true(v_50_2_1));
+  v_50_3_1_0 = ((v_50_3 when true(v_50_1)) when false(v_50_2_1));
+  v_50_2_1 = (v_50_2 when true(v_50_1));
+  v_50_3_0_1 = ((v_50_3 when false(v_50_1)) when true(v_50_2_0));
+  v_50_3_0_0 = ((v_50_3 when false(v_50_1)) when false(v_50_2_0));
+  v_50_2_0 = (v_50_2 when false(v_50_1));
+  v_52_3_1_1 = ((v_52_3 when true(v_52_1)) when true(v_52_2_1));
+  v_52_3_1_0 = ((v_52_3 when true(v_52_1)) when false(v_52_2_1));
+  v_52_2_1 = (v_52_2 when true(v_52_1));
+  v_52_3_0_1 = ((v_52_3 when false(v_52_1)) when true(v_52_2_0));
+  v_52_3_0_0 = ((v_52_3 when false(v_52_1)) when false(v_52_2_0));
+  v_52_2_0 = (v_52_2 when false(v_52_1));
   r_St_Dawn = if v_31 then true else v_39;
-  s_St_Dawn_1 = if v_31 then false else v_38_1;
-  s_St_Dawn_2 = if v_31 then true else v_38_2;
+  s_St_Dawn_1 = if v_31 then true else v_38_1;
+  s_St_Dawn_2 = if v_31 then false else v_38_2;
+  s_St_Dawn_3 = if v_31 then false else v_38_3;
   v_39 = if v_34 then true else v_37;
   v_38_1 = if v_34 then true else v_36_1;
   v_38_2 = if v_34 then true else v_36_2;
-  v_37 = if v_35 then true else ((pnr when true(ck_1_3)) when false(ck_2_1));
+  v_38_3 = if v_34 then true else v_36_3;
+  v_37 =
+    if v_35
+    then true
+    else (((pnr when true(ck_1_4)) when true(ck_2_1)) when false(ck_3_1_1));
   v_36_1 = if v_35 then false else true;
-  v_36_2 = if v_35 then false else false;
-  v_35 = (((time when true(ck_1_3)) when false(ck_2_1)) >= 17);
+  v_36_2 = if v_35 then false else true;
+  v_36_3 = if v_35 then true else false;
+  v_35 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when false(ck_3_1_1)) >=
+     17);
   v_34 = (v_32 & v_33);
-  v_33 = (((time when true(ck_1_3)) when false(ck_2_1)) < 17);
-  v_32 = (((time when true(ck_1_3)) when false(ck_2_1)) >= 12);
+  v_33 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when false(ck_3_1_1)) <
+     17);
+  v_32 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when false(ck_3_1_1)) >=
+     12);
   v_31 = (v_29 & v_30);
-  v_30 = (((time when true(ck_1_3)) when false(ck_2_1)) < 12);
-  v_29 = (((time when true(ck_1_3)) when false(ck_2_1)) >= 8);
+  v_30 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when false(ck_3_1_1)) <
+     12);
+  v_29 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when false(ck_3_1_1)) >=
+     8);
+  v_36_3_1_1 = ((v_36_3 when true(v_36_1)) when true(v_36_2_1));
+  v_36_3_1_0 = ((v_36_3 when true(v_36_1)) when false(v_36_2_1));
   v_36_2_1 = (v_36_2 when true(v_36_1));
+  v_36_3_0_1 = ((v_36_3 when false(v_36_1)) when true(v_36_2_0));
+  v_36_3_0_0 = ((v_36_3 when false(v_36_1)) when false(v_36_2_0));
   v_36_2_0 = (v_36_2 when false(v_36_1));
+  v_38_3_1_1 = ((v_38_3 when true(v_38_1)) when true(v_38_2_1));
+  v_38_3_1_0 = ((v_38_3 when true(v_38_1)) when false(v_38_2_1));
   v_38_2_1 = (v_38_2 when true(v_38_1));
+  v_38_3_0_1 = ((v_38_3 when false(v_38_1)) when true(v_38_2_0));
+  v_38_3_0_0 = ((v_38_3 when false(v_38_1)) when false(v_38_2_0));
   v_38_2_0 = (v_38_2 when false(v_38_1));
   r_St_Morning = if v_20 then true else v_28;
   s_St_Morning_1 = if v_20 then true else v_27_1;
-  s_St_Morning_2 = if v_20 then false else v_27_2;
+  s_St_Morning_2 = if v_20 then true else v_27_2;
+  s_St_Morning_3 = if v_20 then false else v_27_3;
   v_28 = if v_23 then true else v_26;
   v_27_1 = if v_23 then true else v_25_1;
   v_27_2 = if v_23 then true else v_25_2;
-  v_26 = if v_24 then true else ((pnr when false(ck_1_3)) when true(ck_2_0));
-  v_25_1 = if v_24 then false else false;
-  v_25_2 = if v_24 then false else true;
-  v_24 = (((time when false(ck_1_3)) when true(ck_2_0)) >= 17);
+  v_27_3 = if v_23 then true else v_25_3;
+  v_26 =
+    if v_24
+    then true
+    else (((pnr when true(ck_1_4)) when false(ck_2_1)) when false(ck_3_1_0));
+  v_25_1 = if v_24 then false else true;
+  v_25_2 = if v_24 then false else false;
+  v_25_3 = if v_24 then true else false;
+  v_24 =
+    ((((time when true(ck_1_4)) when false(ck_2_1)) when false(ck_3_1_0)) >=
+     17);
   v_23 = (v_21 & v_22);
-  v_22 = (((time when false(ck_1_3)) when true(ck_2_0)) < 17);
-  v_21 = (((time when false(ck_1_3)) when true(ck_2_0)) >= 12);
-  v_20 = (((time when false(ck_1_3)) when true(ck_2_0)) < 8);
+  v_22 =
+    ((((time when true(ck_1_4)) when false(ck_2_1)) when false(ck_3_1_0)) <
+     17);
+  v_21 =
+    ((((time when true(ck_1_4)) when false(ck_2_1)) when false(ck_3_1_0)) >=
+     12);
+  v_20 =
+    ((((time when true(ck_1_4)) when false(ck_2_1)) when false(ck_3_1_0)) <
+     8);
+  v_25_3_1_1 = ((v_25_3 when true(v_25_1)) when true(v_25_2_1));
+  v_25_3_1_0 = ((v_25_3 when true(v_25_1)) when false(v_25_2_1));
   v_25_2_1 = (v_25_2 when true(v_25_1));
+  v_25_3_0_1 = ((v_25_3 when false(v_25_1)) when true(v_25_2_0));
+  v_25_3_0_0 = ((v_25_3 when false(v_25_1)) when false(v_25_2_0));
   v_25_2_0 = (v_25_2 when false(v_25_1));
+  v_27_3_1_1 = ((v_27_3 when true(v_27_1)) when true(v_27_2_1));
+  v_27_3_1_0 = ((v_27_3 when true(v_27_1)) when false(v_27_2_1));
   v_27_2_1 = (v_27_2 when true(v_27_1));
+  v_27_3_0_1 = ((v_27_3 when false(v_27_1)) when true(v_27_2_0));
+  v_27_3_0_0 = ((v_27_3 when false(v_27_1)) when false(v_27_2_0));
   v_27_2_0 = (v_27_2 when false(v_27_1));
   r_St_Afternoon = if v_11 then true else v_19;
   s_St_Afternoon_1 = if v_11 then true else v_18_1;
-  s_St_Afternoon_2 = if v_11 then false else v_18_2;
+  s_St_Afternoon_2 = if v_11 then true else v_18_2;
+  s_St_Afternoon_3 = if v_11 then false else v_18_3;
   v_19 = if v_14 then true else v_17;
-  v_18_1 = if v_14 then false else v_16_1;
-  v_18_2 = if v_14 then true else v_16_2;
-  v_17 = if v_15 then true else ((pnr when true(ck_1_3)) when true(ck_2_1));
+  v_18_1 = if v_14 then true else v_16_1;
+  v_18_2 = if v_14 then false else v_16_2;
+  v_18_3 = if v_14 then false else v_16_3;
+  v_17 =
+    if v_15
+    then true
+    else (((pnr when true(ck_1_4)) when true(ck_2_1)) when true(ck_3_1_1));
   v_16_1 = if v_15 then false else true;
   v_16_2 = if v_15 then false else true;
-  v_15 = (((time when true(ck_1_3)) when true(ck_2_1)) >= 17);
+  v_16_3 = if v_15 then true else true;
+  v_15 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when true(ck_3_1_1)) >=
+     17);
   v_14 = (v_12 & v_13);
-  v_13 = (((time when true(ck_1_3)) when true(ck_2_1)) < 12);
-  v_12 = (((time when true(ck_1_3)) when true(ck_2_1)) >= 8);
-  v_11 = (((time when true(ck_1_3)) when true(ck_2_1)) < 8);
+  v_13 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when true(ck_3_1_1)) < 12);
+  v_12 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when true(ck_3_1_1)) >= 8);
+  v_11 =
+    ((((time when true(ck_1_4)) when true(ck_2_1)) when true(ck_3_1_1)) < 8);
+  v_16_3_1_1 = ((v_16_3 when true(v_16_1)) when true(v_16_2_1));
+  v_16_3_1_0 = ((v_16_3 when true(v_16_1)) when false(v_16_2_1));
   v_16_2_1 = (v_16_2 when true(v_16_1));
+  v_16_3_0_1 = ((v_16_3 when false(v_16_1)) when true(v_16_2_0));
+  v_16_3_0_0 = ((v_16_3 when false(v_16_1)) when false(v_16_2_0));
   v_16_2_0 = (v_16_2 when false(v_16_1));
+  v_18_3_1_1 = ((v_18_3 when true(v_18_1)) when true(v_18_2_1));
+  v_18_3_1_0 = ((v_18_3 when true(v_18_1)) when false(v_18_2_1));
   v_18_2_1 = (v_18_2 when true(v_18_1));
+  v_18_3_0_1 = ((v_18_3 when false(v_18_1)) when true(v_18_2_0));
+  v_18_3_0_0 = ((v_18_3 when false(v_18_1)) when false(v_18_2_0));
   v_18_2_0 = (v_18_2 when false(v_18_1));
   r_St_Night = if v then true else v_10;
   s_St_Night_1 = if v then true else v_9_1;
-  s_St_Night_2 = if v then false else v_9_2;
+  s_St_Night_2 = if v then true else v_9_2;
+  s_St_Night_3 = if v then false else v_9_3;
   v_10 = if v_3 then true else v_8;
-  v_9_1 = if v_3 then false else v_7_1;
-  v_9_2 = if v_3 then true else v_7_2;
-  v_8 = if v_6 then true else ((pnr when false(ck_1_3)) when false(ck_2_0));
+  v_9_1 = if v_3 then true else v_7_1;
+  v_9_2 = if v_3 then false else v_7_2;
+  v_9_3 = if v_3 then false else v_7_3;
+  v_8 =
+    if v_6
+    then true
+    else (((pnr when false(ck_1_4)) when false(ck_2_0)) when true(ck_3_0_0));
   v_7_1 = if v_6 then true else false;
   v_7_2 = if v_6 then true else false;
+  v_7_3 = if v_6 then true else true;
   v_6 = (v_4 & v_5);
-  v_5 = (((time when false(ck_1_3)) when false(ck_2_0)) < 17);
-  v_4 = (((time when false(ck_1_3)) when false(ck_2_0)) >= 12);
+  v_5 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when true(ck_3_0_0)) <
+     17);
+  v_4 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when true(ck_3_0_0)) >=
+     12);
   v_3 = (v_1 & v_2);
-  v_2 = (((time when false(ck_1_3)) when false(ck_2_0)) < 12);
-  v_1 = (((time when false(ck_1_3)) when false(ck_2_0)) >= 8);
-  v = (((time when false(ck_1_3)) when false(ck_2_0)) < 8);
+  v_2 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when true(ck_3_0_0)) <
+     12);
+  v_1 =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when true(ck_3_0_0)) >=
+     8);
+  v =
+    ((((time when false(ck_1_4)) when false(ck_2_0)) when true(ck_3_0_0)) <
+     8);
+  v_7_3_1_1 = ((v_7_3 when true(v_7_1)) when true(v_7_2_1));
+  v_7_3_1_0 = ((v_7_3 when true(v_7_1)) when false(v_7_2_1));
   v_7_2_1 = (v_7_2 when true(v_7_1));
+  v_7_3_0_1 = ((v_7_3 when false(v_7_1)) when true(v_7_2_0));
+  v_7_3_0_0 = ((v_7_3 when false(v_7_1)) when false(v_7_2_0));
   v_7_2_0 = (v_7_2 when false(v_7_1));
+  v_9_3_1_1 = ((v_9_3 when true(v_9_1)) when true(v_9_2_1));
+  v_9_3_1_0 = ((v_9_3 when true(v_9_1)) when false(v_9_2_1));
   v_9_2_1 = (v_9_2 when true(v_9_1));
+  v_9_3_0_1 = ((v_9_3 when false(v_9_1)) when true(v_9_2_0));
+  v_9_3_0_0 = ((v_9_3 when false(v_9_1)) when false(v_9_2_0));
   v_9_2_0 = (v_9_2 when false(v_9_1));
-  v_90 = merge ck_2_1 (true -> s_St_Afternoon_1)(false -> s_St_Dawn_1);
-  v_91 = merge ck_2_1 (true -> s_St_Afternoon_2)(false -> s_St_Dawn_2);
-  v_92 = merge ck_2_0 (true -> s_St_Morning_1)(false -> s_St_Night_1);
-  v_93 = merge ck_2_0 (true -> s_St_Morning_2)(false -> s_St_Night_2);
-  s_1 = merge ck_1_3 (true -> v_90)(false -> v_92);
-  s_2 = merge ck_1_3 (true -> v_91)(false -> v_93);
-  v_94 = merge ck_2_1 (true -> r_St_Afternoon)(false -> r_St_Dawn);
-  v_95 = merge ck_2_0 (true -> r_St_Morning)(false -> r_St_Night);
-  r = merge ck_1_3 (true -> v_94)(false -> v_95);
-  ck_2_1 = (ck_2 when true(ck_1_3));
-  ck_2_0 = (ck_2 when false(ck_1_3));
+  v_164 = merge ck_3_1_1 (true -> s_St_Afternoon_1)(false -> s_St_Dawn_1);
+  v_165 = merge ck_3_1_1 (true -> s_St_Afternoon_2)(false -> s_St_Dawn_2);
+  v_166 = merge ck_3_1_1 (true -> s_St_Afternoon_3)(false -> s_St_Dawn_3);
+  v_167 =
+    merge ck_3_1_0
+      (true -> 
+        (((true when true(ck_1_4)) when false(ck_2_1)) when true(ck_3_1_0)))
+      (false -> s_St_Morning_1);
+  v_168 =
+    merge ck_3_1_0
+      (true -> 
+        (((true when true(ck_1_4)) when false(ck_2_1)) when true(ck_3_1_0)))
+      (false -> s_St_Morning_2);
+  v_169 =
+    merge ck_3_1_0
+      (true -> 
+        (((true when true(ck_1_4)) when false(ck_2_1)) when true(ck_3_1_0)))
+      (false -> s_St_Morning_3);
+  v_170 = merge ck_3_0_0 (true -> s_St_Night_1)(false -> s_St_Start_1);
+  v_171 = merge ck_3_0_0 (true -> s_St_Night_2)(false -> s_St_Start_2);
+  v_172 = merge ck_3_0_0 (true -> s_St_Night_3)(false -> s_St_Start_3);
+  v_173 = merge ck_2_1 (true -> v_164)(false -> v_167);
+  v_174 = merge ck_2_1 (true -> v_165)(false -> v_168);
+  v_175 = merge ck_2_1 (true -> v_166)(false -> v_169);
+  v_176 =
+    merge ck_2_0
+      (true -> ((true when false(ck_1_4)) when true(ck_2_0)))(false -> v_170);
+  v_177 =
+    merge ck_2_0
+      (true -> ((true when false(ck_1_4)) when true(ck_2_0)))(false -> v_171);
+  v_178 =
+    merge ck_2_0
+      (true -> ((true when false(ck_1_4)) when true(ck_2_0)))(false -> v_172);
+  s_1 = merge ck_1_4 (true -> v_173)(false -> v_176);
+  s_2 = merge ck_1_4 (true -> v_174)(false -> v_177);
+  s_3 = merge ck_1_4 (true -> v_175)(false -> v_178);
+  v_179 = merge ck_3_1_1 (true -> r_St_Afternoon)(false -> r_St_Dawn);
+  v_180 =
+    merge ck_3_1_0
+      (true -> 
+        (((true when true(ck_1_4)) when false(ck_2_1)) when true(ck_3_1_0)))
+      (false -> r_St_Morning);
+  v_181 = merge ck_2_1 (true -> v_179)(false -> v_180);
+  v_182 = merge ck_3_0_0 (true -> r_St_Night)(false -> r_St_Start);
+  v_183 =
+    merge ck_2_0
+      (true -> ((true when false(ck_1_4)) when true(ck_2_0)))(false -> v_182);
+  r = merge ck_1_4 (true -> v_181)(false -> v_183);
+  ck_3_1_1 = ((ck_3 when true(ck_1_4)) when true(ck_2_1));
+  ck_3_1_0 = ((ck_3 when true(ck_1_4)) when false(ck_2_1));
+  ck_2_1 = (ck_2 when true(ck_1_4));
+  ck_3_0_1 = ((ck_3 when false(ck_1_4)) when true(ck_2_0));
+  ck_3_0_0 = ((ck_3 when false(ck_1_4)) when false(ck_2_0));
+  ck_2_0 = (ck_2 when false(ck_1_4));
+  s_St_Start_3_1_1 =
+    ((s_St_Start_3 when true(s_St_Start_1)) when true(s_St_Start_2_1));
+  s_St_Start_3_1_0 =
+    ((s_St_Start_3 when true(s_St_Start_1)) when false(s_St_Start_2_1));
+  s_St_Start_2_1 = (s_St_Start_2 when true(s_St_Start_1));
+  s_St_Start_3_0_1 =
+    ((s_St_Start_3 when false(s_St_Start_1)) when true(s_St_Start_2_0));
+  s_St_Start_3_0_0 =
+    ((s_St_Start_3 when false(s_St_Start_1)) when false(s_St_Start_2_0));
+  s_St_Start_2_0 = (s_St_Start_2 when false(s_St_Start_1));
+  s_St_Dawn_3_1_1 =
+    ((s_St_Dawn_3 when true(s_St_Dawn_1)) when true(s_St_Dawn_2_1));
+  s_St_Dawn_3_1_0 =
+    ((s_St_Dawn_3 when true(s_St_Dawn_1)) when false(s_St_Dawn_2_1));
   s_St_Dawn_2_1 = (s_St_Dawn_2 when true(s_St_Dawn_1));
+  s_St_Dawn_3_0_1 =
+    ((s_St_Dawn_3 when false(s_St_Dawn_1)) when true(s_St_Dawn_2_0));
+  s_St_Dawn_3_0_0 =
+    ((s_St_Dawn_3 when false(s_St_Dawn_1)) when false(s_St_Dawn_2_0));
   s_St_Dawn_2_0 = (s_St_Dawn_2 when false(s_St_Dawn_1));
+  s_St_Morning_3_1_1 =
+    ((s_St_Morning_3 when true(s_St_Morning_1)) when true(s_St_Morning_2_1));
+  s_St_Morning_3_1_0 =
+    ((s_St_Morning_3 when true(s_St_Morning_1)) when false(s_St_Morning_2_1));
   s_St_Morning_2_1 = (s_St_Morning_2 when true(s_St_Morning_1));
+  s_St_Morning_3_0_1 =
+    ((s_St_Morning_3 when false(s_St_Morning_1)) when true(s_St_Morning_2_0));
+  s_St_Morning_3_0_0 =
+    ((s_St_Morning_3 when false(s_St_Morning_1))
+      when false(s_St_Morning_2_0));
   s_St_Morning_2_0 = (s_St_Morning_2 when false(s_St_Morning_1));
+  s_St_Afternoon_3_1_1 =
+    ((s_St_Afternoon_3 when true(s_St_Afternoon_1))
+      when true(s_St_Afternoon_2_1));
+  s_St_Afternoon_3_1_0 =
+    ((s_St_Afternoon_3 when true(s_St_Afternoon_1))
+      when false(s_St_Afternoon_2_1));
   s_St_Afternoon_2_1 = (s_St_Afternoon_2 when true(s_St_Afternoon_1));
+  s_St_Afternoon_3_0_1 =
+    ((s_St_Afternoon_3 when false(s_St_Afternoon_1))
+      when true(s_St_Afternoon_2_0));
+  s_St_Afternoon_3_0_0 =
+    ((s_St_Afternoon_3 when false(s_St_Afternoon_1))
+      when false(s_St_Afternoon_2_0));
   s_St_Afternoon_2_0 = (s_St_Afternoon_2 when false(s_St_Afternoon_1));
+  s_St_Night_3_1_1 =
+    ((s_St_Night_3 when true(s_St_Night_1)) when true(s_St_Night_2_1));
+  s_St_Night_3_1_0 =
+    ((s_St_Night_3 when true(s_St_Night_1)) when false(s_St_Night_2_1));
   s_St_Night_2_1 = (s_St_Night_2 when true(s_St_Night_1));
+  s_St_Night_3_0_1 =
+    ((s_St_Night_3 when false(s_St_Night_1)) when true(s_St_Night_2_0));
+  s_St_Night_3_0_0 =
+    ((s_St_Night_3 when false(s_St_Night_1)) when false(s_St_Night_2_0));
   s_St_Night_2_0 = (s_St_Night_2 when false(s_St_Night_1));
+  ns_3_1_1 = ((ns_3 when true(ns_1)) when true(ns_2_1));
+  ns_3_1_0 = ((ns_3 when true(ns_1)) when false(ns_2_1));
   ns_2_1 = (ns_2 when true(ns_1));
+  ns_3_0_1 = ((ns_3 when false(ns_1)) when true(ns_2_0));
+  ns_3_0_0 = ((ns_3 when false(ns_1)) when false(ns_2_0));
   ns_2_0 = (ns_2 when false(ns_1));
+  s_3_1_1 = ((s_3 when true(s_1)) when true(s_2_1));
+  s_3_1_0 = ((s_3 when true(s_1)) when false(s_2_1));
   s_2_1 = (s_2 when true(s_1));
+  s_3_0_1 = ((s_3 when false(s_1)) when true(s_2_0));
+  s_3_0_0 = ((s_3 when false(s_1)) when false(s_2_0));
   s_2_0 = (s_2 when false(s_1))
 tel
 
@@ -233,11 +697,11 @@ let
   ns_1 = merge ck_2_1 (true -> ns_St_1_Off_1)(false -> ns_St_1_On_1);
   nr = merge ck_2_1 (true -> nr_St_1_Off)(false -> nr_St_1_On);
   ck_1 = true fby ns_1;
-  r_St_1_Off = if (c when true(ck_1)) then true else (pnr when true(ck_1));
-  s_St_1_Off_1 = if (c when true(ck_1)) then false else true;
-  r_St_1_On = if v then true else (pnr when false(ck_1));
-  s_St_1_On_1 = if v then true else false;
-  v = not((c when false(ck_1)));
+  r_St_1_Off = if v then true else (pnr when true(ck_1));
+  s_St_1_Off_1 = if v then false else true;
+  v = not((c when true(ck_1)));
+  r_St_1_On = if (c when false(ck_1)) then true else (pnr when false(ck_1));
+  s_St_1_On_1 = if (c when false(ck_1)) then true else false;
   s_1 = merge ck_1 (true -> s_St_1_Off_1)(false -> s_St_1_On_1);
   r = merge ck_1 (true -> r_St_1_Off)(false -> r_St_1_On)
 tel
@@ -261,129 +725,920 @@ let
   ns_1 = merge ck_3_1 (true -> ns_St_2_Off_1)(false -> ns_St_2_On_1);
   nr = merge ck_3_1 (true -> nr_St_2_Off)(false -> nr_St_2_On);
   ck_1 = true fby ns_1;
-  r_St_2_Off = if (c when true(ck_1)) then true else (pnr when true(ck_1));
-  s_St_2_Off_1 = if (c when true(ck_1)) then false else true;
-  r_St_2_On = if v then true else (pnr when false(ck_1));
-  s_St_2_On_1 = if v then true else false;
-  v = not((c when false(ck_1)));
+  r_St_2_Off = if v then true else (pnr when true(ck_1));
+  s_St_2_Off_1 = if v then false else true;
+  v = not((c when true(ck_1)));
+  r_St_2_On = if (c when false(ck_1)) then true else (pnr when false(ck_1));
+  s_St_2_On_1 = if (c when false(ck_1)) then true else false;
   s_1 = merge ck_1 (true -> s_St_2_Off_1)(false -> s_St_2_On_1);
   r = merge ck_1 (true -> r_St_2_Off)(false -> r_St_2_On)
 tel
 
 node greenhouse(t_in : int; time : int)
-returns (heating_on : bool; cooling_on : bool)
+returns (heating_on : bool; cooling_on : bool; d : bool; m : bool; a : bool;
+          n : bool)
 contract
-  var t2 : bool; t1 : bool; n : bool; a : bool; m : bool; d : bool;
-      both_on : bool; too_cold : bool; too_hot : bool; v : bool; v_40 : bool;
-      v_41 : bool; v_42 : bool; v_43 : bool; v_44 : bool; v_45 : bool;
-      v_46 : bool; v_47 : bool; v_48 : bool; v_49 : bool; v_50 : bool;
-      v_51 : bool; v_52 : bool; v_53 : bool; v_54 : bool; v_55 : bool;
+  var t4 : bool; t3 : bool; t2 : bool; t1 : bool; both_on : bool;
+      too_cold : bool; too_hot : bool; v : bool; v_54 : bool; v_55 : bool;
       v_56 : bool; v_57 : bool; v_58 : bool; v_59 : bool; v_60 : bool;
-      v_61 : bool; v_62 : bool; v_63 : bool; v_64 : bool; v_65 : bool;
-      v_66 : bool; v_67 : bool; v_68 : bool; v_69 : bool; v_70 : bool;
-      v_71 : bool;
+      v_61 : bool; v_62 : bool; v_63 : bool; v_64 : bool;
   let
-    v = (t_in > 25);
-    v_40 = (d & v);
-    v_41 = (t_in > 20);
-    v_42 = (m & v_41);
-    v_43 = (v_40 or v_42);
-    v_44 = (t_in > 15);
-    v_45 = (a & v_44);
-    v_46 = (v_43 or v_45);
-    v_47 = (t_in > 30);
-    v_48 = (n & v_47);
-    t2 = (v_46 or v_48);
-    v_49 = (t_in < 20);
-    v_50 = (d & v_49);
-    v_51 = (t_in < 15);
-    v_52 = (m & v_51);
-    v_53 = (v_50 or v_52);
-    v_54 = (t_in < 10);
-    v_55 = (a & v_54);
-    v_56 = (v_53 or v_55);
-    v_57 = (t_in < 25);
-    v_58 = (n & v_57);
-    t1 = (v_56 or v_58);
-    (d, m, a, n) = shift(time);
-    both_on = (heating_on & cooling_on);
-    v_59 = (t_in < 5);
-    too_cold = (cooling_on & v_59);
-    v_60 = (t_in > 35);
-    too_hot = (heating_on & v_60);
-    v_61 = not(too_hot);
-    v_62 = not(too_cold);
-    v_63 = (v_61 & v_62);
-    v_64 = not(both_on);
-    v_65 = (v_63 & v_64);
-    v_66 = not(t1);
-    v_67 = (v_66 or heating_on);
-    v_68 = (v_65 & v_67);
-    v_69 = not(t2);
-    v_70 = (v_69 or cooling_on);
-    v_71 = (v_68 & v_70)
+    v = not(t2);
+    v_54 = not(heating_on);
+    v_55 = (cooling_on & v_54);
+    t4 = (v or v_55);
+    v_56 = not(t1);
+    v_57 = not(cooling_on);
+    v_58 = (heating_on & v_57);
+    t3 = (v_56 or v_58);
+    v_59 = (t_in > 25);
+    t2 = (d & v_59);
+    v_60 = (t_in < 20);
+    t1 = (d & v_60);
+    both_on = true;
+    too_cold = true;
+    too_hot = true;
+    v_61 = (too_hot & too_cold);
+    v_62 = (v_61 & both_on);
+    v_63 = (v_62 & t3);
+    v_64 = (v_63 & t4)
   tel
-  assume true@ enforce v_71] with (c2 : bool; c1 : bool)
-                 var nr_St_3_On : bool; ns_St_3_On_1 : bool;
-                     status_1_St_3_On : bool; nr_St_3_Off : bool;
-                     ns_St_3_Off_1 : bool; status_1_St_3_Off : bool;
-                     ck_6_1 : bool; v_73 : bool; r_St_3_On : bool;
-                     s_St_3_On_1 : bool; r_St_3_Off : bool;
-                     s_St_3_Off_1 : bool; ck_5_1 : bool; nr_1_St_4_On : bool;
-                     ns_1_St_4_On_1 : bool; status_St_4_On : bool;
-                     nr_1_St_4_Off : bool; ns_1_St_4_Off_1 : bool;
-                     status_St_4_Off : bool; ck_4_1 : bool; v_72 : bool;
-                     r_1_St_4_On : bool; s_1_St_4_On_1 : bool;
-                     r_1_St_4_Off : bool; s_1_St_4_Off_1 : bool; ck_1 : bool;
+  assume true@ enforce v_64] with (c2 : bool; c1 : bool)
+                 var v_223 : bool; v_222 : bool; v_221 : bool; v_220 : bool;
+                     v_219 : bool; v_218 : bool; v_217 : bool; v_216 : bool;
+                     v_215 : bool; v_214 : bool; v_213 : bool; v_212 : bool;
+                     v_211 : bool; v_210 : bool; v_209 : bool; v_208 : bool;
+                     v_207 : bool; v_206 : bool; v_205 : bool; v_204 : bool;
+                     v_203 : bool; v_202 : bool; v_201 : bool; v_200 : bool;
+                     v_199 : bool; v_198 : bool; v_197 : bool; v_196 : bool;
+                     v_195 : bool; v_194 : bool; v_193 : bool; v_192 : bool;
+                     v_191 : bool; v_190 : bool; v_189 : bool; v_188 : bool;
+                     v_187 : bool; v_186 : bool; v_185 : bool; v_184 : bool;
+                     ns_St_3_Night_2_0 : bool; ns_St_3_Night_3_0_0 : bool;
+                     ns_St_3_Night_3_0_1 : bool; ns_St_3_Night_2_1 : bool;
+                     ns_St_3_Night_3_1_0 : bool; ns_St_3_Night_3_1_1 : bool;
+                     ns_St_3_Afternoon_2_0 : bool;
+                     ns_St_3_Afternoon_3_0_0 : bool;
+                     ns_St_3_Afternoon_3_0_1 : bool;
+                     ns_St_3_Afternoon_2_1 : bool;
+                     ns_St_3_Afternoon_3_1_0 : bool;
+                     ns_St_3_Afternoon_3_1_1 : bool;
+                     ns_St_3_Morning_2_0 : bool;
+                     ns_St_3_Morning_3_0_0 : bool;
+                     ns_St_3_Morning_3_0_1 : bool;
+                     ns_St_3_Morning_2_1 : bool;
+                     ns_St_3_Morning_3_1_0 : bool;
+                     ns_St_3_Morning_3_1_1 : bool; ns_St_3_Dawn_2_0 : bool;
+                     ns_St_3_Dawn_3_0_0 : bool; ns_St_3_Dawn_3_0_1 : bool;
+                     ns_St_3_Dawn_2_1 : bool; ns_St_3_Dawn_3_1_0 : bool;
+                     ns_St_3_Dawn_3_1_1 : bool; ns_St_3_Start_2_0 : bool;
+                     ns_St_3_Start_3_0_0 : bool; ns_St_3_Start_3_0_1 : bool;
+                     ns_St_3_Start_2_1 : bool; ns_St_3_Start_3_1_0 : bool;
+                     ns_St_3_Start_3_1_1 : bool; ck_8_2_0 : bool;
+                     ck_8_3_0_0 : bool; ck_8_3_0_1 : bool; ck_8_2_1 : bool;
+                     ck_8_3_1_0 : bool; ck_8_3_1_1 : bool;
+                     nr_St_3_Night : bool; ns_St_3_Night_3 : bool;
+                     ns_St_3_Night_2 : bool; ns_St_3_Night_1 : bool;
+                     n_1_St_3_Night : bool; a_1_St_3_Night : bool;
+                     m_1_St_3_Night : bool; d_1_St_3_Night : bool;
+                     nr_St_3_Afternoon : bool; ns_St_3_Afternoon_3 : bool;
+                     ns_St_3_Afternoon_2 : bool; ns_St_3_Afternoon_1 : bool;
+                     n_1_St_3_Afternoon : bool; a_1_St_3_Afternoon : bool;
+                     m_1_St_3_Afternoon : bool; d_1_St_3_Afternoon : bool;
+                     nr_St_3_Morning : bool; ns_St_3_Morning_3 : bool;
+                     ns_St_3_Morning_2 : bool; ns_St_3_Morning_1 : bool;
+                     n_1_St_3_Morning : bool; a_1_St_3_Morning : bool;
+                     m_1_St_3_Morning : bool; d_1_St_3_Morning : bool;
+                     nr_St_3_Dawn : bool; ns_St_3_Dawn_3 : bool;
+                     ns_St_3_Dawn_2 : bool; ns_St_3_Dawn_1 : bool;
+                     n_1_St_3_Dawn : bool; a_1_St_3_Dawn : bool;
+                     m_1_St_3_Dawn : bool; d_1_St_3_Dawn : bool;
+                     nr_St_3_Start : bool; ns_St_3_Start_3 : bool;
+                     ns_St_3_Start_2 : bool; ns_St_3_Start_1 : bool;
+                     n_1_St_3_Start : bool; a_1_St_3_Start : bool;
+                     m_1_St_3_Start : bool; d_1_St_3_Start : bool;
+                     ck_8_3 : bool; ck_8_2 : bool; ck_8_1 : bool;
+                     v_119_2_0 : bool; v_119_3_0_0 : bool;
+                     v_119_3_0_1 : bool; v_119_2_1 : bool;
+                     v_119_3_1_0 : bool; v_119_3_1_1 : bool;
+                     v_117_2_0 : bool; v_117_3_0_0 : bool;
+                     v_117_3_0_1 : bool; v_117_2_1 : bool;
+                     v_117_3_1_0 : bool; v_117_3_1_1 : bool;
+                     v_115_2_0 : bool; v_115_3_0_0 : bool;
+                     v_115_3_0_1 : bool; v_115_2_1 : bool;
+                     v_115_3_1_0 : bool; v_115_3_1_1 : bool; v_120 : bool;
+                     v_119_3 : bool; v_119_2 : bool; v_119_1 : bool;
+                     v_118 : bool; v_117_3 : bool; v_117_2 : bool;
+                     v_117_1 : bool; v_116 : bool; v_115_3 : bool;
+                     v_115_2 : bool; v_115_1 : bool; v_114 : bool;
+                     v_113 : bool; v_112 : bool; v_111 : bool; v_110 : bool;
+                     v_109 : bool; v_108 : bool; v_107 : bool;
+                     v_105_2_0 : bool; v_105_3_0_0 : bool;
+                     v_105_3_0_1 : bool; v_105_2_1 : bool;
+                     v_105_3_1_0 : bool; v_105_3_1_1 : bool;
+                     v_103_2_0 : bool; v_103_3_0_0 : bool;
+                     v_103_3_0_1 : bool; v_103_2_1 : bool;
+                     v_103_3_1_0 : bool; v_103_3_1_1 : bool; v_106 : bool;
+                     v_105_3 : bool; v_105_2 : bool; v_105_1 : bool;
+                     v_104 : bool; v_103_3 : bool; v_103_2 : bool;
+                     v_103_1 : bool; v_102 : bool; v_101 : bool;
+                     v_100 : bool; v_99 : bool; v_98 : bool; v_97 : bool;
+                     v_96 : bool; v_94_2_0 : bool; v_94_3_0_0 : bool;
+                     v_94_3_0_1 : bool; v_94_2_1 : bool; v_94_3_1_0 : bool;
+                     v_94_3_1_1 : bool; v_92_2_0 : bool; v_92_3_0_0 : bool;
+                     v_92_3_0_1 : bool; v_92_2_1 : bool; v_92_3_1_0 : bool;
+                     v_92_3_1_1 : bool; v_95 : bool; v_94_3 : bool;
+                     v_94_2 : bool; v_94_1 : bool; v_93 : bool;
+                     v_92_3 : bool; v_92_2 : bool; v_92_1 : bool;
+                     v_91 : bool; v_90 : bool; v_89 : bool; v_88 : bool;
+                     v_87 : bool; v_85_2_0 : bool; v_85_3_0_0 : bool;
+                     v_85_3_0_1 : bool; v_85_2_1 : bool; v_85_3_1_0 : bool;
+                     v_85_3_1_1 : bool; v_83_2_0 : bool; v_83_3_0_0 : bool;
+                     v_83_3_0_1 : bool; v_83_2_1 : bool; v_83_3_1_0 : bool;
+                     v_83_3_1_1 : bool; v_86 : bool; v_85_3 : bool;
+                     v_85_2 : bool; v_85_1 : bool; v_84 : bool;
+                     v_83_3 : bool; v_83_2 : bool; v_83_1 : bool;
+                     v_82 : bool; v_81 : bool; v_80 : bool; v_79 : bool;
+                     v_78 : bool; v_76_2_0 : bool; v_76_3_0_0 : bool;
+                     v_76_3_0_1 : bool; v_76_2_1 : bool; v_76_3_1_0 : bool;
+                     v_76_3_1_1 : bool; v_74_2_0 : bool; v_74_3_0_0 : bool;
+                     v_74_3_0_1 : bool; v_74_2_1 : bool; v_74_3_1_0 : bool;
+                     v_74_3_1_1 : bool; v_77 : bool; v_76_3 : bool;
+                     v_76_2 : bool; v_76_1 : bool; v_75 : bool;
+                     v_74_3 : bool; v_74_2 : bool; v_74_1 : bool;
+                     v_73 : bool; v_72 : bool; v_71 : bool; v_70 : bool;
+                     v_69 : bool; v_68 : bool; v_67 : bool; v_246 : bool;
+                     v_245 : bool; v_244 : bool; v_243 : bool; v_242 : bool;
+                     v_241 : bool; v_240 : bool; v_239 : bool; v_238 : bool;
+                     v_237 : bool; v_236 : bool; v_235 : bool; v_234 : bool;
+                     v_233 : bool; v_232 : bool; v_231 : bool; v_230 : bool;
+                     v_229 : bool; v_228 : bool; v_227 : bool; v_226 : bool;
+                     v_225 : bool; v_224 : bool; s_St_3_Night_2_0 : bool;
+                     s_St_3_Night_3_0_0 : bool; s_St_3_Night_3_0_1 : bool;
+                     s_St_3_Night_2_1 : bool; s_St_3_Night_3_1_0 : bool;
+                     s_St_3_Night_3_1_1 : bool; s_St_3_Afternoon_2_0 : bool;
+                     s_St_3_Afternoon_3_0_0 : bool;
+                     s_St_3_Afternoon_3_0_1 : bool;
+                     s_St_3_Afternoon_2_1 : bool;
+                     s_St_3_Afternoon_3_1_0 : bool;
+                     s_St_3_Afternoon_3_1_1 : bool;
+                     s_St_3_Morning_2_0 : bool; s_St_3_Morning_3_0_0 : bool;
+                     s_St_3_Morning_3_0_1 : bool; s_St_3_Morning_2_1 : bool;
+                     s_St_3_Morning_3_1_0 : bool;
+                     s_St_3_Morning_3_1_1 : bool; s_St_3_Dawn_2_0 : bool;
+                     s_St_3_Dawn_3_0_0 : bool; s_St_3_Dawn_3_0_1 : bool;
+                     s_St_3_Dawn_2_1 : bool; s_St_3_Dawn_3_1_0 : bool;
+                     s_St_3_Dawn_3_1_1 : bool; s_St_3_Start_2_0 : bool;
+                     s_St_3_Start_3_0_0 : bool; s_St_3_Start_3_0_1 : bool;
+                     s_St_3_Start_2_1 : bool; s_St_3_Start_3_1_0 : bool;
+                     s_St_3_Start_3_1_1 : bool; ck_7_2_0 : bool;
+                     ck_7_3_0_0 : bool; ck_7_3_0_1 : bool; ck_7_2_1 : bool;
+                     ck_7_3_1_0 : bool; ck_7_3_1_1 : bool;
+                     r_St_3_Night : bool; s_St_3_Night_3 : bool;
+                     s_St_3_Night_2 : bool; s_St_3_Night_1 : bool;
+                     r_St_3_Afternoon : bool; s_St_3_Afternoon_3 : bool;
+                     s_St_3_Afternoon_2 : bool; s_St_3_Afternoon_1 : bool;
+                     r_St_3_Morning : bool; s_St_3_Morning_3 : bool;
+                     s_St_3_Morning_2 : bool; s_St_3_Morning_1 : bool;
+                     r_St_3_Dawn : bool; s_St_3_Dawn_3 : bool;
+                     s_St_3_Dawn_2 : bool; s_St_3_Dawn_1 : bool;
+                     r_St_3_Start : bool; s_St_3_Start_3 : bool;
+                     s_St_3_Start_2 : bool; s_St_3_Start_1 : bool;
+                     ck_7_3 : bool; ck_7_2 : bool; ck_7_1 : bool;
+                     nr_1_St_4_On : bool; ns_1_St_4_On_1 : bool;
+                     status_1_St_4_On : bool; nr_1_St_4_Off : bool;
+                     ns_1_St_4_Off_1 : bool; status_1_St_4_Off : bool;
+                     ck_6_1 : bool; v_66 : bool; r_1_St_4_On : bool;
+                     s_1_St_4_On_1 : bool; r_1_St_4_Off : bool;
+                     s_1_St_4_Off_1 : bool; ck_5_1 : bool;
+                     nr_2_St_5_On : bool; ns_2_St_5_On_1 : bool;
+                     status_St_5_On : bool; nr_2_St_5_Off : bool;
+                     ns_2_St_5_Off_1 : bool; status_St_5_Off : bool;
+                     ck_4_1 : bool; v_65 : bool; r_2_St_5_On : bool;
+                     s_2_St_5_On_1 : bool; r_2_St_5_Off : bool;
+                     s_2_St_5_Off_1 : bool; ck_1 : bool; s_2_2_0 : bool;
+                     s_3_0_0 : bool; s_3_0_1 : bool; s_2_2_1 : bool;
+                     s_3_1_0 : bool; s_3_1_1 : bool; ns_2_2_0 : bool;
+                     ns_3_0_0 : bool; ns_3_0_1 : bool; ns_2_2_1 : bool;
+                     ns_3_1_0 : bool; ns_3_1_1 : bool; s_2_1 : bool;
+                     ns_2_1 : bool; r_2 : bool; nr_2 : bool; pnr_2 : bool;
                      s_1_1 : bool; ns_1_1 : bool; r_1 : bool; nr_1 : bool;
-                     pnr_1 : bool; s_1_2 : bool; ns_1_2 : bool; r : bool;
-                     nr : bool; pnr : bool; c_1 : bool; status_1 : bool;
-                     c : bool; status : bool;
+                     pnr_1 : bool; s_3 : bool; s_2_2 : bool; s_1_2 : bool;
+                     ns_3 : bool; ns_2_2 : bool; ns_1_2 : bool; r : bool;
+                     nr : bool; pnr : bool; time_1 : int; d_1 : bool;
+                     m_1 : bool; a_1 : bool; n_1 : bool; c_1 : bool;
+                     status_1 : bool; c : bool; status : bool;
   let
-    c_1 = c2;
+    time_1 = time;
     pnr = false fby nr;
-    ck_6_1 = s_1_2;
-    status_1_St_3_Off = false;
-    nr_St_3_Off = false;
-    ns_St_3_Off_1 = true;
-    status_1_St_3_On = true;
-    nr_St_3_On = false;
-    ns_St_3_On_1 = false;
-    status_1 =
-      merge ck_6_1 (true -> status_1_St_3_Off)(false -> status_1_St_3_On);
-    ns_1_2 = merge ck_6_1 (true -> ns_St_3_Off_1)(false -> ns_St_3_On_1);
-    nr = merge ck_6_1 (true -> nr_St_3_Off)(false -> nr_St_3_On);
-    ck_5_1 = true fby ns_1_2;
-    r_St_3_Off =
-      if (c_1 when true(ck_5_1)) then true else (pnr when true(ck_5_1));
-    s_St_3_Off_1 = if (c_1 when true(ck_5_1)) then false else true;
-    r_St_3_On = if v_73 then true else (pnr when false(ck_5_1));
-    s_St_3_On_1 = if v_73 then true else false;
-    v_73 = not((c_1 when false(ck_5_1)));
-    s_1_2 = merge ck_5_1 (true -> s_St_3_Off_1)(false -> s_St_3_On_1);
-    r = merge ck_5_1 (true -> r_St_3_Off)(false -> r_St_3_On);
-    c = c1;
+    ck_8_1 = s_1_2;
+    ck_8_2 = s_2_2;
+    ck_8_3 = s_3;
+    d_1_St_3_Start = false;
+    m_1_St_3_Start = false;
+    a_1_St_3_Start = false;
+    n_1_St_3_Start = false;
+    nr_St_3_Start = false;
+    ns_St_3_Start_1 = false;
+    ns_St_3_Start_2 = false;
+    ns_St_3_Start_3 = false;
+    d_1_St_3_Dawn = true;
+    m_1_St_3_Dawn = false;
+    a_1_St_3_Dawn = false;
+    n_1_St_3_Dawn = false;
+    nr_St_3_Dawn = false;
+    ns_St_3_Dawn_1 = true;
+    ns_St_3_Dawn_2 = true;
+    ns_St_3_Dawn_3 = false;
+    d_1_St_3_Morning = false;
+    m_1_St_3_Morning = true;
+    a_1_St_3_Morning = false;
+    n_1_St_3_Morning = false;
+    nr_St_3_Morning = false;
+    ns_St_3_Morning_1 = true;
+    ns_St_3_Morning_2 = false;
+    ns_St_3_Morning_3 = false;
+    d_1_St_3_Afternoon = false;
+    m_1_St_3_Afternoon = false;
+    a_1_St_3_Afternoon = true;
+    n_1_St_3_Afternoon = false;
+    nr_St_3_Afternoon = false;
+    ns_St_3_Afternoon_1 = true;
+    ns_St_3_Afternoon_2 = true;
+    ns_St_3_Afternoon_3 = true;
+    d_1_St_3_Night = false;
+    m_1_St_3_Night = false;
+    a_1_St_3_Night = false;
+    n_1_St_3_Night = true;
+    nr_St_3_Night = false;
+    ns_St_3_Night_1 = false;
+    ns_St_3_Night_2 = false;
+    ns_St_3_Night_3 = true;
+    v_184 =
+      merge ck_8_3_1_1 (true -> d_1_St_3_Afternoon)(false -> d_1_St_3_Dawn);
+    v_185 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> d_1_St_3_Morning);
+    v_186 = merge ck_8_2_1 (true -> v_184)(false -> v_185);
+    v_187 =
+      merge ck_8_3_0_0 (true -> d_1_St_3_Night)(false -> d_1_St_3_Start);
+    v_188 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_187);
+    d_1 = merge ck_8_1 (true -> v_186)(false -> v_188);
+    v_189 =
+      merge ck_8_3_1_1 (true -> m_1_St_3_Afternoon)(false -> m_1_St_3_Dawn);
+    v_190 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> m_1_St_3_Morning);
+    v_191 = merge ck_8_2_1 (true -> v_189)(false -> v_190);
+    v_192 =
+      merge ck_8_3_0_0 (true -> m_1_St_3_Night)(false -> m_1_St_3_Start);
+    v_193 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_192);
+    m_1 = merge ck_8_1 (true -> v_191)(false -> v_193);
+    v_194 =
+      merge ck_8_3_1_1 (true -> a_1_St_3_Afternoon)(false -> a_1_St_3_Dawn);
+    v_195 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> a_1_St_3_Morning);
+    v_196 = merge ck_8_2_1 (true -> v_194)(false -> v_195);
+    v_197 =
+      merge ck_8_3_0_0 (true -> a_1_St_3_Night)(false -> a_1_St_3_Start);
+    v_198 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_197);
+    a_1 = merge ck_8_1 (true -> v_196)(false -> v_198);
+    v_199 =
+      merge ck_8_3_1_1 (true -> n_1_St_3_Afternoon)(false -> n_1_St_3_Dawn);
+    v_200 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> n_1_St_3_Morning);
+    v_201 = merge ck_8_2_1 (true -> v_199)(false -> v_200);
+    v_202 =
+      merge ck_8_3_0_0 (true -> n_1_St_3_Night)(false -> n_1_St_3_Start);
+    v_203 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_202);
+    n_1 = merge ck_8_1 (true -> v_201)(false -> v_203);
+    v_204 =
+      merge ck_8_3_1_1 (true -> ns_St_3_Afternoon_1)(false -> ns_St_3_Dawn_1);
+    v_205 =
+      merge ck_8_3_1_1 (true -> ns_St_3_Afternoon_2)(false -> ns_St_3_Dawn_2);
+    v_206 =
+      merge ck_8_3_1_1 (true -> ns_St_3_Afternoon_3)(false -> ns_St_3_Dawn_3);
+    v_207 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> ns_St_3_Morning_1);
+    v_208 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> ns_St_3_Morning_2);
+    v_209 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> ns_St_3_Morning_3);
+    v_210 =
+      merge ck_8_3_0_0 (true -> ns_St_3_Night_1)(false -> ns_St_3_Start_1);
+    v_211 =
+      merge ck_8_3_0_0 (true -> ns_St_3_Night_2)(false -> ns_St_3_Start_2);
+    v_212 =
+      merge ck_8_3_0_0 (true -> ns_St_3_Night_3)(false -> ns_St_3_Start_3);
+    v_213 = merge ck_8_2_1 (true -> v_204)(false -> v_207);
+    v_214 = merge ck_8_2_1 (true -> v_205)(false -> v_208);
+    v_215 = merge ck_8_2_1 (true -> v_206)(false -> v_209);
+    v_216 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_210);
+    v_217 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_211);
+    v_218 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_212);
+    ns_1_2 = merge ck_8_1 (true -> v_213)(false -> v_216);
+    ns_2_2 = merge ck_8_1 (true -> v_214)(false -> v_217);
+    ns_3 = merge ck_8_1 (true -> v_215)(false -> v_218);
+    v_219 =
+      merge ck_8_3_1_1 (true -> nr_St_3_Afternoon)(false -> nr_St_3_Dawn);
+    v_220 =
+      merge ck_8_3_1_0
+        (true -> 
+          (((true when true(ck_8_1)) when false(ck_8_2_1))
+            when true(ck_8_3_1_0)))
+        (false -> nr_St_3_Morning);
+    v_221 = merge ck_8_2_1 (true -> v_219)(false -> v_220);
+    v_222 = merge ck_8_3_0_0 (true -> nr_St_3_Night)(false -> nr_St_3_Start);
+    v_223 =
+      merge ck_8_2_0
+        (true -> ((true when false(ck_8_1)) when true(ck_8_2_0)))
+        (false -> v_222);
+    nr = merge ck_8_1 (true -> v_221)(false -> v_223);
+    ck_8_3_1_1 = ((ck_8_3 when true(ck_8_1)) when true(ck_8_2_1));
+    ck_8_3_1_0 = ((ck_8_3 when true(ck_8_1)) when false(ck_8_2_1));
+    ck_8_2_1 = (ck_8_2 when true(ck_8_1));
+    ck_8_3_0_1 = ((ck_8_3 when false(ck_8_1)) when true(ck_8_2_0));
+    ck_8_3_0_0 = ((ck_8_3 when false(ck_8_1)) when false(ck_8_2_0));
+    ck_8_2_0 = (ck_8_2 when false(ck_8_1));
+    ns_St_3_Start_3_1_1 =
+      ((ns_St_3_Start_3 when true(ns_St_3_Start_1))
+        when true(ns_St_3_Start_2_1));
+    ns_St_3_Start_3_1_0 =
+      ((ns_St_3_Start_3 when true(ns_St_3_Start_1))
+        when false(ns_St_3_Start_2_1));
+    ns_St_3_Start_2_1 = (ns_St_3_Start_2 when true(ns_St_3_Start_1));
+    ns_St_3_Start_3_0_1 =
+      ((ns_St_3_Start_3 when false(ns_St_3_Start_1))
+        when true(ns_St_3_Start_2_0));
+    ns_St_3_Start_3_0_0 =
+      ((ns_St_3_Start_3 when false(ns_St_3_Start_1))
+        when false(ns_St_3_Start_2_0));
+    ns_St_3_Start_2_0 = (ns_St_3_Start_2 when false(ns_St_3_Start_1));
+    ns_St_3_Dawn_3_1_1 =
+      ((ns_St_3_Dawn_3 when true(ns_St_3_Dawn_1))
+        when true(ns_St_3_Dawn_2_1));
+    ns_St_3_Dawn_3_1_0 =
+      ((ns_St_3_Dawn_3 when true(ns_St_3_Dawn_1))
+        when false(ns_St_3_Dawn_2_1));
+    ns_St_3_Dawn_2_1 = (ns_St_3_Dawn_2 when true(ns_St_3_Dawn_1));
+    ns_St_3_Dawn_3_0_1 =
+      ((ns_St_3_Dawn_3 when false(ns_St_3_Dawn_1))
+        when true(ns_St_3_Dawn_2_0));
+    ns_St_3_Dawn_3_0_0 =
+      ((ns_St_3_Dawn_3 when false(ns_St_3_Dawn_1))
+        when false(ns_St_3_Dawn_2_0));
+    ns_St_3_Dawn_2_0 = (ns_St_3_Dawn_2 when false(ns_St_3_Dawn_1));
+    ns_St_3_Morning_3_1_1 =
+      ((ns_St_3_Morning_3 when true(ns_St_3_Morning_1))
+        when true(ns_St_3_Morning_2_1));
+    ns_St_3_Morning_3_1_0 =
+      ((ns_St_3_Morning_3 when true(ns_St_3_Morning_1))
+        when false(ns_St_3_Morning_2_1));
+    ns_St_3_Morning_2_1 = (ns_St_3_Morning_2 when true(ns_St_3_Morning_1));
+    ns_St_3_Morning_3_0_1 =
+      ((ns_St_3_Morning_3 when false(ns_St_3_Morning_1))
+        when true(ns_St_3_Morning_2_0));
+    ns_St_3_Morning_3_0_0 =
+      ((ns_St_3_Morning_3 when false(ns_St_3_Morning_1))
+        when false(ns_St_3_Morning_2_0));
+    ns_St_3_Morning_2_0 = (ns_St_3_Morning_2 when false(ns_St_3_Morning_1));
+    ns_St_3_Afternoon_3_1_1 =
+      ((ns_St_3_Afternoon_3 when true(ns_St_3_Afternoon_1))
+        when true(ns_St_3_Afternoon_2_1));
+    ns_St_3_Afternoon_3_1_0 =
+      ((ns_St_3_Afternoon_3 when true(ns_St_3_Afternoon_1))
+        when false(ns_St_3_Afternoon_2_1));
+    ns_St_3_Afternoon_2_1 =
+      (ns_St_3_Afternoon_2 when true(ns_St_3_Afternoon_1));
+    ns_St_3_Afternoon_3_0_1 =
+      ((ns_St_3_Afternoon_3 when false(ns_St_3_Afternoon_1))
+        when true(ns_St_3_Afternoon_2_0));
+    ns_St_3_Afternoon_3_0_0 =
+      ((ns_St_3_Afternoon_3 when false(ns_St_3_Afternoon_1))
+        when false(ns_St_3_Afternoon_2_0));
+    ns_St_3_Afternoon_2_0 =
+      (ns_St_3_Afternoon_2 when false(ns_St_3_Afternoon_1));
+    ns_St_3_Night_3_1_1 =
+      ((ns_St_3_Night_3 when true(ns_St_3_Night_1))
+        when true(ns_St_3_Night_2_1));
+    ns_St_3_Night_3_1_0 =
+      ((ns_St_3_Night_3 when true(ns_St_3_Night_1))
+        when false(ns_St_3_Night_2_1));
+    ns_St_3_Night_2_1 = (ns_St_3_Night_2 when true(ns_St_3_Night_1));
+    ns_St_3_Night_3_0_1 =
+      ((ns_St_3_Night_3 when false(ns_St_3_Night_1))
+        when true(ns_St_3_Night_2_0));
+    ns_St_3_Night_3_0_0 =
+      ((ns_St_3_Night_3 when false(ns_St_3_Night_1))
+        when false(ns_St_3_Night_2_0));
+    ns_St_3_Night_2_0 = (ns_St_3_Night_2 when false(ns_St_3_Night_1));
+    v_224 = false fby ns_1_2;
+    v_225 = false fby ns_2_2;
+    v_226 = false fby ns_3;
+    ck_7_1 = v_224;
+    ck_7_2 = v_225;
+    ck_7_3 = v_226;
+    r_St_3_Start = if v_107 then true else v_120;
+    s_St_3_Start_1 = if v_107 then true else v_119_1;
+    s_St_3_Start_2 = if v_107 then true else v_119_2;
+    s_St_3_Start_3 = if v_107 then false else v_119_3;
+    v_120 = if v_110 then true else v_118;
+    v_119_1 = if v_110 then true else v_117_1;
+    v_119_2 = if v_110 then false else v_117_2;
+    v_119_3 = if v_110 then false else v_117_3;
+    v_118 = if v_113 then true else v_116;
+    v_117_1 = if v_113 then true else v_115_1;
+    v_117_2 = if v_113 then true else v_115_2;
+    v_117_3 = if v_113 then true else v_115_3;
+    v_116 =
+      if v_114
+      then true
+      else (((pnr when false(ck_7_1)) when false(ck_7_2_0))
+             when false(ck_7_3_0_0))
+        ;
+    v_115_1 = if v_114 then false else false;
+    v_115_2 = if v_114 then false else false;
+    v_115_3 = if v_114 then true else false;
+    v_114 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when false(ck_7_3_0_0))
+       >= 17);
+    v_113 = (v_111 & v_112);
+    v_112 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when false(ck_7_3_0_0))
+       < 17);
+    v_111 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when false(ck_7_3_0_0))
+       >= 12);
+    v_110 = (v_108 & v_109);
+    v_109 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when false(ck_7_3_0_0))
+       < 12);
+    v_108 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when false(ck_7_3_0_0))
+       >= 8);
+    v_107 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when false(ck_7_3_0_0))
+       < 8);
+    v_115_3_1_1 = ((v_115_3 when true(v_115_1)) when true(v_115_2_1));
+    v_115_3_1_0 = ((v_115_3 when true(v_115_1)) when false(v_115_2_1));
+    v_115_2_1 = (v_115_2 when true(v_115_1));
+    v_115_3_0_1 = ((v_115_3 when false(v_115_1)) when true(v_115_2_0));
+    v_115_3_0_0 = ((v_115_3 when false(v_115_1)) when false(v_115_2_0));
+    v_115_2_0 = (v_115_2 when false(v_115_1));
+    v_117_3_1_1 = ((v_117_3 when true(v_117_1)) when true(v_117_2_1));
+    v_117_3_1_0 = ((v_117_3 when true(v_117_1)) when false(v_117_2_1));
+    v_117_2_1 = (v_117_2 when true(v_117_1));
+    v_117_3_0_1 = ((v_117_3 when false(v_117_1)) when true(v_117_2_0));
+    v_117_3_0_0 = ((v_117_3 when false(v_117_1)) when false(v_117_2_0));
+    v_117_2_0 = (v_117_2 when false(v_117_1));
+    v_119_3_1_1 = ((v_119_3 when true(v_119_1)) when true(v_119_2_1));
+    v_119_3_1_0 = ((v_119_3 when true(v_119_1)) when false(v_119_2_1));
+    v_119_2_1 = (v_119_2 when true(v_119_1));
+    v_119_3_0_1 = ((v_119_3 when false(v_119_1)) when true(v_119_2_0));
+    v_119_3_0_0 = ((v_119_3 when false(v_119_1)) when false(v_119_2_0));
+    v_119_2_0 = (v_119_2 when false(v_119_1));
+    r_St_3_Dawn = if v_98 then true else v_106;
+    s_St_3_Dawn_1 = if v_98 then true else v_105_1;
+    s_St_3_Dawn_2 = if v_98 then false else v_105_2;
+    s_St_3_Dawn_3 = if v_98 then false else v_105_3;
+    v_106 = if v_101 then true else v_104;
+    v_105_1 = if v_101 then true else v_103_1;
+    v_105_2 = if v_101 then true else v_103_2;
+    v_105_3 = if v_101 then true else v_103_3;
+    v_104 =
+      if v_102
+      then true
+      else (((pnr when true(ck_7_1)) when true(ck_7_2_1))
+             when false(ck_7_3_1_1))
+        ;
+    v_103_1 = if v_102 then false else true;
+    v_103_2 = if v_102 then false else true;
+    v_103_3 = if v_102 then true else false;
+    v_102 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when false(ck_7_3_1_1))
+       >= 17);
+    v_101 = (v_99 & v_100);
+    v_100 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when false(ck_7_3_1_1))
+       < 17);
+    v_99 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when false(ck_7_3_1_1))
+       >= 12);
+    v_98 = (v_96 & v_97);
+    v_97 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when false(ck_7_3_1_1))
+       < 12);
+    v_96 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when false(ck_7_3_1_1))
+       >= 8);
+    v_103_3_1_1 = ((v_103_3 when true(v_103_1)) when true(v_103_2_1));
+    v_103_3_1_0 = ((v_103_3 when true(v_103_1)) when false(v_103_2_1));
+    v_103_2_1 = (v_103_2 when true(v_103_1));
+    v_103_3_0_1 = ((v_103_3 when false(v_103_1)) when true(v_103_2_0));
+    v_103_3_0_0 = ((v_103_3 when false(v_103_1)) when false(v_103_2_0));
+    v_103_2_0 = (v_103_2 when false(v_103_1));
+    v_105_3_1_1 = ((v_105_3 when true(v_105_1)) when true(v_105_2_1));
+    v_105_3_1_0 = ((v_105_3 when true(v_105_1)) when false(v_105_2_1));
+    v_105_2_1 = (v_105_2 when true(v_105_1));
+    v_105_3_0_1 = ((v_105_3 when false(v_105_1)) when true(v_105_2_0));
+    v_105_3_0_0 = ((v_105_3 when false(v_105_1)) when false(v_105_2_0));
+    v_105_2_0 = (v_105_2 when false(v_105_1));
+    r_St_3_Morning = if v_87 then true else v_95;
+    s_St_3_Morning_1 = if v_87 then true else v_94_1;
+    s_St_3_Morning_2 = if v_87 then true else v_94_2;
+    s_St_3_Morning_3 = if v_87 then false else v_94_3;
+    v_95 = if v_90 then true else v_93;
+    v_94_1 = if v_90 then true else v_92_1;
+    v_94_2 = if v_90 then true else v_92_2;
+    v_94_3 = if v_90 then true else v_92_3;
+    v_93 =
+      if v_91
+      then true
+      else (((pnr when true(ck_7_1)) when false(ck_7_2_1))
+             when false(ck_7_3_1_0))
+        ;
+    v_92_1 = if v_91 then false else true;
+    v_92_2 = if v_91 then false else false;
+    v_92_3 = if v_91 then true else false;
+    v_91 =
+      ((((time_1 when true(ck_7_1)) when false(ck_7_2_1))
+         when false(ck_7_3_1_0))
+       >= 17);
+    v_90 = (v_88 & v_89);
+    v_89 =
+      ((((time_1 when true(ck_7_1)) when false(ck_7_2_1))
+         when false(ck_7_3_1_0))
+       < 17);
+    v_88 =
+      ((((time_1 when true(ck_7_1)) when false(ck_7_2_1))
+         when false(ck_7_3_1_0))
+       >= 12);
+    v_87 =
+      ((((time_1 when true(ck_7_1)) when false(ck_7_2_1))
+         when false(ck_7_3_1_0))
+       < 8);
+    v_92_3_1_1 = ((v_92_3 when true(v_92_1)) when true(v_92_2_1));
+    v_92_3_1_0 = ((v_92_3 when true(v_92_1)) when false(v_92_2_1));
+    v_92_2_1 = (v_92_2 when true(v_92_1));
+    v_92_3_0_1 = ((v_92_3 when false(v_92_1)) when true(v_92_2_0));
+    v_92_3_0_0 = ((v_92_3 when false(v_92_1)) when false(v_92_2_0));
+    v_92_2_0 = (v_92_2 when false(v_92_1));
+    v_94_3_1_1 = ((v_94_3 when true(v_94_1)) when true(v_94_2_1));
+    v_94_3_1_0 = ((v_94_3 when true(v_94_1)) when false(v_94_2_1));
+    v_94_2_1 = (v_94_2 when true(v_94_1));
+    v_94_3_0_1 = ((v_94_3 when false(v_94_1)) when true(v_94_2_0));
+    v_94_3_0_0 = ((v_94_3 when false(v_94_1)) when false(v_94_2_0));
+    v_94_2_0 = (v_94_2 when false(v_94_1));
+    r_St_3_Afternoon = if v_78 then true else v_86;
+    s_St_3_Afternoon_1 = if v_78 then true else v_85_1;
+    s_St_3_Afternoon_2 = if v_78 then true else v_85_2;
+    s_St_3_Afternoon_3 = if v_78 then false else v_85_3;
+    v_86 = if v_81 then true else v_84;
+    v_85_1 = if v_81 then true else v_83_1;
+    v_85_2 = if v_81 then false else v_83_2;
+    v_85_3 = if v_81 then false else v_83_3;
+    v_84 =
+      if v_82
+      then true
+      else (((pnr when true(ck_7_1)) when true(ck_7_2_1))
+             when true(ck_7_3_1_1))
+        ;
+    v_83_1 = if v_82 then false else true;
+    v_83_2 = if v_82 then false else true;
+    v_83_3 = if v_82 then true else true;
+    v_82 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when true(ck_7_3_1_1))
+       >= 17);
+    v_81 = (v_79 & v_80);
+    v_80 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when true(ck_7_3_1_1))
+       < 12);
+    v_79 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when true(ck_7_3_1_1))
+       >= 8);
+    v_78 =
+      ((((time_1 when true(ck_7_1)) when true(ck_7_2_1))
+         when true(ck_7_3_1_1))
+       < 8);
+    v_83_3_1_1 = ((v_83_3 when true(v_83_1)) when true(v_83_2_1));
+    v_83_3_1_0 = ((v_83_3 when true(v_83_1)) when false(v_83_2_1));
+    v_83_2_1 = (v_83_2 when true(v_83_1));
+    v_83_3_0_1 = ((v_83_3 when false(v_83_1)) when true(v_83_2_0));
+    v_83_3_0_0 = ((v_83_3 when false(v_83_1)) when false(v_83_2_0));
+    v_83_2_0 = (v_83_2 when false(v_83_1));
+    v_85_3_1_1 = ((v_85_3 when true(v_85_1)) when true(v_85_2_1));
+    v_85_3_1_0 = ((v_85_3 when true(v_85_1)) when false(v_85_2_1));
+    v_85_2_1 = (v_85_2 when true(v_85_1));
+    v_85_3_0_1 = ((v_85_3 when false(v_85_1)) when true(v_85_2_0));
+    v_85_3_0_0 = ((v_85_3 when false(v_85_1)) when false(v_85_2_0));
+    v_85_2_0 = (v_85_2 when false(v_85_1));
+    r_St_3_Night = if v_67 then true else v_77;
+    s_St_3_Night_1 = if v_67 then true else v_76_1;
+    s_St_3_Night_2 = if v_67 then true else v_76_2;
+    s_St_3_Night_3 = if v_67 then false else v_76_3;
+    v_77 = if v_70 then true else v_75;
+    v_76_1 = if v_70 then true else v_74_1;
+    v_76_2 = if v_70 then false else v_74_2;
+    v_76_3 = if v_70 then false else v_74_3;
+    v_75 =
+      if v_73
+      then true
+      else (((pnr when false(ck_7_1)) when false(ck_7_2_0))
+             when true(ck_7_3_0_0))
+        ;
+    v_74_1 = if v_73 then true else false;
+    v_74_2 = if v_73 then true else false;
+    v_74_3 = if v_73 then true else true;
+    v_73 = (v_71 & v_72);
+    v_72 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when true(ck_7_3_0_0))
+       < 17);
+    v_71 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when true(ck_7_3_0_0))
+       >= 12);
+    v_70 = (v_68 & v_69);
+    v_69 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when true(ck_7_3_0_0))
+       < 12);
+    v_68 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when true(ck_7_3_0_0))
+       >= 8);
+    v_67 =
+      ((((time_1 when false(ck_7_1)) when false(ck_7_2_0))
+         when true(ck_7_3_0_0))
+       < 8);
+    v_74_3_1_1 = ((v_74_3 when true(v_74_1)) when true(v_74_2_1));
+    v_74_3_1_0 = ((v_74_3 when true(v_74_1)) when false(v_74_2_1));
+    v_74_2_1 = (v_74_2 when true(v_74_1));
+    v_74_3_0_1 = ((v_74_3 when false(v_74_1)) when true(v_74_2_0));
+    v_74_3_0_0 = ((v_74_3 when false(v_74_1)) when false(v_74_2_0));
+    v_74_2_0 = (v_74_2 when false(v_74_1));
+    v_76_3_1_1 = ((v_76_3 when true(v_76_1)) when true(v_76_2_1));
+    v_76_3_1_0 = ((v_76_3 when true(v_76_1)) when false(v_76_2_1));
+    v_76_2_1 = (v_76_2 when true(v_76_1));
+    v_76_3_0_1 = ((v_76_3 when false(v_76_1)) when true(v_76_2_0));
+    v_76_3_0_0 = ((v_76_3 when false(v_76_1)) when false(v_76_2_0));
+    v_76_2_0 = (v_76_2 when false(v_76_1));
+    v_227 =
+      merge ck_7_3_1_1 (true -> s_St_3_Afternoon_1)(false -> s_St_3_Dawn_1);
+    v_228 =
+      merge ck_7_3_1_1 (true -> s_St_3_Afternoon_2)(false -> s_St_3_Dawn_2);
+    v_229 =
+      merge ck_7_3_1_1 (true -> s_St_3_Afternoon_3)(false -> s_St_3_Dawn_3);
+    v_230 =
+      merge ck_7_3_1_0
+        (true -> 
+          (((true when true(ck_7_1)) when false(ck_7_2_1))
+            when true(ck_7_3_1_0)))
+        (false -> s_St_3_Morning_1);
+    v_231 =
+      merge ck_7_3_1_0
+        (true -> 
+          (((true when true(ck_7_1)) when false(ck_7_2_1))
+            when true(ck_7_3_1_0)))
+        (false -> s_St_3_Morning_2);
+    v_232 =
+      merge ck_7_3_1_0
+        (true -> 
+          (((true when true(ck_7_1)) when false(ck_7_2_1))
+            when true(ck_7_3_1_0)))
+        (false -> s_St_3_Morning_3);
+    v_233 =
+      merge ck_7_3_0_0 (true -> s_St_3_Night_1)(false -> s_St_3_Start_1);
+    v_234 =
+      merge ck_7_3_0_0 (true -> s_St_3_Night_2)(false -> s_St_3_Start_2);
+    v_235 =
+      merge ck_7_3_0_0 (true -> s_St_3_Night_3)(false -> s_St_3_Start_3);
+    v_236 = merge ck_7_2_1 (true -> v_227)(false -> v_230);
+    v_237 = merge ck_7_2_1 (true -> v_228)(false -> v_231);
+    v_238 = merge ck_7_2_1 (true -> v_229)(false -> v_232);
+    v_239 =
+      merge ck_7_2_0
+        (true -> ((true when false(ck_7_1)) when true(ck_7_2_0)))
+        (false -> v_233);
+    v_240 =
+      merge ck_7_2_0
+        (true -> ((true when false(ck_7_1)) when true(ck_7_2_0)))
+        (false -> v_234);
+    v_241 =
+      merge ck_7_2_0
+        (true -> ((true when false(ck_7_1)) when true(ck_7_2_0)))
+        (false -> v_235);
+    s_1_2 = merge ck_7_1 (true -> v_236)(false -> v_239);
+    s_2_2 = merge ck_7_1 (true -> v_237)(false -> v_240);
+    s_3 = merge ck_7_1 (true -> v_238)(false -> v_241);
+    v_242 = merge ck_7_3_1_1 (true -> r_St_3_Afternoon)(false -> r_St_3_Dawn);
+    v_243 =
+      merge ck_7_3_1_0
+        (true -> 
+          (((true when true(ck_7_1)) when false(ck_7_2_1))
+            when true(ck_7_3_1_0)))
+        (false -> r_St_3_Morning);
+    v_244 = merge ck_7_2_1 (true -> v_242)(false -> v_243);
+    v_245 = merge ck_7_3_0_0 (true -> r_St_3_Night)(false -> r_St_3_Start);
+    v_246 =
+      merge ck_7_2_0
+        (true -> ((true when false(ck_7_1)) when true(ck_7_2_0)))
+        (false -> v_245);
+    r = merge ck_7_1 (true -> v_244)(false -> v_246);
+    ck_7_3_1_1 = ((ck_7_3 when true(ck_7_1)) when true(ck_7_2_1));
+    ck_7_3_1_0 = ((ck_7_3 when true(ck_7_1)) when false(ck_7_2_1));
+    ck_7_2_1 = (ck_7_2 when true(ck_7_1));
+    ck_7_3_0_1 = ((ck_7_3 when false(ck_7_1)) when true(ck_7_2_0));
+    ck_7_3_0_0 = ((ck_7_3 when false(ck_7_1)) when false(ck_7_2_0));
+    ck_7_2_0 = (ck_7_2 when false(ck_7_1));
+    s_St_3_Start_3_1_1 =
+      ((s_St_3_Start_3 when true(s_St_3_Start_1))
+        when true(s_St_3_Start_2_1));
+    s_St_3_Start_3_1_0 =
+      ((s_St_3_Start_3 when true(s_St_3_Start_1))
+        when false(s_St_3_Start_2_1));
+    s_St_3_Start_2_1 = (s_St_3_Start_2 when true(s_St_3_Start_1));
+    s_St_3_Start_3_0_1 =
+      ((s_St_3_Start_3 when false(s_St_3_Start_1))
+        when true(s_St_3_Start_2_0));
+    s_St_3_Start_3_0_0 =
+      ((s_St_3_Start_3 when false(s_St_3_Start_1))
+        when false(s_St_3_Start_2_0));
+    s_St_3_Start_2_0 = (s_St_3_Start_2 when false(s_St_3_Start_1));
+    s_St_3_Dawn_3_1_1 =
+      ((s_St_3_Dawn_3 when true(s_St_3_Dawn_1)) when true(s_St_3_Dawn_2_1));
+    s_St_3_Dawn_3_1_0 =
+      ((s_St_3_Dawn_3 when true(s_St_3_Dawn_1)) when false(s_St_3_Dawn_2_1));
+    s_St_3_Dawn_2_1 = (s_St_3_Dawn_2 when true(s_St_3_Dawn_1));
+    s_St_3_Dawn_3_0_1 =
+      ((s_St_3_Dawn_3 when false(s_St_3_Dawn_1)) when true(s_St_3_Dawn_2_0));
+    s_St_3_Dawn_3_0_0 =
+      ((s_St_3_Dawn_3 when false(s_St_3_Dawn_1)) when false(s_St_3_Dawn_2_0));
+    s_St_3_Dawn_2_0 = (s_St_3_Dawn_2 when false(s_St_3_Dawn_1));
+    s_St_3_Morning_3_1_1 =
+      ((s_St_3_Morning_3 when true(s_St_3_Morning_1))
+        when true(s_St_3_Morning_2_1));
+    s_St_3_Morning_3_1_0 =
+      ((s_St_3_Morning_3 when true(s_St_3_Morning_1))
+        when false(s_St_3_Morning_2_1));
+    s_St_3_Morning_2_1 = (s_St_3_Morning_2 when true(s_St_3_Morning_1));
+    s_St_3_Morning_3_0_1 =
+      ((s_St_3_Morning_3 when false(s_St_3_Morning_1))
+        when true(s_St_3_Morning_2_0));
+    s_St_3_Morning_3_0_0 =
+      ((s_St_3_Morning_3 when false(s_St_3_Morning_1))
+        when false(s_St_3_Morning_2_0));
+    s_St_3_Morning_2_0 = (s_St_3_Morning_2 when false(s_St_3_Morning_1));
+    s_St_3_Afternoon_3_1_1 =
+      ((s_St_3_Afternoon_3 when true(s_St_3_Afternoon_1))
+        when true(s_St_3_Afternoon_2_1));
+    s_St_3_Afternoon_3_1_0 =
+      ((s_St_3_Afternoon_3 when true(s_St_3_Afternoon_1))
+        when false(s_St_3_Afternoon_2_1));
+    s_St_3_Afternoon_2_1 = (s_St_3_Afternoon_2 when true(s_St_3_Afternoon_1));
+    s_St_3_Afternoon_3_0_1 =
+      ((s_St_3_Afternoon_3 when false(s_St_3_Afternoon_1))
+        when true(s_St_3_Afternoon_2_0));
+    s_St_3_Afternoon_3_0_0 =
+      ((s_St_3_Afternoon_3 when false(s_St_3_Afternoon_1))
+        when false(s_St_3_Afternoon_2_0));
+    s_St_3_Afternoon_2_0 =
+      (s_St_3_Afternoon_2 when false(s_St_3_Afternoon_1));
+    s_St_3_Night_3_1_1 =
+      ((s_St_3_Night_3 when true(s_St_3_Night_1))
+        when true(s_St_3_Night_2_1));
+    s_St_3_Night_3_1_0 =
+      ((s_St_3_Night_3 when true(s_St_3_Night_1))
+        when false(s_St_3_Night_2_1));
+    s_St_3_Night_2_1 = (s_St_3_Night_2 when true(s_St_3_Night_1));
+    s_St_3_Night_3_0_1 =
+      ((s_St_3_Night_3 when false(s_St_3_Night_1))
+        when true(s_St_3_Night_2_0));
+    s_St_3_Night_3_0_0 =
+      ((s_St_3_Night_3 when false(s_St_3_Night_1))
+        when false(s_St_3_Night_2_0));
+    s_St_3_Night_2_0 = (s_St_3_Night_2 when false(s_St_3_Night_1));
+    c_1 = c2;
     pnr_1 = false fby nr_1;
-    ck_4_1 = s_1_1;
-    status_St_4_Off = false;
+    ck_6_1 = s_1_1;
+    status_1_St_4_Off = false;
     nr_1_St_4_Off = false;
     ns_1_St_4_Off_1 = true;
-    status_St_4_On = true;
+    status_1_St_4_On = true;
     nr_1_St_4_On = false;
     ns_1_St_4_On_1 = false;
-    status = merge ck_4_1 (true -> status_St_4_Off)(false -> status_St_4_On);
-    ns_1_1 = merge ck_4_1 (true -> ns_1_St_4_Off_1)(false -> ns_1_St_4_On_1);
-    nr_1 = merge ck_4_1 (true -> nr_1_St_4_Off)(false -> nr_1_St_4_On);
-    ck_1 = true fby ns_1_1;
-    r_1_St_4_Off =
-      if (c when true(ck_1)) then true else (pnr_1 when true(ck_1));
-    s_1_St_4_Off_1 = if (c when true(ck_1)) then false else true;
-    r_1_St_4_On = if v_72 then true else (pnr_1 when false(ck_1));
-    s_1_St_4_On_1 = if v_72 then true else false;
-    v_72 = not((c when false(ck_1)));
-    s_1_1 = merge ck_1 (true -> s_1_St_4_Off_1)(false -> s_1_St_4_On_1);
-    r_1 = merge ck_1 (true -> r_1_St_4_Off)(false -> r_1_St_4_On);
+    status_1 =
+      merge ck_6_1 (true -> status_1_St_4_Off)(false -> status_1_St_4_On);
+    ns_1_1 = merge ck_6_1 (true -> ns_1_St_4_Off_1)(false -> ns_1_St_4_On_1);
+    nr_1 = merge ck_6_1 (true -> nr_1_St_4_Off)(false -> nr_1_St_4_On);
+    ck_5_1 = true fby ns_1_1;
+    r_1_St_4_Off = if v_66 then true else (pnr_1 when true(ck_5_1));
+    s_1_St_4_Off_1 = if v_66 then false else true;
+    v_66 = not((c_1 when true(ck_5_1)));
+    r_1_St_4_On =
+      if (c_1 when false(ck_5_1)) then true else (pnr_1 when false(ck_5_1));
+    s_1_St_4_On_1 = if (c_1 when false(ck_5_1)) then true else false;
+    s_1_1 = merge ck_5_1 (true -> s_1_St_4_Off_1)(false -> s_1_St_4_On_1);
+    r_1 = merge ck_5_1 (true -> r_1_St_4_Off)(false -> r_1_St_4_On);
+    c = c1;
+    pnr_2 = false fby nr_2;
+    ck_4_1 = s_2_1;
+    status_St_5_Off = false;
+    nr_2_St_5_Off = false;
+    ns_2_St_5_Off_1 = true;
+    status_St_5_On = true;
+    nr_2_St_5_On = false;
+    ns_2_St_5_On_1 = false;
+    status = merge ck_4_1 (true -> status_St_5_Off)(false -> status_St_5_On);
+    ns_2_1 = merge ck_4_1 (true -> ns_2_St_5_Off_1)(false -> ns_2_St_5_On_1);
+    nr_2 = merge ck_4_1 (true -> nr_2_St_5_Off)(false -> nr_2_St_5_On);
+    ck_1 = true fby ns_2_1;
+    r_2_St_5_Off = if v_65 then true else (pnr_2 when true(ck_1));
+    s_2_St_5_Off_1 = if v_65 then false else true;
+    v_65 = not((c when true(ck_1)));
+    r_2_St_5_On =
+      if (c when false(ck_1)) then true else (pnr_2 when false(ck_1));
+    s_2_St_5_On_1 = if (c when false(ck_1)) then true else false;
+    s_2_1 = merge ck_1 (true -> s_2_St_5_Off_1)(false -> s_2_St_5_On_1);
+    r_2 = merge ck_1 (true -> r_2_St_5_Off)(false -> r_2_St_5_On);
     heating_on = status;
-    cooling_on = status_1
+    cooling_on = status_1;
+    n = n_1;
+    a = a_1;
+    m = m_1;
+    d = d_1;
+    ns_3_1_1 = ((ns_3 when true(ns_1_2)) when true(ns_2_2_1));
+    ns_3_1_0 = ((ns_3 when true(ns_1_2)) when false(ns_2_2_1));
+    ns_2_2_1 = (ns_2_2 when true(ns_1_2));
+    ns_3_0_1 = ((ns_3 when false(ns_1_2)) when true(ns_2_2_0));
+    ns_3_0_0 = ((ns_3 when false(ns_1_2)) when false(ns_2_2_0));
+    ns_2_2_0 = (ns_2_2 when false(ns_1_2));
+    s_3_1_1 = ((s_3 when true(s_1_2)) when true(s_2_2_1));
+    s_3_1_0 = ((s_3 when true(s_1_2)) when false(s_2_2_1));
+    s_2_2_1 = (s_2_2 when true(s_1_2));
+    s_3_0_1 = ((s_3 when false(s_1_2)) when true(s_2_2_0));
+    s_3_0_0 = ((s_3 when false(s_1_2)) when false(s_2_2_0));
+    s_2_2_0 = (s_2_2 when false(s_1_2))
   tel
 

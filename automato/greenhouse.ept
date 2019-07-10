@@ -1,6 +1,13 @@
 node shift(time:int) returns (d,m,a,n:bool)
 let
 	automaton
+		state Start do
+			d = false; m = false; a = false; n = false;
+		unless time < 8 then Dawn
+			 | time >= 8 & time < 12 then Morning
+			 | time >= 12 & time < 17 then Afternoon
+			 | time >= 17 then Night
+
 		state Dawn do
 			d = true; m = false; a = false; n = false;
 		unless time >= 8 & time < 12 then Morning
@@ -33,11 +40,11 @@ let
 	automaton
 		state Off do
 			status = false;
-		unless c then On
+		unless not c then On
 
 		state On do
 			status = true;
-		unless not c then Off
+		unless c then Off
 	end
 tel
 
@@ -46,28 +53,33 @@ let
 	automaton
 		state Off do
 			status = false;
-		unless c then On
+		unless not c then On
 
 		state On do
 			status = true;
-		unless not c then Off
+		unless c then Off
 	end
 tel
 
-node greenhouse(t_in,time:int) returns (heating_on,cooling_on:bool)
+node greenhouse(t_in,time:int) returns (heating_on,cooling_on,d,m,a,n:bool)
 contract
-	var too_hot,too_cold,both_on,d,m,a,n,t1,t2:bool;
+	var too_hot,too_cold,both_on,t1,t2,t3,t4:bool;
 	let
-		too_hot = (heating_on & t_in > 35);
-		too_cold = (cooling_on & t_in < 5);
-		both_on = (heating_on & cooling_on);
-		(d,m,a,n) = shift(time);
-		t1 = ((d & t_in < 20) or (m & t_in < 15) or (a & t_in < 10) or (n & t_in < 25));
-		t2 = ((d & t_in > 25) or (m & t_in > 20) or (a & t_in > 15) or (n & t_in > 30));
+		too_hot = true (* (not (t_in > 35) or not heating_on) *);
+		too_cold = true (* (not (t_in < 5) or not cooling_on) *);
+		both_on = true (* not (heating_on & cooling_on) *);
+		
+		t1 = ((d & t_in < 20) (* or (m & t_in < 15) or (a & t_in < 10) or (n & t_in < 25) *));
+		t2 = ((d & t_in > 25) (* or (m & t_in > 20) or (a & t_in > 15) or (n & t_in > 30) *));
+
+		t3 = (not t1 or (heating_on & not cooling_on));
+		t4 = (not t2 or (cooling_on & not heating_on));
+
 	tel
-	enforce (not (too_hot or too_cold or both_on) & (not t1 or heating_on) & (not t2 or cooling_on))
+	enforce too_hot & too_cold & both_on & t3 & t4
 	with(c1,c2:bool)
 let
 	heating_on = inlined heating(c1);
 	cooling_on = inlined cooling(c2);
+	(d,m,a,n) = inlined shift(time);
 tel

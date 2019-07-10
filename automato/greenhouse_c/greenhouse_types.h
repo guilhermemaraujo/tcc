@@ -1,4 +1,4 @@
-/* --- Generated the 8/7/2019 at 0:30 --- */
+/* --- Generated the 10/7/2019 at 11:11 --- */
 /* --- heptagon compiler, version 1.03.00 (compiled thu. may. 3 2:35:29 CET 2018) --- */
 /* --- Command line: /usr/local/bin/heptc -target c -target z3z -s greenhouse greenhouse.ept --- */
 
@@ -10,6 +10,15 @@
 #include "pervasives.h"
 #include "greenhouse_controller.h"
 typedef enum {
+  Greenhouse__St_5_On,
+  Greenhouse__St_5_Off
+} Greenhouse__st_5;
+
+Greenhouse__st_5 Greenhouse__st_5_of_string(char* s);
+
+char* string_of_Greenhouse__st_5(Greenhouse__st_5 x, char* buf);
+
+typedef enum {
   Greenhouse__St_4_On,
   Greenhouse__St_4_Off
 } Greenhouse__st_4;
@@ -19,8 +28,11 @@ Greenhouse__st_4 Greenhouse__st_4_of_string(char* s);
 char* string_of_Greenhouse__st_4(Greenhouse__st_4 x, char* buf);
 
 typedef enum {
-  Greenhouse__St_3_On,
-  Greenhouse__St_3_Off
+  Greenhouse__St_3_Start,
+  Greenhouse__St_3_Night,
+  Greenhouse__St_3_Morning,
+  Greenhouse__St_3_Dawn,
+  Greenhouse__St_3_Afternoon
 } Greenhouse__st_3;
 
 Greenhouse__st_3 Greenhouse__st_3_of_string(char* s);
@@ -46,6 +58,7 @@ Greenhouse__st_1 Greenhouse__st_1_of_string(char* s);
 char* string_of_Greenhouse__st_1(Greenhouse__st_1 x, char* buf);
 
 typedef enum {
+  Greenhouse__St_Start,
   Greenhouse__St_Night,
   Greenhouse__St_Morning,
   Greenhouse__St_Dawn,

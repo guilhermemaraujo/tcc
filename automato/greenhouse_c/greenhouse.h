@@ -1,4 +1,4 @@
-/* --- Generated the 8/7/2019 at 0:30 --- */
+/* --- Generated the 10/7/2019 at 11:11 --- */
 /* --- heptagon compiler, version 1.03.00 (compiled thu. may. 3 2:35:29 CET 2018) --- */
 /* --- Command line: /usr/local/bin/heptc -target c -target z3z -s greenhouse greenhouse.ept --- */
 
@@ -8,8 +8,9 @@
 #include "greenhouse_types.h"
 #include "greenhouse_controller.h"
 typedef struct Greenhouse__shift_mem {
-  int v_89;
-  int v_88;
+  int v_163;
+  int v_162;
+  int v_161;
   int pnr;
 } Greenhouse__shift_mem;
 
@@ -54,16 +55,23 @@ void Greenhouse__cooling_step(int c, Greenhouse__cooling_out* _out,
                               Greenhouse__cooling_mem* self);
 
 typedef struct Greenhouse__greenhouse_mem {
+  int v_226;
+  int v_225;
+  int v_224;
   int ck_5_1;
   int ck_1;
+  int pnr_2;
   int pnr_1;
   int pnr;
-  Greenhouse__shift_mem shift;
 } Greenhouse__greenhouse_mem;
 
 typedef struct Greenhouse__greenhouse_out {
   int heating_on;
   int cooling_on;
+  int d;
+  int m;
+  int a;
+  int n;
 } Greenhouse__greenhouse_out;
 
 void Greenhouse__greenhouse_reset(Greenhouse__greenhouse_mem* self);
