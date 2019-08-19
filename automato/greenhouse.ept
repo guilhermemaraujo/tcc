@@ -1,37 +1,44 @@
-node shift(time:int) returns (d,m,a,n:bool)
+node shift(time:int) returns (s:int)
 let
 	automaton
 		state Start do
-			d = false; m = false; a = false; n = false;
-		unless time < 8 then Dawn
-			 | time >= 8 & time < 12 then Morning
-			 | time >= 12 & time < 17 then Afternoon
-			 | time >= 17 then Night
+			s = 0;
+		unless time < 6 or time >= 18 then Night
+			 | time >= 6 or time < 18 then Day
 
-		state Dawn do
-			d = true; m = false; a = false; n = false;
-		unless time >= 8 & time < 12 then Morning
-			 | time >= 12 & time < 17 then Afternoon
-			 | time >= 17 then Night
+		state Day do
+			s = 1;
+		unless time < 6 or time >= 18 then Night
 
-		state Morning do
-			d = false; m = true; a = false; n = false;
-		unless time < 8 then Dawn
-			 | time >= 12 & time < 17 then Afternoon
-			 | time >= 17 then Night
-		
-		state Afternoon do
-			d = false; m = false; a = true; n = false;
-		unless time < 8 then Dawn
-			 | time >= 8 & time < 12 then Morning
-			 | time >= 17 then Night
-
-		
 		state Night do
-			d = false; m = false; a = false; n = true;
-		unless time < 8 then Dawn
-			 | time >= 8 & time < 12 then Morning
-			 | time >= 12 & time < 17 then Afternoon
+			s = 2;
+		unless time >= 6 or time < 18 then Day
+	end
+tel
+
+node category(crop:int) returns (c:int)
+let
+	automaton
+		state Start do
+			c = 0;
+		unless crop = 1 then Warm
+			 | crop = 2 then Moderate
+			 | crop = 3 then Cool
+
+		state Warm do
+			c = 1;
+		unless crop = 2 then Moderate
+			 | crop = 3 then Cool
+
+		state Moderate do
+			c = 2;
+		unless crop = 1 then Warm
+			 | crop = 3 then Cool
+
+		state Cool do
+			c = 3;
+		unless crop = 1 then Warm
+			 | crop = 2 then Moderate
 	end
 tel
 
@@ -61,25 +68,38 @@ let
 	end
 tel
 
-node greenhouse(t_in,time:int) returns (heating_on,cooling_on,d,m,a,n:bool)
+node greenhouse(crop,t_in,time:int) returns (heating_on,cooling_on:bool; c,s:int)
 contract
-	var too_hot,too_cold,both_on,t1,t2,t3,t4:bool;
+	var both_on,t1,t2,t3,t4:bool;
 	let
-		too_hot = true (* (not (t_in > 35) or not heating_on) *);
-		too_cold = true (* (not (t_in < 5) or not cooling_on) *);
-		both_on = true (* not (heating_on & cooling_on) *);
+		both_on = not (heating_on & cooling_on);
 		
-		t1 = ((d & t_in < 20) (* or (m & t_in < 15) or (a & t_in < 10) or (n & t_in < 25) *));
-		t2 = ((d & t_in > 25) (* or (m & t_in > 20) or (a & t_in > 15) or (n & t_in > 30) *));
+		t1 = (
+			(c = 1 & s = 1 & t_in < 27) or
+			(c = 1 & s = 2 & t_in < 24) or
+			(c = 2 & s = 1 & t_in < 24) or
+			(c = 2 & s = 2 & t_in < 16) or
+			(c = 3 & s = 1 & t_in < 21) or
+			(c = 3 & s = 2 & t_in < 10)
+		);
+		t2 = (
+			(c = 1 & s = 1 & t_in > 38) or
+			(c = 1 & s = 2 & t_in > 27) or
+			(c = 2 & s = 1 & t_in > 27) or
+			(c = 2 & s = 2 & t_in > 18) or
+			(c = 3 & s = 1 & t_in > 27) or
+			(c = 3 & s = 2 & t_in > 16)
+		);
 
 		t3 = (not t1 or (heating_on & not cooling_on));
 		t4 = (not t2 or (cooling_on & not heating_on));
 
 	tel
-	enforce too_hot & too_cold & both_on & t3 & t4
+	enforce both_on & t3 & t4
 	with(c1,c2:bool)
 let
 	heating_on = inlined heating(c1);
 	cooling_on = inlined cooling(c2);
-	(d,m,a,n) = inlined shift(time);
+	c = inlined category(crop);
+	s = inlined shift(time);
 tel
