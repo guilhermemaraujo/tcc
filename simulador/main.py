@@ -23,7 +23,13 @@ def controlResponse(conn,_t_in,timeInt,d):
     response = conn.recv(4096)
     response = response.strip(' \t\r\n\0')
     response = response.split(';')
-    return {'cooling':int(response[0]), 'heating':int(response[1])}
+    c = int(response[0])
+    h = int(response[1])
+    if c > 0:
+        c = 0.148
+    else:
+        c = 0
+    return {'cooling':c, 'heating':h}
 
 
 # initial condicitions
