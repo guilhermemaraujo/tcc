@@ -65,7 +65,7 @@ void func(int sockfd) {
     Greenhouse__greenhouse_step(crop, t_in, time, &_res, &mem);
 
     // sprintf(buff, "cooling_on: %d | heating_on: %d", _res.cooling_on,_res.heating_on);
-    sprintf(buff, "%d;%d;%d;%d;%d", _res.cooling_on,_res.heating_on,_res.cat,_res.s,_res.st);
+    sprintf(buff, "%d;%d;%d;%d;%d", _res.cooling_on,_res.heating_on,_res.s,_res.st);
 
     // and send that buffer to client 
     write(sockfd, buff, sizeof(buff));

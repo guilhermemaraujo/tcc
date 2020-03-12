@@ -17,23 +17,24 @@ def getConnection():
     conn.connect((host, port))
     return conn
 
-def controlResponse(conn,_t_in,timeInt,d):
-    dados = '%05.2f;%02d;%1d' % (_t_in,timeInt,d)
-    conn.send(_t_in)
+def controlResponse(conn,_t_in,timeInt,crop):
+    dados = '%05.2f;%02d;%1d' % (_t_in,timeInt,crop)
+    conn.send(dados)
     response = conn.recv(4096)
     response = response.strip(' \t\r\n\0')
     response = response.split(';')
     c = int(response[0])
     h = int(response[1])
     if c > 0:
-        c = 0.148
+        c = 14.8
     else:
         c = 0
     return {'cooling':c, 'heating':h}
 
 
 # initial condicitions
-data = get_data_from_csv('data/spring_tucson_interpolated')
+#data = get_data_from_csv('data/spring_tucson_interpolated')
+data = get_data_from_csv('data/A002_cleaner')
 conn = getConnection()
 
 _t_in = data['t_out'][0]
@@ -70,14 +71,17 @@ for i in range(size):
 for i in range(1, size, 1):
     date_out = greenhouse_config[i]['date_out']
     time_int = int(date_out.split()[1].split(':')[0])
-    d = 0 # Runs automaton in Default mode
-    control = controlResponse(conn,_t_in,time_int,d)
+    crop = 2 # 1 = warm; 2 = moderate; 3 = cool; tomate => moderate
+    control = controlResponse(conn,_t_in,time_int,crop)
+    
     cooling = control['cooling']
     heating = control['heating']
     
+    # comment this area to disable control -------------------
     greenhouse_config[i]['cooling'] = cooling
     greenhouse_config[i]['number_heater'] = heating
-    #greenhouse_config[i].pop('date_out', None)
+    # --------------------------------------------------------
+    greenhouse_config[i].pop('date_out', None)
 
     tspan = [t[i-1], t[i]]
 
@@ -86,6 +90,7 @@ for i in range(1, size, 1):
     x[i] = result[1][0]
     y[i] = greenhouse_config[i]['t_out']
     _t_in = result[1][0]
+    
 
 
 date_t = pd.date_range('2019-01-01 00:00:00', periods=len(t), freq='1S')
