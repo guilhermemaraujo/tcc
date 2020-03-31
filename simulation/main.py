@@ -98,8 +98,8 @@ df_t_out = pd.DataFrame({'Outside temperature per second':y}, index=pd.Index(dat
 df_t_result = pd.DataFrame({'Inside temperature':x,'Outside temperature':y}, index=pd.Index(date_t, name='date'))
 
 ax = plt.gca()
-#ax.xaxis.set_major_formatter(md.DateFormatter('%d/%m %H:%M'))
-ax.xaxis.set_major_formatter(md.DateFormatter('%d/%m'))
+ax.xaxis.set_major_formatter(md.DateFormatter('%d/%m %Hh'))
+#ax.xaxis.set_major_formatter(md.DateFormatter('%d/%m'))
 
 #plt.plot(df_t_in)
 #plt.plot(df_t_out)

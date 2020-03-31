@@ -64,10 +64,9 @@ tel
 
 node greenhouse(crop,t_in,time:int) returns (heating_on,cooling_on:bool; s,st:int)
 contract
-	var both_on,t1,t2,t3,t4:bool;
+	var t1,t2,t3,t4:bool;
 	let
-		both_on = not (heating_on & cooling_on);
-		
+				
 		t1 = (st = 1);
 		t2 = (st = 2);
 
@@ -75,7 +74,7 @@ contract
 		t4 = (not t2 or (cooling_on & not heating_on));
 
 	tel
-	enforce both_on & t3 & t4
+	enforce t3 & t4
 	with(c1,c2:bool)
 let
 	heating_on = inlined heating(c1);
