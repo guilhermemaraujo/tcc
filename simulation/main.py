@@ -17,7 +17,7 @@ def controlResponse(_t_in,timeInt,crop):
     r = requests.get(url=url, params=params)
     response = r.json()
     
-    print response
+    #print response
 
     h = int(response['heating'])
     c = int(response['cooling'])
