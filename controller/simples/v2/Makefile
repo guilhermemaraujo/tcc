@@ -4,6 +4,8 @@ SIM_PROG=greenhouse
 SIM_MOD=Greenhouse
 SIM_NODE=greenhouse
 CONTRACT_NODE=greenhouse
+# webserver filename
+WEBSERVER='server'
 
 # This generic Makefile does not allow contract and simulated node in
 # two different modules (can be two different nodes, though)
@@ -70,6 +72,31 @@ clean:
 	rm -f $(SIM_NODE)_sim main.*
 	rm -f *.epci *.mls *.ml *.obc ./*~
 	rm -f $(CTRLR_PROG).ept
+
+http:
+	rm $(SIM_NODE)"_sim"
+	rm $(SIM_NODE)"_c"/_main.c
+	cp $(WEBSERVER).c $(SIM_NODE)"_c"/_main.c
+	gcc -I $(SIM_NODE)"_controller_c" -I /usr/local/lib/heptagon/c -c -o $(SIM_NODE)"_c"/_main.o $(SIM_NODE)"_c"/_main.c -lm
+	gcc -o $(SIM_NODE)"_sim" $(SIM_NODE)"_c"/_main.o $(SIM_NODE)"_c"/$(SIM_NODE).o /usr/lib/x86_64-linux-gnu/libmicrohttpd.so $(SIM_NODE)"_controller_c"/$(SIM_NODE)"_controller.o" -lm
+
+full:
+	# same as "make clean"
+	rm -fr $(HEPT_C_DIRS) $(HEPT_Z3Z_DIRS) $(HEPT_JAVA_DIRS)
+	rm -f $(SIM_NODE)_sim main.*
+	rm -f *.epci *.mls *.ml *.obc ./*~
+	rm -f $(CTRLR_PROG).ept
+
+	# remaking
+	make
+	
+	# same as http	
+	rm $(SIM_NODE)"_sim"
+	rm $(SIM_NODE)"_c"/_main.c
+	cp $(WEBSERVER).c $(SIM_NODE)"_c"/_main.c
+	gcc -I $(SIM_NODE)"_controller_c" -I /usr/local/lib/heptagon/c -c -o $(SIM_NODE)"_c"/_main.o $(SIM_NODE)"_c"/_main.c -lm
+	gcc -o $(SIM_NODE)"_sim" $(SIM_NODE)"_c"/_main.o $(SIM_NODE)"_c"/$(SIM_NODE).o /usr/lib/x86_64-linux-gnu/libmicrohttpd.so $(SIM_NODE)"_controller_c"/$(SIM_NODE)"_controller.o" -lm
+
 
 # Dependences
 

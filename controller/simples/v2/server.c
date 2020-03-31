@@ -90,7 +90,7 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   strcat(json,",\"category\":");
   sprintf(aux, "%d", _res.cat);
   strcat(json,aux);
-  */
+
   strcat(json,",\"shift\":");
   sprintf(aux, "%d", _res.s);
   strcat(json,aux);
@@ -98,7 +98,7 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   strcat(json,",\"checkT\":");
   sprintf(aux, "%d", _res.st);
   strcat(json,aux);
-
+  */
   strcat(json,"}");
 
   printf("%s\n",json);

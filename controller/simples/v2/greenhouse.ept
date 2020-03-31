@@ -29,7 +29,8 @@ contract
 	var t1,t2,t3,t4:bool;
 	let
 		t1 = (time >= 2 & time <= 5);
-		t2 = (time >= 12 & time <= 15);
+		(* sigali nao consegue sintetizar o controlador sem a regra "not t1" abaixo *)
+		t2 = (not t1 & time >= 12 & time <= 15);
 
 		t3 = (not t1 or (heating_on & not cooling_on));
 		t4 = (not t2 or (cooling_on & not heating_on));

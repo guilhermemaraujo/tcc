@@ -76,9 +76,11 @@ contract
 			 (cat = 2 & s = 1 & t_in < 24) or (cat = 2 & s = 2 & t_in < 16) or
 			 (cat = 3 & s = 1 & t_in < 21) or (cat = 3 & s = 2 & t_in < 10);
 
-		t2 = (cat = 1 & s = 1 & t_in > 38) or (cat = 1 & s = 2 & t_in > 27) or
-			 (cat = 2 & s = 1 & t_in > 27) or (cat = 2 & s = 2 & t_in > 18) or
-			 (cat = 3 & s = 1 & t_in > 27) or (cat = 3 & s = 2 & t_in > 16);
+		t2 = not t1 & (
+				(cat = 1 & s = 1 & t_in > 38) or (cat = 1 & s = 2 & t_in > 27) or
+				(cat = 2 & s = 1 & t_in > 27) or (cat = 2 & s = 2 & t_in > 18) or
+				(cat = 3 & s = 1 & t_in > 27) or (cat = 3 & s = 2 & t_in > 16)
+			);
 
 		t3 = (not t1 or (heating_on & not cooling_on));
 		t4 = (not t2 or (cooling_on & not heating_on));

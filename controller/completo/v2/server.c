@@ -95,9 +95,11 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   sprintf(aux, "%d", _res.s);
   strcat(json,aux);
 
+  /*
   strcat(json,",\"checkT\":");
   sprintf(aux, "%d", _res.st);
   strcat(json,aux);
+  */
 
   strcat(json,"}");
 
