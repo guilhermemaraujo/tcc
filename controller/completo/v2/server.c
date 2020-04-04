@@ -57,7 +57,7 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   int i;  
 
   MHD_get_connection_values(connection, MHD_GET_ARGUMENT_KIND, &save_items, NULL);
-  printf("Counter:%d \n", glob_cnt);
+  //printf("Counter:%d \n", glob_cnt);
   glob_cnt = 0;
   
   Greenhouse__greenhouse_out _res;
@@ -69,12 +69,13 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
       t_in = atoi(dict[i].value);
     else if (strcmp(dict[i].key, "time") == 0)
       time = atoi(dict[i].value);
-    else
-      printf("Not implemented %s\n", dict[i].key);
+    // else printf("Not implemented %s\n", dict[i].key);
   }
 
+  /*
   for (i=0; i < n; i++)
     printf("%s, %s\n",dict[i].key, dict[i].value);
+  */
 
   Greenhouse__greenhouse_step(crop, t_in, time, &_res, &mem);
 
@@ -94,12 +95,6 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   strcat(json,",\"shift\":");
   sprintf(aux, "%d", _res.s);
   strcat(json,aux);
-
-  /*
-  strcat(json,",\"checkT\":");
-  sprintf(aux, "%d", _res.st);
-  strcat(json,aux);
-  */
 
   strcat(json,"}");
 

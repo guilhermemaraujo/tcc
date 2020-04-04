@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import numpy as np
-from scipy.integrate import odeint
-import matplotlib.pyplot as plt
-import matplotlib.dates as md
-from utils import get_data_from_csv
-import pandas as pd
-
 # function that returns dy/dt and dx/dt
 CP = 1010  # Calor especifico do ar (J kg^(-1) K^(-1))
 L = 2.5 * 10**(6) # Calor latente da agua (J/kg)
