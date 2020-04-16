@@ -7,8 +7,9 @@ import matplotlib.pyplot as plt
 from utils import get_data_from_csv, interpolate_data, run_simulation
 
 # initial condicitions
-#filename = 'data/A002_cleaner_small'
+# filename = 'data/A002_cleaner_small'
 filename = 'data/A002_cleaner_small_interpolated'
+# filename = 'data/spring_tucson_interpolated'
 data = get_data_from_csv(filename)
 
 # in case your data is not paced by second
@@ -20,7 +21,7 @@ data = interpolate_data(data,toFile=filenameInt)
 
 size = len(data)
 timepoints = np.linspace(0, size, size) # time points
-enableControl = True
+enableControl = False
 controlFreq = 5 # frequency on which the controller is checked, in seconds
 crop = 2
 timestampStart = str(data.iloc[[0]]['t_out'].to_dict().keys()[0])
