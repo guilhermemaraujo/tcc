@@ -4,12 +4,20 @@ import numpy as np
 import pandas as pd
 import matplotlib.dates as md
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
 from utils import get_data_from_csv, interpolate_data, run_simulation
 
 # initial condicitions
+
 # filename = 'data/A002_cleaner_small'
 filename = 'data/A002_cleaner_small_interpolated'
-# filename = 'data/spring_tucson_interpolated'
+
+# data from diego's dissertation for validation --------------------------
+# filename = 'data/diego/spring_2019_recife_interpolated'
+# filename = 'data/diego/summer_2019_recife_interpolated'
+# filename = 'data/diego/autumn_2019_recife_interpolated'
+# filename = 'data/diego/winter_2019_recife_interpolated'
+# ------------------------------------------------------------------------
 data = get_data_from_csv(filename)
 
 # in case your data is not paced by second
@@ -21,7 +29,7 @@ data = interpolate_data(data,toFile=filenameInt)
 
 size = len(data)
 timepoints = np.linspace(0, size, size) # time points
-enableControl = False
+enableControl = True
 controlFreq = 5 # frequency on which the controller is checked, in seconds
 crop = 2
 timestampStart = str(data.iloc[[0]]['t_out'].to_dict().keys()[0])
@@ -29,17 +37,25 @@ periods = len(timepoints)
 freq = '1S'
 
 result = run_simulation(data=data,timepoints=timepoints,enableControl=enableControl,controlFreq=controlFreq,crop=crop)
-[x,y] = [result['in'],result['out']]
+# [x,y] = [result['in'],result['out']]
+[x,y,z] = [result['in_c'],result['out'],result['in']]
 
 date_t = pd.date_range(timestampStart, periods=periods, freq=freq)
 
-df_t_result = pd.DataFrame({'Inside temperature':x,'Outside temperature':y}, index=pd.Index(date_t, name='date'))
+df_t_result = pd.DataFrame({'Inside temperature (controlled)':x,'Outside temperature':y, 'Inside temperature':z}, index=pd.Index(date_t, name='date'))
 
-ax = plt.gca()
-#ax.xaxis.set_major_formatter(md.DateFormatter('%d/%m %Hh'))
-ax.xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
-
+#plt.gca().xaxis.set_major_formatter(md.DateFormatter('%d/%m %Hh'))
+plt.gca().xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
 plt.plot(df_t_result)
+plt.axhline(y=16,ls='--',lw=1.5,c='darkgray')
+plt.axhline(y=18,ls='--',lw=1.5,c='#333333')
+plt.axhline(y=24,ls='--',lw=1.5,c='lightcoral')
+plt.axhline(y=27,ls='--',lw=1.5,c='darkorange')
+
+items = ["Inside temperature","Inside temperature (controlled)","Outside temperature","Min. temperature (night time)","Max. temperature (night time)","Min. temperature (day time)","Max. temperature (day time)"]
+fontP = FontProperties()
+fontP.set_size('x-small')
+plt.legend(items,prop=fontP,loc='best')
 
 plt.xlabel('Time of day')
 plt.ylabel('Temperature ($^\circ$C)')

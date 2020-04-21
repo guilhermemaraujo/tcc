@@ -77,14 +77,18 @@ def run_simulation(data,timepoints=False,enableControl=True,controlFreq=1,crop=2
     # crop: determina se o plantio é de clima quente (1), moderado(2) ou frio (3)
     size = len(data)
     _t_in = data['t_out'][0]
+    _t_in_2 = data['t_out'][0]
     t = np.linspace(0,size,size) if isinstance(timepoints,bool) and not timepoints else timepoints
     # define greenhouse configs for each seconds
     greenhouse_config = get_greenhouse_config(data)
+    greenhouse_config_2 = get_greenhouse_config(data)
     # store soluction
     x = np.empty_like(t)
     y = np.empty_like(t)
+    z = np.empty_like(t)
     x[0] = _t_in
     y[0] = _t_in
+    z[0] = _t_in_2
     
     for i in range(1, size, 1):
         if enableControl:
@@ -94,18 +98,22 @@ def run_simulation(data,timepoints=False,enableControl=True,controlFreq=1,crop=2
                 control = get_controller_response(_t_in,time_int,crop)        
                 greenhouse_config[i]['cooling'] = control['cooling']
                 greenhouse_config[i]['number_heater'] = control['heating']
-            elif i!=0:
+            else:
                 greenhouse_config[i]['cooling'] = greenhouse_config[i-1]['cooling']
                 greenhouse_config[i]['number_heater'] = greenhouse_config[i-1]['number_heater']
         
         greenhouse_config[i].pop('date_out', None)
+        greenhouse_config_2[i].pop('date_out', None)
 
         tspan = [t[i-1], t[i]]
 
         result = odeint(temperature_model, _t_in, tspan, args=(greenhouse_config[i],))
+        result_2 = odeint(temperature_model, _t_in_2, tspan, args=(greenhouse_config_2[i],))
 
         x[i] = result[1][0]
         y[i] = greenhouse_config[i]['t_out']
+        z[i] = result_2[1][0]
         _t_in = result[1][0]
+        _t_in_2 = result_2[1][0]
 
-    return {"in":x,"out":y}
+    return {"in_c":x,"out":y,"in":z}
