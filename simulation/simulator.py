@@ -7,8 +7,9 @@ L = 2.5 * 10**(6) # Calor latente da agua (J/kg)
 GROUND_REFLECTANCE = 0.681963305054 # 0.781963305054
 SPECIFC_MASS_AIR = 1.2
 
-def qgrin_eq(transmittance_g_m, qgrout):
-    return float(transmittance_g_m) * (1.0 - float(GROUND_REFLECTANCE)) * float(qgrout)
+def qgrin_eq(transmittance_g_m, transmittance_s_c, qgrout):
+    # return float(transmittance_g_m) * (1.0 - float(GROUND_REFLECTANCE)) * float(qgrout)
+    return float(transmittance_g_m) * float(transmittance_s_c) * (1.0 - float(GROUND_REFLECTANCE)) * float(qgrout)
     
 def qheater_eq(number_heater, heater_capacity, ground_surface):
     return float(number_heater) * (float(heater_capacity) / float(ground_surface))
@@ -31,6 +32,7 @@ def temperature_model(t_in, t, parameters):
     glass_area = parameters["glass_area"]
     ground_area = parameters["ground_area"]
     transmittance_g_m = parameters["transmittance_g_m"]
+    transmittance_s_c = parameters["transmittance_s_c"]
     qgrout = parameters["qgrout"]
     number_heater = parameters["number_heater"]
     heater_capacity = parameters["heater_capacity"]
@@ -38,7 +40,8 @@ def temperature_model(t_in, t, parameters):
     k = parameters["k"]
 
     # Solar radiation inside greenhouse
-    qgrin = qgrin_eq(transmittance_g_m, qgrout)
+    # qgrin = qgrin_eq(transmittance_g_m, qgrout)
+    qgrin = qgrin_eq(transmittance_g_m,transmittance_s_c, qgrout)
     
     # Quantidade de calor gerada pelo aquecedor
     qHearter = qheater_eq(number_heater, heater_capacity, ground_area)
