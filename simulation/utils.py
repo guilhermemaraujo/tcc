@@ -99,7 +99,7 @@ def run_simulation(params):
     temp_out[0] = _t_in
     sys_state = {'cooling':0,'number_heater':0}
 
-    if both:
+    if c_enable and both:
         _t_in_2 = data['t_out'][0]
         greenhouse_config = get_greenhouse_config(data)
         temp_in = np.empty_like(t)
@@ -126,14 +126,13 @@ def run_simulation(params):
         temp_out[i] = greenhouse_config_c[i]['t_out']
         _t_in = result[1][0]
         
-        if both:
+        if c_enable and both:
             greenhouse_config[i].pop('date_out', None)
             result_2 = odeint(temperature_model, _t_in_2, tspan, args=(greenhouse_config[i],))
             temp_in[i] = result_2[1][0]
             _t_in_2 = result_2[1][0]
 
-    # return {"in_c":temp_in_c,"out":temp_out,'in':temp_in if both else None}
-    return [temp_in_c,temp_out,temp_in if both else None]
+    return [temp_in_c,temp_out,temp_in if c_enable and both else None]
 
 def build_dataframe(sim,**kwargs):
     temp_in_c,temp_out,temp_in = sim
@@ -148,7 +147,7 @@ def build_dataframe(sim,**kwargs):
     
     return pd.DataFrame(df_conf, index=pd.Index(date_t, name='date'))
 
-def build_chart(df_t_result,both=False):
+def build_chart(df_t_result,c_enable=True,both=False):
     #plt.gca().xaxis.set_major_formatter(md.DateFormatter('%d/%m %Hh'))
     plt.gca().xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
     plt.plot(df_t_result)
@@ -168,7 +167,10 @@ def build_chart(df_t_result,both=False):
         "Min. temperature (day time)",
         "Max. temperature (day time)"
     ]
-    if both:
+
+    if not c_enable:
+        items[0] = "Inside temperature"
+    elif both:
         items.insert(0, "Inside temperature")
 
     plt.legend(items,prop=fontP,loc='best')

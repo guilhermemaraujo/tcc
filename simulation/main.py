@@ -27,12 +27,13 @@ timepoints = np.linspace(0, size, size) # time points
 timestampStart = str(data.iloc[[0]]['t_out'].to_dict().keys()[0])
 periods = len(timepoints)
 freq = '1S'
+c_enable = False
 both = False
 
 simParams = {
-    # 'c_enable': False,
     'crop': 2,
     'c_freq': 60*30,
+    'c_enable': c_enable,
     'both': both,
     'timepoints': timepoints,
     'data': data
@@ -41,4 +42,4 @@ simParams = {
 sim = run_simulation(simParams)
 df_t_result = build_dataframe(sim,t_start=timestampStart,periods=periods,freq=freq)
 
-build_chart(df_t_result,both=both)
+build_chart(df_t_result,c_enable=c_enable,both=both)
