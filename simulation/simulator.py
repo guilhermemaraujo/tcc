@@ -25,7 +25,6 @@ def evapotranspiration(cooling, et_plants):
     return (cooling + et_plants)/(60.0 * 60.0)
 
 def temperature_model(t_in, t, parameters):
-
     t_out = parameters["t_out"]
     height = parameters["height"]
     cooling = parameters["cooling"]
