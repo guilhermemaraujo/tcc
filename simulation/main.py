@@ -21,18 +21,21 @@ data = get_data_from_csv(filename)
 # uncomment the lines bellow to interpolate it
 # filenameInt = '%s_interpolated.csv'%filename
 # data = interpolate_data(data,toFile=filenameInt)
+# data = interpolate_data(data,toFile=False)
 
 size = len(data)
 timepoints = np.linspace(0, size, size) # time points
 timestampStart = str(data.iloc[[0]]['t_out'].to_dict().keys()[0])
 periods = len(timepoints)
 freq = '1S'
-c_enable = False
+c_enable = True
+c_freq = 10*60 # seconds
+crop = 2 # moderate - tomato
 both = False
 
 simParams = {
-    'crop': 2,
-    'c_freq': 60*30,
+    'crop': crop,
+    'c_freq': c_freq,
     'c_enable': c_enable,
     'both': both,
     'timepoints': timepoints,

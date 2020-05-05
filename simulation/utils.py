@@ -31,11 +31,12 @@ def get_data_from_csv(filename):
         sys.exit(1)
 
 # Extensions ----------------------
-def get_controller_response(_t_in,timeInt,crop):
+def get_controller_response(_t_in,_t_out,timeInt,crop):
     cfix = lambda f: float(f)/60.0
     url = 'http://localhost:8080'
     _t_in = round(float(_t_in))
-    params = {'crop':crop, 't_in':_t_in, 'time':timeInt}
+    _t_out = round(float(_t_out))
+    params = {'crop':crop, 't_in':_t_in, 't_out':_t_out, 'time':timeInt}
     #print params
     r = requests.get(url=url, params=params)
     response = r.json()
@@ -69,7 +70,9 @@ def get_greenhouse_config(data):
             "glass_area": 674,
             "ground_area": 300,
             "transmittance_g_m": 0.87,
-            "transmittance_s_c":0.3,
+            # "transmittance_s_c":(1 - 0.3),
+            # "transmittance_s_c":(1 - 0.5),
+            "transmittance_s_c":(1 - 0.7),
             "number_heater": 0,
             "heater_capacity": 75000,
             # "ventilation_rate": 0.003,
@@ -108,9 +111,10 @@ def run_simulation(params):
 
     for i in range(1, size, 1):
         if c_enable and i%c_freq == 0:
+            _t_out = greenhouse_config_c[i]['t_out']
             date_out = greenhouse_config_c[i]['date_out']
             time_int = int(date_out.split()[1].split(':')[0])
-            controller_response = get_controller_response(_t_in,time_int,crop)
+            controller_response = get_controller_response(_t_in,_t_out,time_int,crop)
             sys_state['cooling'] = controller_response['cooling']
             sys_state['number_heater'] = controller_response['number_heater']
 
@@ -162,10 +166,10 @@ def build_chart(df_t_result,c_enable=True,both=False):
     items = [
         "Inside temperature (controlled)",
         "Outside temperature",
-        "Min. temperature (night time)",
-        "Max. temperature (night time)",
-        "Min. temperature (day time)",
-        "Max. temperature (day time)"
+        "Min. temperature (night shift)",
+        "Max. temperature (night shift)",
+        "Min. temperature (day shift)",
+        "Max. temperature (day shift)"
     ]
 
     if not c_enable:
@@ -176,5 +180,7 @@ def build_chart(df_t_result,c_enable=True,both=False):
     plt.legend(items,prop=fontP,loc='best')
     plt.xlabel('Time of day')
     plt.ylabel('Temperature ($^\circ$C)')
+    # plt.ylim(0,35)
+    plt.ylim(5,35)
     plt.grid(True)
     plt.show()
