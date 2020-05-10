@@ -7,7 +7,8 @@ from utils import get_data_from_csv, interpolate_data, run_simulation, build_dat
 
 # filename = 'data/diego/spring_tucson_interpolated'
 # filename = 'data/A002_cleaner_small'
-filename = 'data/A002_cleaner_small_interpolated'
+filename = 'data/A002_cleaner_smaller'
+# filename = 'data/A002_cleaner_small_interpolated'
 
 # data from diego's dissertation for validation --------------------------
 # filename = 'data/diego/spring_2019_recife_interpolated'
@@ -21,7 +22,7 @@ data = get_data_from_csv(filename)
 # uncomment the lines bellow to interpolate it
 # filenameInt = '%s_interpolated.csv'%filename
 # data = interpolate_data(data,toFile=filenameInt)
-# data = interpolate_data(data,toFile=False)
+data = interpolate_data(data,toFile=False)
 
 size = len(data)
 timepoints = np.linspace(0, size, size) # time points
@@ -29,7 +30,10 @@ timestampStart = str(data.iloc[[0]]['t_out'].to_dict().keys()[0])
 periods = len(timepoints)
 freq = '1S'
 c_enable = True
-c_freq = 10*60 # seconds
+# c_freq = 1*60 # seconds
+# c_freq = 2*60 # seconds
+c_freq = 5*60 # seconds
+# c_freq = 10*60 # seconds
 crop = 2 # moderate - tomato
 both = False
 
