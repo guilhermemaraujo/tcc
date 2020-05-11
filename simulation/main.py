@@ -16,13 +16,13 @@ filename = 'data/A002_cleaner_small_interpolated'
 # filename = 'data/diego/autumn_2019_recife_interpolated'
 # filename = 'data/diego/winter_2019_recife_interpolated'
 # ------------------------------------------------------------------------
-# data = get_data_from_csv(filename)
+data = get_data_from_csv(filename)
 
 # in case your data is not paced by second
 # uncomment the lines bellow to interpolate it
 # filenameInt = '%s_interpolated.csv'%filename
 # data = interpolate_data(data,toFile=filenameInt)
-data = interpolate_data(data,toFile=False)
+# data = interpolate_data(data,toFile=False)
 
 size = len(data)
 timepoints = np.linspace(0, size, size) # time points
@@ -32,8 +32,8 @@ freq = '1S'
 c_enable = True
 # c_freq = 1*60 # seconds
 # c_freq = 2*60 # seconds
-c_freq = 5*60 # seconds
-# c_freq = 10*60 # seconds
+# c_freq = 5*60 # seconds
+c_freq = 10*60 # seconds
 crop = 2 # moderate - tomato
 both = False
 

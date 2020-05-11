@@ -101,6 +101,7 @@ def run_simulation(params):
     temp_in_c[0] = _t_in
     temp_out[0] = _t_in
     sys_state = {'cooling':0,'number_heater':0}
+    withinIdeal = 0
 
     if c_enable and both:
         _t_in_2 = data['t_out'][0]
@@ -108,12 +109,24 @@ def run_simulation(params):
         temp_in = np.empty_like(t)
         temp_in[0] = _t_in_2
 
-
     for i in range(1, size, 1):
+
+        # checking percentage of time within ideal temperature range
+        date_out = greenhouse_config_c[i]['date_out']
+        time_int = int(date_out.split()[1].split(':')[0])
+        
+        shift = 'day' if time_int>=6 and time_int < 18 else 'night'
+
+        if shift == 'day' and _t_in >= 24.0 and _t_in <= 27.0:
+            withinIdeal = withinIdeal + 1
+        elif shift == 'night' and _t_in >= 16.0 and _t_in <= 18.0:            
+            withinIdeal = withinIdeal + 1
+        # ----------------------------------------------------------
+
         if c_enable and i%c_freq == 0:
             _t_out = greenhouse_config_c[i]['t_out']
-            date_out = greenhouse_config_c[i]['date_out']
-            time_int = int(date_out.split()[1].split(':')[0])
+            # date_out = greenhouse_config_c[i]['date_out']
+            # time_int = int(date_out.split()[1].split(':')[0])
             controller_response = get_controller_response(_t_in,_t_out,time_int,crop)
             sys_state['cooling'] = controller_response['cooling']
             sys_state['number_heater'] = controller_response['number_heater']
@@ -135,6 +148,8 @@ def run_simulation(params):
             result_2 = odeint(temperature_model, _t_in_2, tspan, args=(greenhouse_config[i],))
             temp_in[i] = result_2[1][0]
             _t_in_2 = result_2[1][0]
+
+    print '%f%s' % (round((float(withinIdeal)/size)*100),'%')
 
     return [temp_in_c,temp_out,temp_in if c_enable and both else None]
 
@@ -166,10 +181,10 @@ def build_chart(df_t_result,c_enable=True,both=False):
     items = [
         "Inside temperature (controlled)",
         "Outside temperature",
-        "Min. temperature (night shift)",
-        "Max. temperature (night shift)",
-        "Min. temperature (day shift)",
-        "Max. temperature (day shift)"
+        "Min. temperature (night)",
+        "Max. temperature (night)",
+        "Min. temperature (day)",
+        "Max. temperature (day)"
     ]
 
     if not c_enable:
