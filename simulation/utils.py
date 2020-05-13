@@ -5,6 +5,7 @@ import sys
 import json
 import math
 import requests
+import argparse
 import numpy as np
 import pandas as pd
 import matplotlib.dates as md
@@ -13,16 +14,12 @@ from matplotlib.font_manager import FontProperties
 from datetime import datetime
 from scipy.integrate import odeint
 from simulator import temperature_model
+from simulation_result import SimResult
 
 # Original functions ------------
-def parser(x):
-	return datetime.strptime('03/01/19 '+x, '%m/%d/%y %H:%M')
-
 def get_data_from_csv(filename):
     try:
         return pd.read_csv(filename + ".csv", header=0, parse_dates=[0], index_col=0,squeeze=True)
-        # return pd.read_csv(filename + ".csv", header=0, parse_dates=[0], index_col=0,
-        #                    squeeze=True, date_parser=parser)
     except IOError as e:
         print "Could not open this file. Make sure the file name or path is correct."
         sys.exit(1)
@@ -31,30 +28,64 @@ def get_data_from_csv(filename):
         sys.exit(1)
 
 # Extensions ----------------------
-def get_controller_response(_t_in,_t_out,timeInt,crop):
-    cfix = lambda f: float(f)/60.0
-    url = 'http://localhost:8080'
-    _t_in = round(float(_t_in))
-    _t_out = round(float(_t_out))
-    params = {'crop':crop, 't_in':_t_in, 't_out':_t_out, 'time':timeInt}
-    #print params
-    r = requests.get(url=url, params=params)
-    response = r.json()
+def str_datetime_to_int(dt):
+    return int(dt.split()[1].split(':')[0])
 
-    h = int(response['heating'])
-    c = int(response['cooling'])
-    if c > 0:
-        # c = cfix(7.4)
-        c = cfix(14.8)
-    else:
-        c = 0
-    return {'cooling':c, 'number_heater':h}
+def get_shift(t):
+    return 'day' if t>=6 and t<18 else 'night'
 
 def interpolate_data(data,toFile=False):
     data = data.resample('1S').interpolate()
     if toFile:
         data.to_csv(r'%s'%toFile,header=True)
     return data
+
+def get_temperature_ideal_ranges(crop='2'):
+    ranges = {
+        '1':{'day':{'max':38.0,'min':27.0}, 'night':{'max':27.0,'min':24.0}},
+        '2':{'day':{'max':27.0,'min':24.0}, 'night':{'max':18.0,'min':16.0}},
+        '3':{'day':{'max':27.0,'min':21.0}, 'night':{'max':16.0,'min':10.0}}
+    }
+    crop = str(crop)
+    ret = ranges[crop] if crop in ranges else ranges['2']
+    return ret
+
+def get_user_args():
+    parser = argparse.ArgumentParser(description='Run greenhouse simulation.')
+    parser.add_argument('--no-control', action='store_false', dest='c_enable',
+        help='disable controll')
+    parser.add_argument('-f','--freq', default=1, type=int, choices=[1,2,5,10], metavar='N', dest='c_freq',
+        help='frequency, in minutes, on which the controller will be checked')
+    parser.add_argument('-c','--crop', default=2, type=int, choices=[1,2,3], metavar='N', dest='crop',
+        help='ideal climatic condition of the plantation: warm (1), moderate (2) or cool (3)')
+    parser.add_argument('-v','--verbose', action='store_true', dest='verbose',
+        help='print to console each response from the controller')
+    parser.add_argument('-o','--output-to-file', default=False, metavar='PATHNAME', dest='output_to_file',
+        help='path to a file to which the results of the simulation will be logged')
+    parser.add_argument('--plot-both', action='store_true', dest='both',
+        help='plot on the chart both controlled and uncontrolled temperature variations')
+    
+    return parser.parse_args()
+
+
+def get_controller_response(_t_in,_t_out,timeInt,crop):
+    cfix = lambda f: float(f)/60.0
+    url = 'http://localhost:8080'
+    # c_power = 7.4
+    c_power = 14.8
+
+    _t_in = int(float(_t_in)*10.0)
+    _t_out = int(float(_t_out)*10.0)
+    params = {'crop':crop, 't_in':_t_in, 't_out':_t_out, 'time':timeInt}
+    #print params
+    r = requests.get(url=url, params=params).json()
+    ret = {
+        'model': r['model'],
+        'number_heater': int(r['heating']),
+        'cooling': cfix(c_power) if int(r['cooling'])>0 else 0
+    }
+
+    return ret
 
 def get_greenhouse_config(data):
     greenhouse_config = []
@@ -86,14 +117,17 @@ def get_greenhouse_config(data):
     return greenhouse_config
 
 def run_simulation(params):
+    # settings
     data = params.get('data')
     t = params.get('timepoints')
     c_enable = params.get('c_enable',True) # enable control
-    both = params.get('both',False) # calc. both controlled and uncontrolled temperatura within the greenhouse
+    both = params.get('both',False) # calculate both controlled and uncontrolled temperature variations within the greenhouse
+    verbose = params.get('verbose',True) # print to console each response from the controller
+    output_to_file = params.get('output_to_file',False) # output result to console, a file or both
     c_freq = params.get('c_freq',1) # frequency on which the controller is checked, in seconds
-    crop = params.get('crop',2) # ideal climatic condition of the plantation: hot (1), moderate (2) or cold (3)
-
+    crop = params.get('crop',2) # ideal climatic condition of the plantation: warm (1), moderate (2) or cool (3)
     size = len(data)
+    # initial state
     _t_in = data['t_out'][0]
     greenhouse_config_c = get_greenhouse_config(data)
     temp_in_c = np.empty_like(t)
@@ -101,7 +135,10 @@ def run_simulation(params):
     temp_in_c[0] = _t_in
     temp_out[0] = _t_in
     sys_state = {'cooling':0,'number_heater':0}
-    withinIdeal = 0
+    # analytiics settings and initial state
+    c_model = 'no_control'
+    ranges = get_temperature_ideal_ranges(crop)
+    sim_result = SimResult(size)
 
     if c_enable and both:
         _t_in_2 = data['t_out'][0]
@@ -110,28 +147,33 @@ def run_simulation(params):
         temp_in[0] = _t_in_2
 
     for i in range(1, size, 1):
-
-        # checking percentage of time within ideal temperature range
         date_out = greenhouse_config_c[i]['date_out']
-        time_int = int(date_out.split()[1].split(':')[0])
-        
-        shift = 'day' if time_int>=6 and time_int < 18 else 'night'
+        time_int = str_datetime_to_int(date_out)
+        # checking percentage of time within ideal temperature range        
+        shift = get_shift(time_int)
+        rshift = ranges[shift]
+        within_ideal = _t_in >= rshift['min'] and _t_in < rshift['max']
 
-        if shift == 'day' and _t_in >= 24.0 and _t_in <= 27.0:
-            withinIdeal = withinIdeal + 1
-        elif shift == 'night' and _t_in >= 16.0 and _t_in <= 18.0:            
-            withinIdeal = withinIdeal + 1
+        if within_ideal:
+            sim_result.add_point_within_ideal()
+        else:            
+            if _t_in < rshift['min']:
+                orientation = 'bellow'
+                ref = 'min'
+            else:
+                orientation = 'above'
+                ref = 'max'
+            p = abs(_t_in - rshift[ref])
+            sim_result.add_error_point(orientation,shift,date_out,p)
         # ----------------------------------------------------------
-
         if c_enable and i%c_freq == 0:
             _t_out = greenhouse_config_c[i]['t_out']
-            # date_out = greenhouse_config_c[i]['date_out']
-            # time_int = int(date_out.split()[1].split(':')[0])
             controller_response = get_controller_response(_t_in,_t_out,time_int,crop)
             sys_state['cooling'] = controller_response['cooling']
             sys_state['number_heater'] = controller_response['number_heater']
+            c_model = controller_response['model']
 
-            print '%s | t: %f | C: %s; H: %s' % (str(date_out),_t_in,sys_state['cooling']>0,sys_state['number_heater']>0)
+            sim_result.add_record(date_out,_t_in,sys_state,c_model,verbose=verbose)
 
         greenhouse_config_c[i]['cooling'] = sys_state['cooling']
         greenhouse_config_c[i]['number_heater'] = sys_state['number_heater']
@@ -149,7 +191,7 @@ def run_simulation(params):
             temp_in[i] = result_2[1][0]
             _t_in_2 = result_2[1][0]
 
-    print '%f%s' % (round((float(withinIdeal)/size)*100),'%')
+    sim_result.output(output_to_file)
 
     return [temp_in_c,temp_out,temp_in if c_enable and both else None]
 
@@ -168,7 +210,7 @@ def build_dataframe(sim,**kwargs):
 
 def build_chart(df_t_result,c_enable=True,both=False):
     #plt.gca().xaxis.set_major_formatter(md.DateFormatter('%d/%m %Hh'))
-    plt.gca().xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
+    plt.gca().xaxis.set_major_formatter(md.DateFormatter('%H:%M:%S'))
     plt.plot(df_t_result)
 
     plt.axhline(y=16,ls='--',lw=1.5,c='darkgray')

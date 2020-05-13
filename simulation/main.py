@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy as np
-from utils import get_data_from_csv, interpolate_data, run_simulation, build_dataframe, build_chart
+from utils import get_data_from_csv, interpolate_data, run_simulation, build_dataframe, build_chart, get_user_args
 
 # initial condicitions
+args = get_user_args()
 
 # filename = 'data/diego/spring_tucson_interpolated'
 # filename = 'data/A002_cleaner_small'
@@ -29,24 +30,19 @@ timepoints = np.linspace(0, size, size) # time points
 timestampStart = str(data.iloc[[0]]['t_out'].to_dict().keys()[0])
 periods = len(timepoints)
 freq = '1S'
-c_enable = True
-# c_freq = 1*60 # seconds
-# c_freq = 2*60 # seconds
-# c_freq = 5*60 # seconds
-c_freq = 10*60 # seconds
-crop = 2 # moderate - tomato
-both = False
 
 simParams = {
-    'crop': crop,
-    'c_freq': c_freq,
-    'c_enable': c_enable,
-    'both': both,
+    'crop': args.crop,
+    'c_freq': args.c_freq*60,
+    'c_enable': args.c_enable,
+    'verbose': args.verbose,
+    'both': args.both,
     'timepoints': timepoints,
-    'data': data
+    'data': data,
+    'output_to_file': args.output_to_file
 }
 
 sim = run_simulation(simParams)
 df_t_result = build_dataframe(sim,t_start=timestampStart,periods=periods,freq=freq)
 
-build_chart(df_t_result,c_enable=c_enable,both=both)
+build_chart(df_t_result,c_enable=args.c_enable,both=args.both)

@@ -78,26 +78,16 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   Greenhouse__greenhouse_step(crop, t_in, time, &_res, &mem);
 
   strcat(json,"{");
-  strcat(json,"\"heating\":");
+  strcat(json,"\"model\":\"time_based\"");
+
+  strcat(json,",\"heating\":");
   sprintf(aux, "%d", _res.heating_on);
   strcat(json,aux);
 
   strcat(json,",\"cooling\":");
   sprintf(aux, "%d", _res.cooling_on);
   strcat(json,aux);
-  /*
-  strcat(json,",\"category\":");
-  sprintf(aux, "%d", _res.cat);
-  strcat(json,aux);
-
-  strcat(json,",\"shift\":");
-  sprintf(aux, "%d", _res.s);
-  strcat(json,aux);
-
-  strcat(json,",\"checkT\":");
-  sprintf(aux, "%d", _res.st);
-  strcat(json,aux);
-  */
+  
   strcat(json,"}");
 
   printf("%s\n",json);
