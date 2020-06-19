@@ -22,8 +22,16 @@ def evapo_by_plant_size(qgrout, transmittance_g_m, crop_type):
     else:
         return 0.000
 
-def evapotranspiration(cooling, et_plants):
-    return (cooling + et_plants)/(60.0 * 60.0)
+def evapotranspiration(cooling, Et):
+    Ec = 0.0
+    Et = float(Et)/(60.0 * 60.0) # change Et 
+    if cooling > 0:
+        # c_power = 7.4
+        c_power = 14.8
+        # Ec = float(c_power)/60.0 # changing Ec unit from "kg/m2*min" to "kg/m2*s"
+        Ec = float(c_power)/(24.0 * 60.0 * 60.0) # changing Ec unit from "kg/m2*dia" to "kg/m2*s"
+
+    return Ec + Et
 
 def temperature_model(t_in, t, parameters):
     t_out = parameters["t_out"]

@@ -1,0 +1,1490 @@
+{
+    "control": {
+        "enabled": true, 
+        "frequency": 300, 
+        "model": "temperature_based_shift", 
+        "version": "v1"
+    }, 
+    "energy_expenditure": 534, 
+    "error": {
+        "above": {
+            "avg": 2.1035280171576494, 
+            "day": {
+                "avg": 1.921765898489777, 
+                "max": 4.062785932285493
+            }, 
+            "max": 5.433215523456266, 
+            "night": {
+                "avg": 2.2353496379085382, 
+                "max": 5.433215523456266
+            }
+        }, 
+        "absolute": {
+            "avg": 2.239180619535373, 
+            "day": {
+                "avg": 2.569272189099548, 
+                "max": 10.640447699576422
+            }, 
+            "max": 10.640447699576422, 
+            "night": {
+                "avg": 1.8614031356409273, 
+                "max": 5.433215523456266
+            }
+        }, 
+        "bellow": {
+            "avg": 2.4083649224876096, 
+            "day": {
+                "avg": 3.072197090765086, 
+                "max": 10.640447699576422
+            }, 
+            "max": 10.640447699576422, 
+            "night": {
+                "avg": 1.0296157814520186, 
+                "max": 2.8932605948059678
+            }
+        }
+    }, 
+    "log": {
+        "2018-07-20 00:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.37445669061994
+        }, 
+        "2018-07-20 00:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.349446424103743
+        }, 
+        "2018-07-20 00:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.32444686199895
+        }, 
+        "2018-07-20 00:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.299447691205398
+        }, 
+        "2018-07-20 00:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.274448738097078
+        }, 
+        "2018-07-20 00:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.24944999930255
+        }, 
+        "2018-07-20 00:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.224451474351753
+        }, 
+        "2018-07-20 00:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.19945316286406
+        }, 
+        "2018-07-20 00:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.174455064500055
+        }, 
+        "2018-07-20 00:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.149457178960436
+        }, 
+        "2018-07-20 00:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.124459505985357
+        }, 
+        "2018-07-20 01:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.0994620453543
+        }, 
+        "2018-07-20 01:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.07446479688554
+        }, 
+        "2018-07-20 01:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.049467760682386
+        }, 
+        "2018-07-20 01:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.024470943729828
+        }, 
+        "2018-07-20 01:20:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.999474350841037
+        }, 
+        "2018-07-20 01:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.69614299442068
+        }, 
+        "2018-07-20 01:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.01195719107445
+        }, 
+        "2018-07-20 01:35:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.925521407608423
+        }, 
+        "2018-07-20 01:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.62116065604805
+        }, 
+        "2018-07-20 01:45:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.936957395952932
+        }, 
+        "2018-07-20 01:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.57219217604542
+        }, 
+        "2018-07-20 01:55:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.886974652178562
+        }, 
+        "2018-07-20 02:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.522192522888066
+        }, 
+        "2018-07-20 02:05:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.811714961443574
+        }, 
+        "2018-07-20 02:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.41373527357748
+        }, 
+        "2018-07-20 02:15:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.695185961540833
+        }, 
+        "2018-07-20 02:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.297071076487963
+        }, 
+        "2018-07-20 02:25:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.578519170540186
+        }, 
+        "2018-07-20 02:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.180404569943803
+        }, 
+        "2018-07-20 02:35:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.461852339839258
+        }, 
+        "2018-07-20 02:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.063738069470656
+        }, 
+        "2018-07-20 02:45:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.345185508150946
+        }, 
+        "2018-07-20 02:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.947071571208355
+        }, 
+        "2018-07-20 02:55:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.228518674278654
+        }, 
+        "2018-07-20 03:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.830405073243096
+        }, 
+        "2018-07-20 03:05:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.080277300997997
+        }, 
+        "2018-07-20 03:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.640666945819245
+        }, 
+        "2018-07-20 03:15:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.88044929564809
+        }, 
+        "2018-07-20 03:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.44067013199863
+        }, 
+        "2018-07-20 03:25:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.680449051953788
+        }, 
+        "2018-07-20 03:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.240670425983417
+        }, 
+        "2018-07-20 03:35:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.48044875923961
+        }, 
+        "2018-07-20 03:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.04067071934271
+        }, 
+        "2018-07-20 03:45:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.280448466190455
+        }, 
+        "2018-07-20 03:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.840671013611598
+        }, 
+        "2018-07-20 03:55:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.080448172914933
+        }, 
+        "2018-07-20 04:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.64067130725513
+        }, 
+        "2018-07-20 04:05:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 13.981486394259965
+        }, 
+        "2018-07-20 04:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.674500812940103
+        }, 
+        "2018-07-20 04:15:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.047601843189783
+        }, 
+        "2018-07-20 04:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.741158125444777
+        }, 
+        "2018-07-20 04:25:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.114268452487503
+        }, 
+        "2018-07-20 04:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.807824690501803
+        }, 
+        "2018-07-20 04:35:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.180935217914271
+        }, 
+        "2018-07-20 04:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.87449125824516
+        }, 
+        "2018-07-20 04:45:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.247601983339
+        }, 
+        "2018-07-20 04:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.941157827139214
+        }, 
+        "2018-07-20 04:55:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.314268748743796
+        }, 
+        "2018-07-20 05:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.00782439500233
+        }, 
+        "2018-07-20 05:05:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.267656184072113
+        }, 
+        "2018-07-20 05:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.812333339153017
+        }, 
+        "2018-07-20 05:15:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 14.03596728010955
+        }, 
+        "2018-07-20 05:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.580037387745644
+        }, 
+        "2018-07-20 05:25:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 13.803660442068438
+        }, 
+        "2018-07-20 05:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.347731061730684
+        }, 
+        "2018-07-20 05:35:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 13.571353429823295
+        }, 
+        "2018-07-20 05:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.115424733519845
+        }, 
+        "2018-07-20 05:45:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 13.33904641752287
+        }, 
+        "2018-07-20 05:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.883118404641575
+        }, 
+        "2018-07-20 05:55:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 13.106739405194032
+        }, 
+        "2018-07-20 06:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.650812075779495
+        }, 
+        "2018-07-20 06:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 13.390147691359939
+        }, 
+        "2018-07-20 06:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 13.890336111116275
+        }, 
+        "2018-07-20 06:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 14.453686639931464
+        }, 
+        "2018-07-20 06:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 15.01809760816005
+        }, 
+        "2018-07-20 06:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 15.58252637934356
+        }, 
+        "2018-07-20 06:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.146955456631684
+        }, 
+        "2018-07-20 06:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.7113845415153
+        }, 
+        "2018-07-20 06:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.275813626246887
+        }, 
+        "2018-07-20 06:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.840242710686784
+        }, 
+        "2018-07-20 06:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.404671794819883
+        }, 
+        "2018-07-20 06:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.96910087847423
+        }, 
+        "2018-07-20 07:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.53352996152734
+        }, 
+        "2018-07-20 07:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.831365912403562
+        }, 
+        "2018-07-20 07:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.04542140724097
+        }, 
+        "2018-07-20 07:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.258070293339046
+        }, 
+        "2018-07-20 07:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.470695563616037
+        }, 
+        "2018-07-20 07:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.68332043741609
+        }, 
+        "2018-07-20 07:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.895945304574628
+        }, 
+        "2018-07-20 07:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.10857017163785
+        }, 
+        "2018-07-20 07:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.321195038716635
+        }, 
+        "2018-07-20 07:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.533819905813985
+        }, 
+        "2018-07-20 07:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.746444772930925
+        }, 
+        "2018-07-20 07:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.959069640068524
+        }, 
+        "2018-07-20 08:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.171694507227716
+        }, 
+        "2018-07-20 08:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.50485003878134
+        }, 
+        "2018-07-20 08:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.875883932221313
+        }, 
+        "2018-07-20 08:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.24755377523969
+        }, 
+        "2018-07-20 08:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.61923429526949
+        }, 
+        "2018-07-20 08:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.9909149944453
+        }, 
+        "2018-07-20 08:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.362595696522643
+        }, 
+        "2018-07-20 08:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.734276398549273
+        }, 
+        "2018-07-20 08:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.105957100482055
+        }, 
+        "2018-07-20 08:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.47763780232645
+        }, 
+        "2018-07-20 08:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.8493185040886
+        }, 
+        "2018-07-20 08:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.220999205774014
+        }, 
+        "2018-07-20 09:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.592679907388572
+        }, 
+        "2018-07-20 09:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.800274007634446
+        }, 
+        "2018-07-20 09:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.956301693296663
+        }, 
+        "2018-07-20 09:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 27.11146361683741
+        }, 
+        "2018-07-20 09:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.891506966202872
+        }, 
+        "2018-07-20 09:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 27.314724966487166
+        }, 
+        "2018-07-20 09:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.200005150473892
+        }, 
+        "2018-07-20 09:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 27.624989090588365
+        }, 
+        "2018-07-20 09:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.51029985276734
+        }, 
+        "2018-07-20 09:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 27.935283376819683
+        }, 
+        "2018-07-20 09:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.820595062634236
+        }, 
+        "2018-07-20 09:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.24557767153157
+        }, 
+        "2018-07-20 10:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.13089027144189
+        }, 
+        "2018-07-20 10:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.46514988544399
+        }, 
+        "2018-07-20 10:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.23123017728324
+        }, 
+        "2018-07-20 10:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.53650011464898
+        }, 
+        "2018-07-20 10:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.3020939052369
+        }, 
+        "2018-07-20 10:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.6073554634789
+        }, 
+        "2018-07-20 10:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.372949324430376
+        }, 
+        "2018-07-20 10:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.67821067102199
+        }, 
+        "2018-07-20 10:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.443804741251327
+        }, 
+        "2018-07-20 10:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.74906587852665
+        }, 
+        "2018-07-20 10:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.51466015806902
+        }, 
+        "2018-07-20 10:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.819921086026998
+        }, 
+        "2018-07-20 11:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.5855155748914
+        }, 
+        "2018-07-20 11:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.92313318364035
+        }, 
+        "2018-07-20 11:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.731253546425183
+        }, 
+        "2018-07-20 11:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.07921006179535
+        }, 
+        "2018-07-20 11:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.88750447458735
+        }, 
+        "2018-07-20 11:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.235463444351268
+        }, 
+        "2018-07-20 11:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.043758367531424
+        }, 
+        "2018-07-20 11:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.39171687666818
+        }, 
+        "2018-07-20 11:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.20001226133664
+        }, 
+        "2018-07-20 11:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.547970308987797
+        }, 
+        "2018-07-20 11:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.356266153699554
+        }, 
+        "2018-07-20 11:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.704223741262364
+        }, 
+        "2018-07-20 12:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.512520047483044
+        }, 
+        "2018-07-20 12:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.867485076314992
+        }, 
+        "2018-07-20 12:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.684992110601954
+        }, 
+        "2018-07-20 12:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.042195939928142
+        }, 
+        "2018-07-20 12:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.859741085272
+        }, 
+        "2018-07-20 12:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.216945031100554
+        }, 
+        "2018-07-20 12:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.034490703106776
+        }, 
+        "2018-07-20 12:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.39169413305525
+        }, 
+        "2018-07-20 12:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.20924032114032
+        }, 
+        "2018-07-20 12:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.566443234991457
+        }, 
+        "2018-07-20 12:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.383989937775727
+        }, 
+        "2018-07-20 12:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.741192336886154
+        }, 
+        "2018-07-20 13:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.558739555791178
+        }, 
+        "2018-07-20 13:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.864718189213818
+        }, 
+        "2018-07-20 13:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.61494476340287
+        }, 
+        "2018-07-20 13:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.904555321823427
+        }, 
+        "2018-07-20 13:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.654507205813637
+        }, 
+        "2018-07-20 13:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.94411303352398
+        }, 
+        "2018-07-20 13:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.694064956904295
+        }, 
+        "2018-07-20 13:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.983670666460146
+        }, 
+        "2018-07-20 13:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.733622706668566
+        }, 
+        "2018-07-20 13:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 31.02322829937346
+        }, 
+        "2018-07-20 13:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.77318045643426
+        }, 
+        "2018-07-20 13:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 31.062785932285493
+        }, 
+        "2018-07-20 14:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.81273820620057
+        }, 
+        "2018-07-20 14:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 31.032041515384492
+        }, 
+        "2018-07-20 14:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.68959804642801
+        }, 
+        "2018-07-20 14:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.88643737285284
+        }, 
+        "2018-07-20 14:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.543616313274423
+        }, 
+        "2018-07-20 14:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.74044973794407
+        }, 
+        "2018-07-20 14:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.397628141498046
+        }, 
+        "2018-07-20 14:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.594461993471977
+        }, 
+        "2018-07-20 14:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.25163996789742
+        }, 
+        "2018-07-20 14:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.448474250455863
+        }, 
+        "2018-07-20 14:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.105651794330242
+        }, 
+        "2018-07-20 14:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.30248650742487
+        }, 
+        "2018-07-20 15:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.959663620771963
+        }, 
+        "2018-07-20 15:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 30.1481676817369
+        }, 
+        "2018-07-20 15:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.794395076856315
+        }, 
+        "2018-07-20 15:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.98023750704483
+        }, 
+        "2018-07-20 15:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.626419711837396
+        }, 
+        "2018-07-20 15:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.81226188551184
+        }, 
+        "2018-07-20 15:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.458443583805256
+        }, 
+        "2018-07-20 15:35:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.644286252594714
+        }, 
+        "2018-07-20 15:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.290467455594943
+        }, 
+        "2018-07-20 15:45:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.476310619654836
+        }, 
+        "2018-07-20 15:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.122491327392627
+        }, 
+        "2018-07-20 15:55:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 29.308334985320872
+        }, 
+        "2018-07-20 16:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.954515199184033
+        }, 
+        "2018-07-20 16:05:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.953006523827284
+        }, 
+        "2018-07-20 16:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.3529541357256
+        }, 
+        "2018-07-20 16:15:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 28.291580404178582
+        }, 
+        "2018-07-20 16:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.6905209429765
+        }, 
+        "2018-07-20 16:25:00": {
+            "cooling": true, 
+            "heating": false, 
+            "temperature": 27.62913228735162
+        }, 
+        "2018-07-20 16:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.028070591212526
+        }, 
+        "2018-07-20 16:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.96668388244768
+        }, 
+        "2018-07-20 16:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.74080833212395
+        }, 
+        "2018-07-20 16:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.41135235955039
+        }, 
+        "2018-07-20 16:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 26.08015686862516
+        }, 
+        "2018-07-20 16:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.748932172239865
+        }, 
+        "2018-07-20 17:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.417706985541187
+        }, 
+        "2018-07-20 17:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.214795715148657
+        }, 
+        "2018-07-20 17:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 25.05220895781212
+        }, 
+        "2018-07-20 17:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.890299229101245
+        }, 
+        "2018-07-20 17:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.728400867365114
+        }, 
+        "2018-07-20 17:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.56650269648664
+        }, 
+        "2018-07-20 17:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.404604528824873
+        }, 
+        "2018-07-20 17:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.242706361229565
+        }, 
+        "2018-07-20 17:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 24.080808193648117
+        }, 
+        "2018-07-20 17:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.918910026079796
+        }, 
+        "2018-07-20 17:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.757011858524912
+        }, 
+        "2018-07-20 17:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.595113690983613
+        }, 
+        "2018-07-20 18:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.433215523456266
+        }, 
+        "2018-07-20 18:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.280333018030465
+        }, 
+        "2018-07-20 18:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 23.130283817783287
+        }, 
+        "2018-07-20 18:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.980282187288335
+        }, 
+        "2018-07-20 18:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.830281355476075
+        }, 
+        "2018-07-20 18:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.680280537084368
+        }, 
+        "2018-07-20 18:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.53027971892931
+        }, 
+        "2018-07-20 18:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.380278900789843
+        }, 
+        "2018-07-20 18:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.230278082662423
+        }, 
+        "2018-07-20 18:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 22.08027726454718
+        }, 
+        "2018-07-20 18:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.930276446444445
+        }, 
+        "2018-07-20 18:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.78027562835422
+        }, 
+        "2018-07-20 19:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.630274810276962
+        }, 
+        "2018-07-20 19:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.53710860963204
+        }, 
+        "2018-07-20 19:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.461803498830417
+        }, 
+        "2018-07-20 19:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.386798263811613
+        }, 
+        "2018-07-20 19:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.31179806350556
+        }, 
+        "2018-07-20 19:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.236797947728412
+        }, 
+        "2018-07-20 19:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.16179783336999
+        }, 
+        "2018-07-20 19:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.086797719034948
+        }, 
+        "2018-07-20 19:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 21.01179760469987
+        }, 
+        "2018-07-20 19:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.936797490364345
+        }, 
+        "2018-07-20 19:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.86179737602845
+        }, 
+        "2018-07-20 19:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.786797261692108
+        }, 
+        "2018-07-20 20:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.71179714735545
+        }, 
+        "2018-07-20 20:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.535758527314243
+        }, 
+        "2018-07-20 20:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.327967092187713
+        }, 
+        "2018-07-20 20:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 20.11964254483466
+        }, 
+        "2018-07-20 20:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.911309046822872
+        }, 
+        "2018-07-20 20:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.702975398521332
+        }, 
+        "2018-07-20 20:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.494641747684195
+        }, 
+        "2018-07-20 20:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.28630809679364
+        }, 
+        "2018-07-20 20:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.07797444589216
+        }, 
+        "2018-07-20 20:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.869640794982235
+        }, 
+        "2018-07-20 20:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.661307144064963
+        }, 
+        "2018-07-20 20:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.452973493141776
+        }, 
+        "2018-07-20 21:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.244639842214152
+        }, 
+        "2018-07-20 21:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.16260432976319
+        }, 
+        "2018-07-20 21:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.120259829346214
+        }, 
+        "2018-07-20 21:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.078581719763918
+        }, 
+        "2018-07-20 21:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.03691479864016
+        }, 
+        "2018-07-20 21:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.995248065365605
+        }, 
+        "2018-07-20 21:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.95358133524399
+        }, 
+        "2018-07-20 21:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.911914605174275
+        }, 
+        "2018-07-20 21:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.870247875104432
+        }, 
+        "2018-07-20 21:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.828581145033567
+        }, 
+        "2018-07-20 21:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.78691441496165
+        }, 
+        "2018-07-20 21:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.745247684888778
+        }, 
+        "2018-07-20 22:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.703580954814818
+        }, 
+        "2018-07-20 22:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.624024773124088
+        }, 
+        "2018-07-20 22:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.532561296466135
+        }, 
+        "2018-07-20 22:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.440897903920284
+        }, 
+        "2018-07-20 22:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.349231154913454
+        }, 
+        "2018-07-20 22:25:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.257564349556727
+        }, 
+        "2018-07-20 22:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.16589754325702
+        }, 
+        "2018-07-20 22:35:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 17.074230736944774
+        }, 
+        "2018-07-20 22:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.982563930635486
+        }, 
+        "2018-07-20 22:45:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.890897124329612
+        }, 
+        "2018-07-20 22:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.799230318027128
+        }, 
+        "2018-07-20 22:55:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.707563511728207
+        }, 
+        "2018-07-20 23:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.615896705432874
+        }, 
+        "2018-07-20 23:05:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.49265537291465
+        }, 
+        "2018-07-20 23:10:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.359491280472785
+        }, 
+        "2018-07-20 23:15:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.22616058930512
+        }, 
+        "2018-07-20 23:20:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 16.09282710099807
+        }, 
+        "2018-07-20 23:25:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.959493565705628
+        }, 
+        "2018-07-20 23:30:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.547830716143665
+        }, 
+        "2018-07-20 23:35:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.755311310159422
+        }, 
+        "2018-07-20 23:40:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.282213514465806
+        }, 
+        "2018-07-20 23:45:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.488661864165865
+        }, 
+        "2018-07-20 23:50:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 19.015547536638753
+        }, 
+        "2018-07-20 23:55:00": {
+            "cooling": false, 
+            "heating": true, 
+            "temperature": 15.221994809830454
+        }, 
+        "2018-07-21 00:00:00": {
+            "cooling": false, 
+            "heating": false, 
+            "temperature": 18.748881262494777
+        }
+    }, 
+    "percent_within_ideal": 41.03424728880453
+}

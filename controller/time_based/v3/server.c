@@ -78,7 +78,7 @@ answer_to_connection (void *cls, struct MHD_Connection *connection,
   Greenhouse__greenhouse_step(crop, t_in, time, &_res, &mem);
 
   strcat(json,"{");
-  strcat(json,"\"model\":\"time_based\"");
+  strcat(json,"\"model\":\"time_based_v3\"");
 
   strcat(json,",\"heating\":");
   sprintf(aux, "%d", _res.heating_on);
