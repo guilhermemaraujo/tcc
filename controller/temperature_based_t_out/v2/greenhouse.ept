@@ -1,0 +1,109 @@
+node shift(time:int) returns (s:int)
+let
+	automaton
+		state Start do
+			s = 0;
+		unless time < 6 or time >= 18 then Night
+			 | time >= 6 & time < 18 then Day
+
+		state Day do
+			s = 1;
+		unless time < 6 or time >= 18 then Night
+
+		state Night do
+			s = 2;
+		unless time >= 6 & time < 18 then Day
+	end
+tel
+
+node category(crop:int) returns (cat:int)
+let
+	automaton
+		state Start do
+			cat = 0;
+		unless crop = 1 then Warm
+			 | crop = 2 then Moderate
+			 | crop = 3 then Cool
+
+		state Warm do
+			cat = 1;
+		unless crop = 2 then Moderate
+			 | crop = 3 then Cool
+
+		state Moderate do
+			cat = 2;
+		unless crop = 1 then Warm
+			 | crop = 3 then Cool
+
+		state Cool do
+			cat = 3;
+		unless crop = 1 then Warm
+			 | crop = 2 then Moderate
+	end
+tel
+
+node heating(c:bool) returns (status:bool)
+let
+	automaton
+		state Off do
+			status = false;
+		unless not c then On
+
+		state On do
+			status = true;
+		unless c then Off
+	end
+tel
+
+node cooling(c:bool) returns (status:bool)
+let
+	automaton
+		state Off do
+			status = false;
+		unless not c then On
+
+		state On do
+			status = true;
+		unless c then Off
+	end
+tel
+
+node greenhouse(crop,t_in,t_out,time:int) returns (heating_on,cooling_on:bool; cat,s:int)
+contract
+	var t1,t2,t3,t4:bool;
+	let
+		t1 = (s = 1 & (
+			(cat = 1 & (t_in - 1) < 270 & (t_out - 1) < 270) or
+			(cat = 2 & (t_in - 1) < 240 & (t_out - 1) < 240) or
+			(cat = 3 & (t_in - 1) < 210 & (t_out - 1) < 210)
+		)) or (s = 2 & (
+			(cat = 1 & (t_in - 1) < 240 & (t_out - 1) < 240) or
+			(cat = 2 & (t_in - 1) < 160 & (t_out - 1) < 160) or
+			(cat = 3 & (t_in - 1) < 100 & (t_out - 1) < 100)
+		));
+
+
+		t2 = not t1 & (
+				(s = 1 & (
+					(cat = 1 & (t_in + 1) > 380 & (t_out + 1) > 380) or
+					(cat = 2 & (t_in + 1) > 270 & (t_out + 1) > 270) or
+					(cat = 3 & (t_in + 1) > 270 & (t_out + 1) > 270)
+				)) or (s = 2 & (
+					(cat = 1 & (t_in + 1) > 270 & (t_out + 1) > 270) or
+					(cat = 2 & (t_in + 1) > 180 & (t_out + 1) > 180) or
+					(cat = 3 & (t_in + 1) > 160 & (t_out + 1) > 160)
+				))
+			);
+
+		t3 = (not t1 or (heating_on & not cooling_on));
+		t4 = (not t2 or (cooling_on & not heating_on));
+
+	tel
+	enforce t3 & t4
+	with(c1,c2:bool)
+let
+	heating_on = inlined heating(c1);
+	cooling_on = inlined cooling(c2);
+	cat = inlined category(crop);
+	s = inlined shift(time);
+tel

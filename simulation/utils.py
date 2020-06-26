@@ -231,8 +231,6 @@ def run_simulation(params):
             controller_response = get_controller_response(_t_in,_t_out,time_int,crop)
             sys_state['cooling'] = controller_response['cooling']
             sys_state['number_heater'] = controller_response['number_heater']
-            
-            sim_result.add_record(date_out,_t_in,sys_state)
 
             if sys_state['number_heater'] > 0:
                 actuator = 'heating'
@@ -241,6 +239,7 @@ def run_simulation(params):
                 actuator = 'cooling'
                 sim_result.add_time_actuator_on(actuator,c_freq)
 
+        sim_result.add_record(date_out,_t_in,sys_state)
 
         greenhouse_config_c['cooling'] = sys_state['cooling']
         greenhouse_config_c['number_heater'] = sys_state['number_heater']
