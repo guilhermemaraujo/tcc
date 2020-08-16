@@ -73,15 +73,15 @@ contract
 	var t1,t2,t3,t4:bool;
 	let
 		t1 = s = 2 & (
-			(cat = 1 & t_in < 240) or
-			(cat = 2 & t_in < 160) or
-			(cat = 3 & t_in < 100)
+			(cat = 1 & t_in < 270) or
+			(cat = 2 & t_in < 180) or
+			(cat = 3 & t_in < 160)
 		);
 
 		t2 = not t1 & s = 1 & (
-			(cat = 1 & t_in > 380) or
-			(cat = 2 & t_in > 270) or
-			(cat = 3 & t_in > 270)
+			(cat = 1 & t_in > 270) or
+			(cat = 2 & t_in > 240) or
+			(cat = 3 & t_in > 210)
 		);
 
 		t3 = (not t1 or (heating_on & not cooling_on));
