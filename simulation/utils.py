@@ -55,7 +55,7 @@ def get_user_args():
     main_dir = os.path.dirname(os.path.abspath(__file__))
     default_data_source = os.path.join(main_dir,'data/A002_cleaner_small_interpolated')
     parser = argparse.ArgumentParser(description='Run greenhouse simulation.')
-    parser.add_argument('-m','--control-model', required=True, type=str, choices=['no_control','temperature_based_shift','temperature_based_t_out','time_based'], metavar='MODEL', dest='model',
+    parser.add_argument('-m','--control-model', required=True, type=str, choices=['no_control','temperature_shift','temperature_in_out','temperature_avg','time'], metavar='MODEL', dest='model',
         help='control model name')
     parser.add_argument('-d','--data', required=True, type=str, metavar='FILENAME', dest='data_filename',
         help='name of a valid csv file from the data directory')
@@ -310,7 +310,7 @@ def build_chart(df_t_result,c_enable=True,sim_result=False,show=False):
     plt.xlabel('Time of day')
     plt.ylabel('Temperature ($^\circ$C)')
     # plt.ylim(0,35)
-    plt.ylim(5,35)
+    plt.ylim(10,40)
     plt.grid(True)
     
     # Maximise the plotting window
