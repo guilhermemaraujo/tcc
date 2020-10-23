@@ -293,18 +293,15 @@ def build_chart(df_t_result,c_enable=True,sim_result=False,show=False):
     plt.axhline(y=27,ls='--',lw=1.5,c='darkorange')
 
     fontP = FontProperties()
-    fontP.set_size('x-small')
+    fontP.set_size(20)
     items = [
-        "Inside temperature (controlled)",
-        "Outside temperature",
-        "Min. temperature (night)",
-        "Max. temperature (night)",
-        "Min. temperature (day)",
-        "Max. temperature (day)"
+        "Progressao da temperatura interna",
+        "Temperatura externa",
+        "Temperatura minima recomendada (turno da noite)",
+        "Temperatura maxima recomendada (turno da noite)",
+        "Temperatura minima recomendada (turno da dia)",
+        "Temperatura maxima recomendada (turno da dia)"
     ]
-
-    if not c_enable:
-        items[0] = "Inside temperature"
 
     plt.legend(items,prop=fontP,loc='best')
     plt.xlabel('Time of day')
